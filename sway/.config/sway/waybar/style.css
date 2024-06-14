@@ -1,0 +1,149 @@
+* {
+    border: none;
+    border-radius: 10px;
+    font-family: "Cousine Nerd Font";
+    font-size: 16px;
+    font-weight: bold ;
+    min-height: 0;
+}
+
+window#waybar {
+ background-color : #000000;
+    color: #eeeeee;
+}
+
+tooltip {
+    background: #000000;
+    opacity: 0.8;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+network {
+   color: #eeeeee;
+
+}
+tooltip label{
+    color: #eeeeee;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: #313244;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: #a6adc8;
+}
+
+#workspaces button.focused {
+    color: #F6EEC9;
+    background: #40A578;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: #a6e3a1;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: #000000;
+    color: #eeeeee;
+    border-radius: 10px;
+}
+
+#custom-screenshot,
+#custom-launch_wofi
+#custom-lock_screen,
+#custom-light_dark,
+#custom-power_btn,
+#battery,
+#custom-weather,
+#custom-myhyprv,
+#window,
+#taskbar,
+#cpu,
+#disk,
+#custom-updates,
+#memory,
+#clock,
+#pulseaudio,
+#network,
+#tray,
+#temperature,
+#workspaces,
+#backlight {
+    background: #000000;
+     opacity: 1;
+    padding: 0px 10px;
+    margin: 1px 0px;
+    border: 0px;
+}
+
+#pulseaudio,#backlight,#memory ,#tray,#network{
+	border-radius : 0 ;
+}
+#cpu,#custom-screenshot, #workspaces{
+	border-radius : 10px 0 0 10px; 
+}
+#battery, #taskbar,#clock{
+	border-radius : 0 10px 10px 0;
+}
+
+#workspaces,#custom-screenshot {
+margin-left: 10px;
+}
+#custom-lock_screen, #clock{
+   margin-right: 10px;
+}
+
+
+
+
+#temperature.critical {
+    color: #e92d4d;
+}
+
+
+#workspaces {
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-power_profile {
+    color: #a6e3a1;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 10px;
+}
+
+
+
+#pulseaudio {
+    color: #ffbb30;
+
+}
+
+#pulseaudio.microphone {
+    color: #DC84F3;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#battery {
+	color: #43af1c;
+	border-left: 0px;
+}
+
+ 
+
+#taskbar button:hover{
+    background: #000000;
+}
