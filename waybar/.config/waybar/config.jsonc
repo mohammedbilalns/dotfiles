@@ -30,6 +30,38 @@
 
 
     },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "*": 6
+        },
+        "format-icons": {
+            "1": "Files",
+            "2": "TeX",
+            "3": "Joplin",
+    "4": "Video",
+    "5": "Browser",
+   "6": "ChatGPT",
+    
+    
+   
+    
+    
+   
+    
+    
+   
+    
+    
+    
+            
+            
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
 
 
   

@@ -61,7 +61,7 @@ input {
     mode "1920x1080@120.030"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 2.0
+    scale 2
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -84,7 +84,7 @@ input {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 1
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -129,7 +129,7 @@ layout {
         off
 	
         // How many logical pixels the ring extends out from the windows.
-        width 3
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -163,7 +163,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         //off
 
-        width 4
+        width 3
         active-color "#569CD6"
         inactive-color "#505050"
 
@@ -188,12 +188,11 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sww-daemon"
+spawn-at-startup "hyprpaper"
 spawn-at-startup "waybar"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "fcitx5-remote" "-r"
-
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
