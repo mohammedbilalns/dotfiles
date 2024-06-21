@@ -36,10 +36,10 @@ input {
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+     //warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
-    // focus-follows-mouse
+    focus-follows-mouse
 }
 
 // You can configure outputs by their name, which you can find
@@ -263,8 +263,12 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "foot"; }
 	Mod+B { spawn "firefox";}
-    Super+Alt+L { spawn "swaylock"; }
+	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
+	Mod+Shift+C { spawn "code"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
+	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 
+    Mod+d {spawn "sh" "-c" "pkill wofi || wofi drun";}
+	Mod+F {spawn "nemo";}
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
@@ -274,18 +278,23 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
+	XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl"  "s" "5%+";}
+	Shift+XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
+Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
+   	XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
+    
+ 
     Mod+Q { close-window; }
-
+	Mod+L {spawn "swaylock";}
+	Ctrl+Alt+B {spawn "sh" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
+	Ctrl+Alt+H {spawn "swaylock & systemctl hibernate";}
+	Ctrl+Alt+P {spawn "poweroff";}
+	Ctrl+Alt+R {spawn "reboot";}
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
-
+ 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
@@ -425,7 +434,7 @@ binds {
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
-    Mod+F { maximize-column; }
+    Mod+W { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
 
@@ -457,7 +466,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
+    Ctrl+Alt+L { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
