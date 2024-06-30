@@ -19,8 +19,8 @@ set $browser MOZ_ENABLE_WAYLAND=1 firefox
 set $browseralt  brave  --enable-features=TouchpadOverscrollHistoryNavigation  --ozone-platform=wayland
 set $filemanager  nemo
 set $editor  code --enable-features=UseOzonePlatform --ozone-platform=wayland 
-set $github  github-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland            
-
+set $github  github-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland    
+set $joplin joplin-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland  
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 bindsym --no-repeat --release Super_L exec pkill wofi || wofi drun
@@ -97,6 +97,7 @@ default_border pixel 1
     # Start a terminal
     bindsym $mod+t exec $term
     bindsym $mod+b exec $browser
+	bindsym $mod+j exec $joplin
 	bindsym $mod+c exec $editor
 	bindsym $mod+g exec $github 
 	bindsym $mod+shift+b exec $browseralt
@@ -127,7 +128,7 @@ default_border pixel 1
 #
     # Move your focus around
     bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
+#    bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
@@ -255,9 +256,10 @@ bindsym $mod+r mode "resize"
 bar swaybar_command waybarsway
 
 include /etc/sway/config.d/*
-
+exec fcitx5-remote -r 
 exec blueman-applet & nm-applet & mako & /usr/lib/xfce-polkit/xfce-polkit
-
+exec swayidle -w 
+exec autotiling 
 	for_window [app_id="xfce-polkit"] floating enable
 	for_window [app_id="tlp-ui"] floating enable
 	for_window [title="Bluetooth Devices"] floating enable 

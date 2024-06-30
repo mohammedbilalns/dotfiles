@@ -1,6 +1,6 @@
 {
      "layer": "top", // Waybar at top layer
-     "position": "top", // Waybar position (top|bottom|left|right)
+     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
@@ -11,6 +11,7 @@
         
     ],
     "modules-center": [
+		"clock"
     ],
     "modules-right": [
 
@@ -20,8 +21,7 @@
         "backlight",
         "battery",
 	"custom/screenshot",
-        "tray",
-	"clock"
+        "tray"
     ],
     "custom/screenshot" :{
 	    "format" : "󰄄",

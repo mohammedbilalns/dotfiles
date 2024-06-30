@@ -58,7 +58,7 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
     scale 2
@@ -163,7 +163,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         //off
 
-        width 3
+        width 2
         active-color "#569CD6"
         inactive-color "#505050"
 
@@ -188,12 +188,12 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "hyprpaper"
+spawn-at-startup "swww-daemon"
 spawn-at-startup "waybar"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
-spawn-at-startup "fcitx5-remote" "-r"
-
+spawn-at-startup "sh" "-c" "fcitx5-remote -r"
+spawn-at-startup "sh" "-c" "swayidle -w"
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some rounded corner
@@ -216,7 +216,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+     slowdown 0.5
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -226,11 +226,25 @@ animations {
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
+       
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+window-rule {
+    match title="Nemo"
+	opacity 0.8
+
+}
+
+window-rule {
+    match app-id="Alacritty"
+	max-height 300
+}
+hotkey-overlay{
+	skip-at-startup
 }
 
 // Example: block out two password managers from screen capture.
@@ -261,14 +275,18 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T { spawn "foot"; }
+    Mod+T {spawn "foot";}
+	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
 	Mod+B { spawn "firefox";}
+	Mod+Shift+B {spawn "google-chrome-stable" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Shift+C { spawn "code"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 
-    Mod+d {spawn "sh" "-c" "pkill wofi || wofi drun";}
+    Mod+D {spawn "sh" "-c" "pkill wofi || wofi drun";}
 	Mod+F {spawn "nemo";}
+	Mod+Shift+F {spawn "sh" "-c" "foot yazi";}
+	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
@@ -286,8 +304,9 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
  
     Mod+Q { close-window; }
 	Mod+L {spawn "swaylock";}
-	Ctrl+Alt+B {spawn "sh" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
-	Ctrl+Alt+H {spawn "swaylock & systemctl hibernate";}
+	Ctrl+Alt+B {spawn "sh" "-c" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
+	Ctrl+Alt+H {spawn "sh" "-c" "swaylock & systemctl hibernate";}
+	Ctrl+Alt+I {spawn "sh" "-c" "~/.config/niri/scripts/idle_inhibitor.sh";} 
 	Ctrl+Alt+P {spawn "poweroff";}
 	Ctrl+Alt+R {spawn "reboot";}
     Mod+Left  { focus-column-left; }
@@ -306,24 +325,24 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+     Mod+Shift+Down    { focus-window-or-workspace-down; }
+     Mod+Shift+Up     { focus-window-or-workspace-up; }
+     //Mod+Ctrl+Down     { move-window-down-or-to-workspace-down; }
+    //Mod+Ctrl+Up     { move-window-up-or-to-workspace-up; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+   // Mod+Shift+Left  { focus-monitor-left; }
+    //Mod+Shift+Down  { focus-monitor-down; }
+    //Mod+Shift+Up    { focus-monitor-up; }
+    //Mod+Shift+Right { focus-monitor-right; }
+    //Mod+Shift+H     { focus-monitor-left; }
+    //Mod+Shift+J     { focus-monitor-down; }
+    //Mod+Shift+K     { focus-monitor-up; }
+    //Mod+Shift+L     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
@@ -342,8 +361,8 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
+    //Mod+Down     { focus-workspace-down; }
+    //Mod+Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
     Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
@@ -433,9 +452,9 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
     // Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { reset-window-height; }
+//    Mod+Shift+R { reset-window-height; }
     Mod+W { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { fullscreen-window; }
     Mod+C { center-column; }
 
     // Finer width adjustments.

@@ -11,6 +11,7 @@
         
     ],
     "modules-center": [
+		"clock"
     ],
     "modules-right": [
 
@@ -20,8 +21,7 @@
         "backlight",
         "battery",
 	"custom/screenshot",
-        "tray",
-	"clock"
+        "tray"
     ],
     "custom/screenshot" :{
 	    "format" : "󰄄",
