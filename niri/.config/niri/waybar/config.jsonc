@@ -6,7 +6,7 @@
 	"spacing": 0, // Gaps between modules (4px)
 	// Choose the order of the modules
 	"modules-left": [
-		"hyprland/workspaces",
+		"custom/workspaces",
 		"wlr/taskbar"
 
 	],
@@ -22,6 +22,11 @@
 		"custom/screenshot",
 		"tray"
 	],
+		"custom/workspaces": {
+			"exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+
+        		"signal": 8
+		},
 
 	"custom/screenshot" :{
 		"format" : "󰄄",

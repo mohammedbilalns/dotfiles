@@ -48,7 +48,7 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -61,7 +61,7 @@ input {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 2
+    scale 1.2
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -188,8 +188,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "waybar"
+spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/oldfortress.jpg"
+spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "sh" "-c" "fcitx5-remote -r"
@@ -246,7 +246,13 @@ window-rule {
 hotkey-overlay{
 	skip-at-startup
 }
+environment{
+	QT_QPA_PLATFORMTHEME "qt6ct"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	 QT_AUTO_SCREEN_SCALE_FACTOR "1"
+	 QT_STYLE_OVERRIDE "kvantum"
 
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -278,7 +284,8 @@ binds {
     Mod+T {spawn "foot";}
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
 	Mod+B { spawn "firefox";}
-	Mod+Shift+B {spawn "google-chrome-stable" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+	Mod+Shift+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Shift+C { spawn "code"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
@@ -419,9 +426,10 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
+    Mod+1 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "1"; }
+ Mod+2 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "2"; }
+ Mod+3 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "3"; }
+  
     Mod+4 { focus-workspace 4; }
     Mod+5 { focus-workspace 5; }
     Mod+6 { focus-workspace 6; }
