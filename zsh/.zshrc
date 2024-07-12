@@ -20,7 +20,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 PROMPT_EOL_MARK=''
 
-
+source <(fzf --zsh)
 HISTSIZE=1000
 SAVEHIST=1000
 path+=$HOME/.cargo/bin
