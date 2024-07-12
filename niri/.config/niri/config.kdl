@@ -310,9 +310,9 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
     
  
     Mod+Q { close-window; }
-	Mod+L {spawn "swaylock";}
+	Mod+L {spawn "~/.config/niri/scripts/swaylock.sh";}
 	Ctrl+Alt+B {spawn "sh" "-c" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
-	Ctrl+Alt+H {spawn "sh" "-c" "swaylock & systemctl hibernate";}
+	Ctrl+Alt+H {spawn "sh" "-c" " ~/.config/niri/scripts/swaylock.sh & systemctl hibernate";}
 	Ctrl+Alt+I {spawn "sh" "-c" "~/.config/niri/scripts/idle_inhibitor.sh";} 
 	Ctrl+Alt+P {spawn "poweroff";}
 	Ctrl+Alt+R {spawn "reboot";}

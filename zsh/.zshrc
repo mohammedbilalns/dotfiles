@@ -20,10 +20,10 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 PROMPT_EOL_MARK=''
 
-# pnpm
-export PNPM_HOME="/home/mohammedbilalns/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+
+HISTSIZE=1000
+SAVEHIST=1000
+path+=$HOME/.cargo/bin
+
+
+
