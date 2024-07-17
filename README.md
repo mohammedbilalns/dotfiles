@@ -16,7 +16,7 @@ https://github.com/user-attachments/assets/398ec4c3-9ef2-4dd2-8819-002db3b83e97
 
 # Installation 
 > [!NOTE]
-> I provided package names for installing on Arch-based distros. Choose packages according to your distribution
+> This instruction if for installing on Arch-based distros. Choose packages according to your distribution
 
 > [!NOTE]
 >I've used Paru as the AUR helper in the following commands, but feel free to use your AUR helper of choice.
