@@ -10,6 +10,7 @@ alias ll="lsd -la --group-directories-first"
 alias u="paru -Syu"
 alias update="paru -Syu"
 alias c="clear"
+alias hx="helix"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -24,6 +25,5 @@ source <(fzf --zsh)
 HISTSIZE=1000
 SAVEHIST=1000
 path+=$HOME/.cargo/bin
-
 
 
