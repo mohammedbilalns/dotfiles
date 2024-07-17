@@ -9,6 +9,10 @@ This repository contains my personal dotfiles for three Wayland compositors:
 
 # Preview 
 
+### Niri 
+https://github.com/user-attachments/assets/398ec4c3-9ef2-4dd2-8819-002db3b83e97
+
+
 
 # Installation 
 > [!NOTE]
