@@ -26,5 +26,4 @@ HISTSIZE=1000
 SAVEHIST=1000
 path+=$HOME/.cargo/bin
 
-eval "$(ssh-agent -s )" > /dev/null
-ssh-add ~/.ssh/aur.pub ~/.ssh/githubauth.pub ~/.ssh/dotfiles.pub > /dev/null 2>&1
+{ eval $(ssh-agent) && ssh-add -k ~/.ssh/githubauth; } &>/dev/null
