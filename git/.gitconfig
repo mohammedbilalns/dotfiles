@@ -6,3 +6,5 @@
 [user]
 	name = Mohammed Bilal N S
 	email = bilalnsmuhammed@gmail.com
+[credential]
+	helper = store
