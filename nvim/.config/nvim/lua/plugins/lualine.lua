@@ -4,7 +4,7 @@ return {
 	config = function()
 		require('lualine').setup{
 			options ={
-				theme = 'codedark'
+				theme = 'ayu'
 			},
 			tabline = {
   lualine_a = {'buffers'},

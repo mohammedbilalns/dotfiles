@@ -84,7 +84,7 @@ output "eDP-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 1
+    gaps 5
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -163,7 +163,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         //off
 
-        width 2
+        width 2.4
         active-color "#569CD6"
         inactive-color "#505050"
 
@@ -188,7 +188,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/oldfortress.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/pinewatt.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -225,6 +225,13 @@ animations {
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
+
+window-rule {
+    geometry-corner-radius 8
+        clip-to-geometry true
+}
+
+
 window-rule {
        
     // This regular expression is intentionally made as specific as possible,
