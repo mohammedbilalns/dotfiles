@@ -6,7 +6,7 @@ return{
 	},
 	config = function ()
 		require("ibl").setup({
-	--indent = { char = "┊" },
+	indent = { char = "┊" },
     scope = { enabled = true},
 
     exclude = {
