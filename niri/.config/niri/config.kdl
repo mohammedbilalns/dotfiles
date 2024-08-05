@@ -188,7 +188,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/pinewatt.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/tokyonight.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -237,13 +237,11 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
+    match app-id="kdenlive"
+        open-maximized true
+    }
 window-rule {
     match title="Nemo"
-	opacity 0.8
-
 }
 
 window-rule {
@@ -294,7 +292,7 @@ binds {
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
 	Mod+Shift+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
-	Mod+Shift+C { spawn "code"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
+	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 
     Mod+D {spawn "sh" "-c" "pkill wofi || wofi drun";}
