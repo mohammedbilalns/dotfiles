@@ -52,7 +52,7 @@ scratchpad_minimize disable
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/walpapers/pinewatt.jpg fill
+output * bg ~/Pictures/walpapers/tokyonight.png fill
 
 default_border pixel 1
 

@@ -11,6 +11,7 @@ alias u="paru -Syu"
 alias update="paru -Syu"
 alias c="clear"
 alias hx="helix"
+alias z="zellij"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -27,3 +28,4 @@ SAVEHIST=1000
 path+=$HOME/.cargo/bin
 
 { eval $(ssh-agent) && ssh-add -k ~/.ssh/githubauth; } &>/dev/null
+#eval "$(zellij setup --generate-auto-start zsh)"

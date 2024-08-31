@@ -8,12 +8,12 @@
 }
 
 window#waybar {
- background-color : #000000;
+ background-color : #1A1B26;
     color: #eeeeee;
 }
 
 tooltip {
-    background: #000000;
+    background: #1A1B26;
     opacity: 0.8;
     border-radius: 10px;
     border-width: 2px;
@@ -51,7 +51,7 @@ tooltip label{
 }
 
 #workspaces button:hover {
-    background: #000000;
+    background: #1A1B26;
     color: #eeeeee;
     border-radius: 10px;
 }
@@ -77,7 +77,7 @@ tooltip label{
 #temperature,
 #workspaces,
 #backlight {
-    background: #000000;
+    background: #1A1B26;
      opacity: 1;
     padding: 0px 10px;
     margin: 1px 0px;
@@ -127,7 +127,7 @@ margin-left: 10px;
 
 
 #pulseaudio {
-    color: #ffbb30;
+    color: #E0AF68;
 
 }
 
@@ -138,12 +138,12 @@ margin-left: 10px;
 }
 
 #battery {
-	color: #43af1c;
+	color: #9ECE6A;
 	border-left: 0px;
 }
 
 #taskbar button:hover{
-    background: #000000;
+    background: #1A2B26;
 }
 #tray {
 	margin-right: 40px;

@@ -39,7 +39,7 @@ input {
      //warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -288,14 +288,15 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T {spawn "foot";}
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
-	Mod+B { spawn "firefox";}
+	Mod+B { spawn "zen-browser";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
 	Mod+Shift+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+Shift+I { spawn "sh" "-c" "IDEA_JDK=/home/.jbr/jbr_jcef-21.0.2-linux-x64-b375.1/  /usr/bin/idea %f";}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 
-    Mod+D {spawn "sh" "-c" "pkill wofi || wofi drun";}
+    Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
 	Mod+F {spawn "nemo";}
 	Mod+Shift+F {spawn "sh" "-c" "foot yazi";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
@@ -304,14 +305,14 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    F3 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    F2 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    F1        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-	XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl"  "s" "5%+";}
-	Shift+XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
-Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
-   	XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
+	//F6 allow-when-locked=true {spawn "brightnessctl"  "s" "5%+";}
+	Shift+F6 allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
+Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
+   	F5 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
     
  
     Mod+Q { close-window; }
@@ -389,7 +390,7 @@ Shift+XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+   // Mod+Shift+I         { move-workspace-up; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.

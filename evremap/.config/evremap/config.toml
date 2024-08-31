@@ -1,9 +1,9 @@
 
 device_name = "AT Translated Set 2 keyboard"
 
+#[[remap]]
+#input = ["KEY_RIGHTALT"]
+#output = ["KEY_UP"]
 [[remap]]
-input = ["KEY_RIGHTALT"]
-output = ["KEY_UP"]
-[[remap]]
-input = ["KEY_UP"]
+input = ["KEY_INSERT"]
 output =["BTN_0"]
