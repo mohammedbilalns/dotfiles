@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 10px;
-    font-family: "JetBrains Mono NF";
+    font-family: "Cousine Nerd Font";
     font-size: 16px;
     font-weight: bold ;
     min-height: 0;
@@ -9,7 +9,7 @@
 
 window#waybar {
  background-color : #1A1B26;
-    color: #A2ABD1;
+    color: #eeeeee;
 }
 
 tooltip {
@@ -28,29 +28,29 @@ tooltip label{
     color: #eeeeee;
 }
 
-#custom-workspaces button {
+#workspaces button {
     padding: 5px;
     color: #313244;
     margin-right: 5px;
 }
 
-#custom-workspaces button.active {
+#workspaces button.active {
     color: #a6adc8;
 }
 
-#custom-workspaces button.focused {
+#workspaces button.focused {
     color: #a6adc8;
     background: #eba0ac;
     border-radius: 10px;
 }
 
-#custom-workspaces button.urgent {
+#workspaces button.urgent {
     color: #11111b;
     background: #a6e3a1;
     border-radius: 10px;
 }
 
-#custom-workspaces button:hover {
+#workspaces button:hover {
     background: #1A1B26;
     color: #eeeeee;
     border-radius: 10px;
@@ -75,7 +75,7 @@ tooltip label{
 #network,
 #tray,
 #temperature,
-#custom-workspaces,
+#workspaces,
 #backlight {
     background: #1A1B26;
      opacity: 1;
@@ -87,14 +87,14 @@ tooltip label{
 #pulseaudio,#backlight,#memory ,#tray,#network{
 	border-radius : 0 ;
 }
-#cpu,#custom-screenshot, #custom-workspaces{
+#cpu,#custom-screenshot, #workspaces{
 	border-radius : 10px 0 0 10px; 
 }
 #battery, #taskbar,#clock{
 	border-radius : 0 10px 10px 0;
 }
 
-#custom-workspaces,#custom-screenshot {
+#workspaces,#custom-screenshot {
 margin-left: 10px;
 }
 #custom-lock_screen, #clock{
@@ -109,7 +109,7 @@ margin-left: 10px;
 }
 
 
-#custom-workspaces {
+#workspaces {
     padding-right: 0px;
     padding-left: 5px;
 }
@@ -142,10 +142,8 @@ margin-left: 10px;
 	border-left: 0px;
 }
 
- 
-
 #taskbar button:hover{
-    background: #1A1B26;
+    background: #1A2B26;
 }
 #tray {
 	margin-right: 40px;

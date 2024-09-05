@@ -9,7 +9,7 @@ return {
 	 "williamboman/mason-lspconfig.nvim",
 	config = function()
 		require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls","texlab","bashls","basedpyright", "gopls", "clangd", "quick_lint_js","cssls","html","jsonls", "rnix","pylsp", "tsserver","vtsls","rust_analyzer","taplo", "jdtls"}	})
+				ensure_installed = { "lua_ls","texlab","bashls","basedpyright", "gopls", "clangd", "quick_lint_js","cssls","html","jsonls", "pylsp", "tsserver","vtsls","rust_analyzer","taplo", "jdtls","ast_grep", "tailwindcss"}	})
 		end
 	},
 	{
@@ -18,6 +18,13 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = {'vim'}
+						}
+					}
+				},
 				capabilities = capabilities
 			})
 			lspconfig.texlab.setup({	capabilities = capabilities
@@ -50,7 +57,10 @@ return {
 			})
 			lspconfig.jdtls.setup({	capabilities = capabilities
 			})
-
+			lspconfig.ast_grep.setup({ capabilities = capabilities
+			})
+			lspconfig.tailwindcss.setup({ capabilities = capabilities
+			})
 
 			lspconfig.taplo.setup({	capabilities = capabilities})
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})

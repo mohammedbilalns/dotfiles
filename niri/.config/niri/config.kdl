@@ -190,6 +190,7 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/tokyonight.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
+spawn-at-startup "sh" "-c" "~/.config/niri/scripts/battery.sh"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "sh" "-c" "fcitx5-remote -r"
