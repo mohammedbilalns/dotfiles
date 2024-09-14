@@ -39,8 +39,8 @@ tooltip label{
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
+    color: #eeeeee;
+    background:   #737aa2  ;
     border-radius: 10px;
 }
 
@@ -57,6 +57,7 @@ tooltip label{
 }
 
 #custom-screenshot,
+#niri-workspaces,
 #custom-launch_wofi
 #custom-lock_screen,
 #custom-light_dark,
@@ -145,6 +146,4 @@ margin-left: 10px;
 #taskbar button:hover{
     background: #1A2B26;
 }
-#tray {
-	margin-right: 40px;
-}
+

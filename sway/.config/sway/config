@@ -107,7 +107,7 @@ default_border pixel 1
 	bindsym $mod+alt+j joplin-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland            
  
     # Start your launcher
-    bindsym  $mod+d exec pkill wofi || wofi drun
+    bindsym  $mod+d exec pkill fuzzel || fuzzel drun
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -253,7 +253,7 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar swaybar_command waybarsway
+bar swaybar_command waybar
 
 include /etc/sway/config.d/*
 exec fcitx5-remote -r 

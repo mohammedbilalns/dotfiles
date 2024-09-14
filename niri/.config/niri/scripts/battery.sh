@@ -18,6 +18,6 @@ do
     fi
 
     # Wait for 5 minutes before checking again
-    sleep 300
+sleep 60
 done
 
