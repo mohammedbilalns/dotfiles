@@ -1,7 +1,5 @@
 # Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
+
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -15,15 +13,15 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term foot 
-set $browser MOZ_ENABLE_WAYLAND=1 firefox
+set $browser MOZ_ENABLE_WAYLAND=1 zen-browser
 set $browseralt  brave  --enable-features=TouchpadOverscrollHistoryNavigation  --ozone-platform=wayland
 set $filemanager  nemo
-set $editor  code --enable-features=UseOzonePlatform --ozone-platform=wayland 
+set $editor  cursor --enable-features=UseOzonePlatform --ozone-platform=wayland 
 set $github  github-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland    
 set $joplin joplin-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland  
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-bindsym --no-repeat --release Super_L exec pkill wofi || wofi drun
+#bindsym --no-repeat --release Super_L exec pkill wofi || wofi drun
 
 
 ### Appearance
@@ -98,7 +96,7 @@ default_border pixel 1
     bindsym $mod+t exec $term
     bindsym $mod+b exec $browser
 	bindsym $mod+j exec $joplin
-	bindsym $mod+c exec $editor
+	bindsym $mod+shift+c exec $editor
 	bindsym $mod+g exec $github 
 	bindsym $mod+shift+b exec $browseralt
 	bindsym $mod+f exec $filemanager
@@ -108,7 +106,7 @@ default_border pixel 1
  
     # Start your launcher
     bindsym  $mod+d exec pkill fuzzel || fuzzel drun
-
+	bindsym $mod+shift+r exec ~/.config/niri/scripts/wlsunset.sh
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -117,7 +115,7 @@ default_border pixel 1
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+alt+R reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym ctrl+alt+l exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -143,10 +141,10 @@ default_border pixel 1
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    bindsym $mod+alt+Left move left
+    bindsym $mod+alt+Down move down
+    bindsym $mod+alt+Up move up
+    bindsym $mod+alt+Right move right
 #
 # Workspaces:
 #
@@ -176,17 +174,25 @@ default_border pixel 1
     # We just use 1-10 as the default.
 
 	bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
+	bindsym F6 exec brightnessctl s 5%+
 	bindsym XF86MOnBrightnessDown exec brightnessctl s 5%-
+	bindsym F5 exec brightnessctl s 5%-
 	bindsym Shift+XF86MonBrightnessUp exec brightnessctl s 1%+
-	bindsym Shift+XF86MonBrightnessDown exec brightnessctl s 1%-
+	bindsym Shift+XF86MonBrightnessDown exec brightnessctl s 1%-	
 
 	bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+	bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 	bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+	bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
+	bindsym ctrl+alt+i exec ~/.config/niri/scripts/idle_inhibitor.sh
+	bindsym ctrl+alt+h exec swaylock & systemctl hibernate
+	bindsym $mod+alt+l exec swaylock
+	
 
 #
 # Layout stuff:
-#
+# 
 
 	bindgesture swipe:right workspace prev
 	bindgesture swipe:left workspace next

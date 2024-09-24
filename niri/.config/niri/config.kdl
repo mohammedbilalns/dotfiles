@@ -61,7 +61,7 @@ output "eDP-1" {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 1.15
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -291,7 +291,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T {spawn "foot";}
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
-	Mod+B { spawn "firefox";}
+	Mod+B { spawn "zen-browser";}
+	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
 	Mod+Shift+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
