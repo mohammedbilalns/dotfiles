@@ -10,7 +10,11 @@ This repository contains my personal dotfiles for three Wayland compositors:
 # Preview 
 
 ### Niri 
-https://github.com/user-attachments/assets/398ec4c3-9ef2-4dd2-8819-002db3b83e97
+
+
+
+https://github.com/user-attachments/assets/04ee833e-7956-4b22-9ba2-3365d3dd7bde
+
 
 
 
@@ -29,26 +33,26 @@ https://github.com/user-attachments/assets/398ec4c3-9ef2-4dd2-8819-002db3b83e97
 ## Niri  
 
 ```
-paru -S stow niri mako foot swayidle swaylock-effects wofi waybar wlsunset swaybg &&
-mv .config/niri .config/mako .config/foot .config/swayidle .config/swaylock .config/wofi .config/backup/ &&
-cd dotfiles && stow niri mako swayidle swaylock wofi 
+paru -S stow niri mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg &&
+mv .config/niri .config/mako .config/foot .config/swayidle .config/swaylock .config/fuzzel .config/backup/ &&
+cd dotfiles && stow niri mako swayidle swaylock fuzzel 
 ```
 
 ## Hyprland 
 
 
 ```
-paru -S stow hyprland hyprlock hypridle hyprpaper hyprshade hyprpicker mako waybar foot wofi 
-mv .config/hypr .config/mako .config/foot .config/wofi .config/backup/ &&
-cd dotfiles && stow hypr mako wayar wofi 
+paru -S stow hyprland hyprlock hypridle hyprpaper hyprshade hyprpicker mako waybar foot fuzzel 
+mv .config/hypr .config/mako .config/foot .config/fuzzel .config/backup/ &&
+cd dotfiles && stow hypr mako wayar fuzzel 
 ```
 ## Swayfx 
 
 
 ```
-paru -S stow swayfx mako foot swayidle swaylock-effects wofi waybar wlsunset swaybg
-mv .config/sway .config/mako .config/foot .config/swayidle .config/swaylock .config/wofi .config/backup/ &&
-cd dotfiles && stow sway mako swayidle swaylock wofi 
+paru -S stow swayfx mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg
+mv .config/sway .config/mako .config/foot .config/swayidle .config/swaylock .config/fuzzel .config/backup/ &&
+cd dotfiles && stow sway mako swayidle swaylock fuzzel 
 ```
 
 
