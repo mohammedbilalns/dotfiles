@@ -189,7 +189,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/tokyo.png"
+spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/tokyo.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -230,7 +230,7 @@ animations {
 // by setting an empty default-column-width.
 
 window-rule {
-    geometry-corner-radius 1
+    geometry-corner-radius 5
         clip-to-geometry true
 }
 
@@ -297,7 +297,8 @@ binds {
 	Mod+Shift+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+I { spawn "sh" "-c" "IDEA_JDK=/home/.jbr/jbr_jcef-21.0.2-linux-x64-b375.1/  /usr/bin/idea %f";}
+	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+Shift+M {spawn "mongodb-compass" "--ignore-additional-command-line-flags" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ;}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 	Mod+V { spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
     Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
@@ -508,5 +509,5 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    // Mod+Shift+P { power-off-monitors; }
 }

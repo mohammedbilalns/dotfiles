@@ -8,7 +8,7 @@
 }
 
 window#waybar {
- background-color : #1A1B26;
+ background: transparent;
     color: #eeeeee;
 }
 
@@ -22,7 +22,7 @@ tooltip {
 }
 network {
    color: #eeeeee;
-
+   border-radius: 10px;
 }
 tooltip label{
     color: #eeeeee;
@@ -85,14 +85,20 @@ tooltip label{
     border: 0px;
 }
 
-#pulseaudio,#backlight,#memory ,#tray,#network{
+#pulseaudio,#backlight,#memory ,#battery{
 	border-radius : 0 ;
 }
-#cpu,#custom-screenshot, #workspaces{
+#cpu,#custom-screenshot, #workspaces, #network{
 	border-radius : 10px 0 0 10px; 
 }
-#battery, #taskbar,#clock{
+#taskbar, #tray{
 	border-radius : 0 10px 10px 0;
+}
+#tray{
+	margin-right: 10px;
+}
+#clock{
+	border-radius: 10px;
 }
 
 #workspaces,#custom-screenshot {
