@@ -8,7 +8,7 @@
 }
 
 window#waybar {
- background-color : #1A1B26;
+ background: transparent;
     color: #eeeeee;
 }
 
@@ -22,7 +22,7 @@ tooltip {
 }
 network {
    color: #eeeeee;
-
+   border-radius: 10px;
 }
 tooltip label{
     color: #eeeeee;
@@ -39,8 +39,8 @@ tooltip label{
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
+    color: #eeeeee;
+    background:   #737aa2  ;
     border-radius: 10px;
 }
 
@@ -57,6 +57,7 @@ tooltip label{
 }
 
 #custom-screenshot,
+#niri-workspaces,
 #custom-launch_wofi
 #custom-lock_screen,
 #custom-light_dark,
@@ -84,14 +85,20 @@ tooltip label{
     border: 0px;
 }
 
-#pulseaudio,#backlight,#memory ,#tray,#network{
+#pulseaudio,#backlight,#memory ,#battery{
 	border-radius : 0 ;
 }
-#cpu,#custom-screenshot, #workspaces{
+#cpu,#custom-screenshot, #workspaces, #network{
 	border-radius : 10px 0 0 10px; 
 }
-#battery, #taskbar,#clock{
+#taskbar, #tray{
 	border-radius : 0 10px 10px 0;
+}
+#tray{
+	margin-right: 10px;
+}
+#clock{
+	border-radius: 10px;
 }
 
 #workspaces,#custom-screenshot {
@@ -145,6 +152,4 @@ margin-left: 10px;
 #taskbar button:hover{
     background: #1A2B26;
 }
-#tray {
-	margin-right: 40px;
-}
+

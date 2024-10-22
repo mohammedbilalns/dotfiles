@@ -7,7 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": [
 		"hyprland/workspaces",
-		"wlr/taskbar"
+		"wlr/taskbar"	
 
 	],
 	"modules-center": [
@@ -17,12 +17,16 @@
 	"modules-right": [
 
 		"network",
-		"pulseaudio",
+		"pulseaudio",	
 		"backlight",
 		"battery",
-		"custom/screenshot",
 		"tray"
 	],
+		"custom/workspaces": {
+			"exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+
+        		"signal": 8
+		},
 
 	"custom/screenshot" :{
 		"format" : "󰄄",
@@ -114,5 +118,5 @@
             "car": "",
             "default": ["", "", ""]
         }
-    }
+    }	
 }
