@@ -10,6 +10,7 @@
 window#waybar {
  background: transparent;
     color: #eeeeee;
+	
 }
 
 tooltip {
@@ -32,6 +33,7 @@ tooltip label{
     padding: 5px;
     color: #313244;
     margin-right: 5px;
+
 }
 
 #workspaces button.active {

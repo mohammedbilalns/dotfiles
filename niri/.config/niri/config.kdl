@@ -61,11 +61,11 @@ output "eDP-1" {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 1
+    scale 1.01
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
+    transform  "normal"
 
     // Position of the output in the global coordinate space.
     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
@@ -84,7 +84,7 @@ output "eDP-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 5
+    gaps 4
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -127,10 +127,9 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
        //  Uncomment this line to disable the focus ring.
-        off
-	
+        
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 2.5
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -138,7 +137,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#569CD6"
+        active-color "#737aa2"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -162,10 +161,10 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        //off
-
+        off
+        
         width 2.3
-        active-color "#569CD6"
+        active-color "#737aa2"
         inactive-color "#505050"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -178,7 +177,8 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 0
+         //left 12
+        
         // right 0
         // top 0
         // bottom 0
@@ -189,7 +189,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i ~/Pictures/walpapers/tokyo.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i ~/.config/walpapers/spookyjs_original.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -220,6 +220,57 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
      slowdown 0.5
+    window-open {
+      duration-ms 350
+      curve "linear"
+      custom-shader r"
+    
+    vec4 expanding_circle(vec3 coords_geo, vec3 size_geo) {
+    vec3 coords_tex = niri_geo_to_tex * coords_geo;
+    vec4 color = texture2D(niri_tex, coords_tex.st);
+    vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
+    coords = coords / length(size_geo.xy);
+    float p = niri_clamped_progress;
+    if (p * p <= dot(coords, coords))
+    color = vec4(0.0);
+
+    return color;
+  }
+
+    vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+    return expanding_circle(coords_geo, size_geo);
+   }
+  "
+ }
+
+window-close {
+      duration-ms 350
+      curve "linear"
+      custom-shader r"
+
+    vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
+    float progress = niri_clamped_progress * niri_clamped_progress;
+    vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+    coords.y -= progress * 1440.0;
+    float random = (niri_random_seed - 0.5) / 2.0;
+    random = sign(random) - random;
+    float max_angle = 0.5 * random;
+    float angle = progress * max_angle;
+    mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+    coords = rotate * coords;
+    coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+    vec3 coords_tex = niri_geo_to_tex * coords_geo;
+    vec4 color = texture2D(niri_tex, coords_tex.st);
+
+    return color;
+  }
+
+    vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+    return fall_and_rotate(coords_geo, size_geo);
+     }
+    "
+   }
+
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -230,7 +281,7 @@ animations {
 // by setting an empty default-column-width.
 
 window-rule {
-    geometry-corner-radius 5
+    geometry-corner-radius 2
         clip-to-geometry true
 }
 
@@ -289,8 +340,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T {spawn "foot";}
-	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
+    Mod+T {spawn "kitty";}
+	Mod+Shift+T { spawn "sh" "-c" "kitty zellij" ; }
 	Mod+B { spawn "firefox";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
@@ -303,7 +354,7 @@ binds {
 	Mod+V { spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
     Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
 	Mod+F {spawn "nemo";}
-	Mod+Shift+F {spawn "sh" "-c" "foot yazi";}
+	Mod+Shift+F {spawn "sh" "-c" "kitty yazi";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -324,7 +375,7 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
     Mod+Q { close-window; }
 	Mod+L {spawn "~/.config/niri/scripts/swaylock.sh";}
 	Ctrl+Alt+B {spawn "sh" "-c" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
-	Ctrl+Alt+H {spawn "sh" "-c" " ~/.config/niri/scripts/swaylock.sh & systemctl hibernate";}
+	Ctrl+Alt+H {spawn "sh" "-c" " swaylock & systemctl hibernate";}
 	Ctrl+Alt+I {spawn "sh" "-c" "~/.config/niri/scripts/idle_inhibitor.sh";} 
 	Ctrl+Alt+P {spawn "poweroff";}
 	Ctrl+Alt+R {spawn "reboot";}
