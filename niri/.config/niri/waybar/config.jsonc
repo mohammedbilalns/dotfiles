@@ -8,8 +8,7 @@
 	"modules-left": [
 		//"custom/workspaces",
 		"niri/workspaces",
-		"wlr/taskbar"	
-
+		"wlr/taskbar"
 	],
 	"modules-center": [
 		"clock"

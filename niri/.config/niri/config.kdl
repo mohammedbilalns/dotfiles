@@ -189,7 +189,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/matrix_upscayl_realesrgan-x4plus_x2.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/pok.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -219,7 +219,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-     slowdown 0.7
+     slowdown 0.5
     window-open {
       duration-ms 350
       curve "linear"
@@ -324,8 +324,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T {spawn "kitty";}
-	Mod+Shift+T { spawn "sh" "-c" "kitty zellij" ; }
+    Mod+T {spawn "foot";}
+	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
 	Mod+B { spawn "firefox";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
@@ -339,6 +339,9 @@ binds {
     Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
 	Mod+F {spawn "nemo";}
 	Mod+Shift+F {spawn "sh" "-c" "kitty yazi";}
+	Alt+J {spawn "sh" "-c" "foot nvim sample.js";}
+	Alt+M {spawn "sh" "-c" "foot mongosh";}
+	Alt+P {spawn "sh" "-c" "foot -e sh -c 'cd dbIntegrationweek6 && nvim src/server.js'";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
