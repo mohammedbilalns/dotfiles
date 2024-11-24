@@ -189,7 +189,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/pok.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/matrix_upscayl_realesrgan-x4plus_x2.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -202,6 +202,11 @@ spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
 // Additionally, clients will be informed that they are tiled, removing some rounded corner
 
  prefer-no-csd
+
+cursor {
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -342,6 +347,7 @@ binds {
 	Alt+J {spawn "sh" "-c" "foot nvim sample.js";}
 	Alt+M {spawn "sh" "-c" "foot mongosh";}
 	Alt+P {spawn "sh" "-c" "foot -e sh -c 'cd dbIntegrationweek6 && nvim src/server.js'";}
+	Mod+Alt+K {spawn "sh" "-c" "~/.config/niri/scripts/killport.sh 3000";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
