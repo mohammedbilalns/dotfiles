@@ -61,7 +61,7 @@ output "eDP-1" {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 1.15
+    scale 1.1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -189,7 +189,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/matrix_upscayl_realesrgan-x4plus_x2.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/spookyjs_original.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -197,6 +197,7 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "sh" "-c" "swayidle -w"
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
 spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
+spawn-at-startup "sh" "-c" "kdeconnect-cli --refresh"
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some rounded corner
