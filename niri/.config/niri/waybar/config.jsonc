@@ -13,8 +13,7 @@
 	"modules-center": [
 		"clock"
 	],
-	"modules-right": [
-
+	"modules-right": [	
 		"network",
 		"pulseaudio",	
 		"backlight",
