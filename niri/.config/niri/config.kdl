@@ -61,8 +61,7 @@ output "eDP-1" {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 1
-
+    scale 1.1
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform  "normal"
@@ -224,60 +223,50 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
     // Uncomment to turn off all animations.
     // off
-
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-     slowdown 0.5
-    window-open {
-      duration-ms 350
-      curve "linear"
-      custom-shader r"
-    
-    vec4 expanding_circle(vec3 coords_geo, vec3 size_geo) {
-    vec3 coords_tex = niri_geo_to_tex * coords_geo;
-    vec4 color = texture2D(niri_tex, coords_tex.st);
-    vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-    coords = coords / length(size_geo.xy);
-    float p = niri_clamped_progress;
-    if (p * p <= dot(coords, coords))
-    color = vec4(0.0);
-
-    return color;
+   slowdown 0.9
+	workspace-switch {
+    spring damping-ratio=1.0 stiffness=2000 epsilon=0.0001
   }
-
+  horizontal-view-movement {
+    spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+  }
+  window-movement {
+    spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+  }
+  window-open {
+    spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    custom-shader r"
+    float map(float value, float min1, float max1, float min2, float max2) {
+    return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
+    }
     vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-    return expanding_circle(coords_geo, size_geo);
-   }
-  "
- }
-
-window-close {
-      duration-ms 350
-      curve "linear"
-      custom-shader r"
-
-    vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
-    float progress = niri_clamped_progress * niri_clamped_progress;
-    vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
-    coords.y -= progress * 1440.0;
-    float random = (niri_random_seed - 0.5) / 2.0;
-    random = sign(random) - random;
-    float max_angle = 0.5 * random;
-    float angle = progress * max_angle;
-    mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-    coords = rotate * coords;
-    coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
-    vec3 coords_tex = niri_geo_to_tex * coords_geo;
-    vec4 color = texture2D(niri_tex, coords_tex.st);
-
-    return color;
-  }
-
-    vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-    return fall_and_rotate(coords_geo, size_geo);
-     }
+    float cur = niri_clamped_progress;
+    if (coords_geo.x > cur) {
+    return vec4(0.0);
+    }
+    vec3 coord = vec3(map(coords_geo.x,0.0, cur, 0.0, 1.0 ), coords_geo.y, coords_geo.z);
+    return texture2D(niri_tex, (niri_geo_to_tex * coord).st);
+    }
     "
-   }
-
+  }
+  window-close {
+    spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    custom-shader r"
+    float map(float value, float min1, float max1, float min2, float max2) {
+    return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
+    }
+    vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+    float cur = 1.0-niri_clamped_progress;
+    if (coords_geo.x > cur) {
+    return vec4(0.0);
+    }
+    vec3 coord = vec3(map(coords_geo.x,0.0, cur, 0.0, 1.0), coords_geo.y, coords_geo.z);
+    return texture2D(niri_tex, (niri_geo_to_tex * coord).st);
+    }
+    "
+  } 
+    
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -292,7 +281,28 @@ window-rule {
         clip-to-geometry true
 }
 
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
 
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-left"
+}
+
+window-rule {
+    match app-id="xfce-polkit" 
+
+    open-floating true
+    default-floating-position x=728 y=400 relative-to="bottom-left"
+}
+
+
+
+window-rule {
+match app-id="zen$" title="^Picture-in-Picture$"
+
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-left"	
+}
 window-rule {
        
     
@@ -301,6 +311,12 @@ window-rule {
     }
 window-rule {
     match title="Nemo"
+}
+
+window-rule {
+	match title="Picture in picture"
+	open-floating true 
+	default-floating-position x=32 y=32 relative-to="bottom-left"
 }
 
 window-rule {
@@ -329,21 +345,22 @@ binds {
    
      
     Mod+Shift+Slash { show-hotkey-overlay; }
-
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+	Mod+Space { toggle-window-floating; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T {spawn "foot";}
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
-	Mod+Shift+B { spawn "firefox";}
+	Mod+Shift+B { spawn "zen-browser";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
-	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+	Mod+B {spawn "chromium"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+Shift+C { spawn "codium" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--ignore-additional-command-line-flags" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ;}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
-	Mod+V { spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
+	Mod+Alt+V { spawn "sh" "-c" "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
     Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
 	Mod+F {spawn "nemo";}
 	Mod+Shift+F {spawn "sh" "-c" "kitty yazi";}

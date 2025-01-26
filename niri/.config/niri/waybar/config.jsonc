@@ -11,20 +11,21 @@
 		"wlr/taskbar"
 	],
 	"modules-center": [
-		"clock"
+		"clock"	
 	],
-	"modules-right": [	
+	"modules-right": [
+		"custom/pomodoro",	
 		"network",
 		"pulseaudio",	
 		"backlight",
 		"battery",
 		"tray"
 	],
-		"custom/workspaces": {
-			"exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+	"custom/workspaces": {
+		"exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
 
-        		"signal": 8
-		},
+		"signal": 8
+	},
 
 	"custom/screenshot" :{
 		"format" : "󰄄",
@@ -33,8 +34,13 @@
 
 
 	},
-
-
+	"custom/pomodoro": {
+		"format": "{}",
+		"return-type": "json",
+		"exec": "waybar-module-pomodoro",
+		"on-click": "waybar-module-pomodoro toggle",
+	"on-click-right": "waybar-module-pomodoro reset"
+},
   
        "tray": {
         // "icon-size": 21,

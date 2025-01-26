@@ -12,6 +12,7 @@ alias update="paru -Syu"
 alias c="clear"
 alias hx="helix"
 alias z="zellij"
+alias cat="bat"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -19,12 +20,12 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-
 PROMPT_EOL_MARK=''
 
 source <(fzf --zsh)
 HISTSIZE=1000
 SAVEHIST=1000
 path+=$HOME/.cargo/bin
+
 
 
