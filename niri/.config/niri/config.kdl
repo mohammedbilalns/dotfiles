@@ -61,7 +61,7 @@ output "eDP-1" {
     mode "1920x1080@60"
 
     // Scale is a floating-point number, but at the moment only integer values work.
-    scale 1.1
+    scale 1
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform  "normal"
@@ -83,7 +83,7 @@ output "eDP-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 7
+    gaps 10
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -188,7 +188,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/pok.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/js_original.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -353,7 +353,7 @@ binds {
 	Mod+Shift+B { spawn "zen-browser";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
-	Mod+B {spawn "chromium"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+	Mod+B {spawn "zen-browser" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+C { spawn "codium" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
