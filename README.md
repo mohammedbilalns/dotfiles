@@ -1,6 +1,4 @@
-Here's the improved README in Markdown format:  
 
-```markdown
 # 🌿 Dotfiles Collection for Wayland Compositors  
 
 This repository contains my personal dotfiles for three Wayland compositors:  
@@ -97,4 +95,3 @@ stow zsh
 🚀 **Happy Tiling!** 🎨
 ```
 
-Let me know if you need any modifications! 🚀
