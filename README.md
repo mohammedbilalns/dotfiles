@@ -93,5 +93,4 @@ stow zsh
 - Feel free to modify and adapt these dotfiles for your setup!  
 
 🚀 **Happy Tiling!** 🎨
-```
 
