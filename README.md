@@ -1,62 +1,100 @@
-# dotfiles
-Wayland Compositor Dotfiles Collection
+Here's the improved README in Markdown format:  
 
-This repository contains my personal dotfiles for three Wayland compositors:
+```markdown
+# 🌿 Dotfiles Collection for Wayland Compositors  
 
-- [Niri](https://github.com/YaLTeR/niri)
-- [Hyprland](https://hyprland.org/)
-- [SwayFX](https://github.com/WillPower3309/swayfx)
+This repository contains my personal dotfiles for three Wayland compositors:  
 
-# Preview 
+- [Niri](https://github.com/YaLTeR/niri)  
+- [Hyprland](https://hyprland.org/)  
+- [SwayFX](https://github.com/WillPower3309/swayfx)  
 
-### Niri 
+## 📸 Preview  
 
+### Niri  
+![Niri Preview](https://github.com/user-attachments/assets/04ee833e-7956-4b22-9ba2-3365d3dd7bde)  
 
+## 🛠 Setup & Installation  
 
-https://github.com/user-attachments/assets/04ee833e-7956-4b22-9ba2-3365d3dd7bde
+This repository is managed using [`stow`](https://www.gnu.org/software/stow/), a symlink manager. To install the dotfiles for a specific compositor, run:  
 
-
-
-
-# Installation 
-> [!NOTE]
-> This instruction if for installing on Arch-based distros. Choose packages according to your distribution
-
-> [!NOTE]
->I've used Paru as the AUR helper in the following commands, but feel free to use your AUR helper of choice.
-
-> [!WARNING]
-> Make sure to backup your previous configurations, as this process may cause you to lose them
-
-1. clone the Repository `git clone https://github.com/mohammedbilalns/dotfiles`
-2. configure compositors accordingly 
-## Niri  
-
-```
-paru -S stow niri mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg &&
-mv .config/niri .config/mako .config/foot .config/swayidle .config/swaylock .config/fuzzel .config/backup/ &&
-cd dotfiles && stow niri mako swayidle swaylock fuzzel 
+```sh
+stow <compositor-name>
 ```
 
-## Hyprland 
+For example, to set up Niri:  
 
-
-```
-paru -S stow hyprland hyprlock hypridle hyprpaper hyprshade hyprpicker mako waybar foot fuzzel 
-mv .config/hypr .config/mako .config/foot .config/fuzzel .config/backup/ &&
-cd dotfiles && stow hypr mako wayar fuzzel 
-```
-## Swayfx 
-
-
-```
-paru -S stow swayfx mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg
-mv .config/sway .config/mako .config/foot .config/swayidle .config/swaylock .config/fuzzel .config/backup/ &&
-cd dotfiles && stow sway mako swayidle swaylock fuzzel 
+```sh
+stow niri mako swayidle swaylock fuzzel
 ```
 
+---
 
+## 🖥️ Compositor-Specific Configurations  
 
+### 🟢 Niri  
 
+#### 🔗 Dependencies  
+```sh
+niri stow mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg
+```
 
+#### 📦 Install  
+```sh
+stow niri mako swayidle swaylock fuzzel
+```
 
+---
+
+### 🔵 Hyprland  
+
+#### 🔗 Dependencies  
+```sh
+hyprland stow hyprlock hyprpaper hyprshade hyprpicker mako waybar foot fuzzel
+```
+
+#### 📦 Install  
+```sh
+stow hypr mako waybar fuzzel
+```
+
+---
+
+### 🔴 SwayFX  
+
+#### 🔗 Dependencies  
+```sh
+stow swayfx mako swayidle swaylock-effects fuzzel waybar wlsunset swaybg
+```
+
+#### 📦 Install  
+```sh
+stow sway mako swayidle swaylock fuzzel
+```
+
+---
+
+## 🐚 Zsh Configuration  
+
+### 🔗 Dependencies  
+```sh
+zsh atuin lsd bat starship fzf
+```
+
+#### 📦 Install  
+```sh
+stow zsh
+```
+
+---
+
+## 📜 Notes  
+
+- Ensure all dependencies are installed before running `stow`.  
+- These configurations are optimized for a Wayland environment.  
+- Feel free to modify and adapt these dotfiles for your setup!  
+
+🚀 **Happy Tiling!** 🎨
+```
+
+Let me know if you need any modifications! 🚀
