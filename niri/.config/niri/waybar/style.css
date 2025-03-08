@@ -2,13 +2,14 @@
     border: none;
     border-radius: 10px;
     font-family: "Cousine Nerd Font";
-    font-size: 16px;
+    font-size: 13px;
     font-weight: bold;
     min-height: 0;
 }
 
 window#waybar {
     color: #eeeeee;
+    background: transparent;
 }
 
 tooltip {
@@ -26,7 +27,7 @@ tooltip label {
 
 #workspaces button {
     padding: 5px;
-    color: #313244;
+    color: #7c7f93;
     margin-right: 5px;
 }
 
@@ -75,7 +76,7 @@ tooltip label {
 #workspaces,
 #backlight,
 #custom-pomodoro {
-    background: #1A1B26;
+    background: rgba(26, 27, 38, 0.7);
     opacity: 1;
     padding: 0px 10px;
     margin: 1px 0px;
@@ -85,16 +86,17 @@ tooltip label {
 #pulseaudio,
 #backlight,
 #memory,
-#battery,
-#custom-pomodoro {
+#battery {
     border-radius: 0;
 }
 
 #cpu,
 #custom-screenshot,
-#workspaces,
-#network {
-    border-radius: 10px 0 0 10px;
+#workspaces{
+    border-radius: 10px 0px 0px 10px;
+}
+#network{
+    border-radius: 0px 0px 0px 0px;
 }
 
 #taskbar,
@@ -171,6 +173,11 @@ tooltip label {
     color: #F7768E;
     border-left: 0px;
     border-right: 0px;
+    margin-right: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 #temperature {

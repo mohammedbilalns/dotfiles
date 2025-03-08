@@ -2,7 +2,6 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
-// fdsf 
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
@@ -83,7 +82,7 @@ output "eDP-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 7
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -128,7 +127,7 @@ layout {
        //  Uncomment this line to disable the focus ring.
         
         // How many logical pixels the ring extends out from the windows.
-        width 2.5
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -160,9 +159,9 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        //off
         
-        width 2.3
+        width 1
         active-color "#737aa2"
         inactive-color "#505050"
 
@@ -176,8 +175,7 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-         //left 12
-        
+         //left 12 
         // right 0
         // top 0
         // bottom 0
@@ -188,7 +186,7 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/js_original.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/winter.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -277,38 +275,34 @@ animations {
 // by setting an empty default-column-width.
 
 window-rule {
-    geometry-corner-radius 2
-        clip-to-geometry true
+    geometry-corner-radius 0
+    clip-to-geometry true
 }
 
 window-rule {
     match app-id="firefox$" title="^Picture-in-Picture$"
-
     open-floating true
     default-floating-position x=32 y=32 relative-to="bottom-left"
 }
 
 window-rule {
     match app-id="xfce-polkit" 
-
     open-floating true
     default-floating-position x=728 y=400 relative-to="bottom-left"
 }
 
-
-
 window-rule {
-match app-id="zen$" title="^Picture-in-Picture$"
+	match app-id="zen$" title="^Picture-in-Picture$"
 
-    open-floating true
-    default-floating-position x=32 y=32 relative-to="bottom-left"	
-}
-window-rule {
-       
-    
-    match app-id="kdenlive"
-        open-maximized true
-    }
+	open-floating true
+	default-floating-position x=32 y=32 relative-to="bottom-left"	
+	}
+	window-rule {
+
+
+		match app-id="kdenlive"
+		open-maximized true
+		}
 window-rule {
     match title="Nemo"
 }
@@ -329,21 +323,17 @@ hotkey-overlay{
 environment{
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-	 QT_AUTO_SCREEN_SCALE_FACTOR "1"
-	 QT_STYLE_OVERRIDE "kvantum"
-
+	QT_AUTO_SCREEN_SCALE_FACTOR "1"
+	QT_STYLE_OVERRIDE "kvantum"
 }
 
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
     block-out-from "screen-capture"
 }
 
-binds {
-   
-     
+binds { 
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
 	Mod+Space { toggle-window-floating; }
@@ -353,10 +343,10 @@ binds {
 	Mod+Shift+B { spawn "zen-browser";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
-	Mod+B {spawn "zen-browser" ; }
+	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+Shift+C { spawn "zeditor" ; }
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--ignore-additional-command-line-flags" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ;}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
@@ -371,8 +361,7 @@ binds {
 	Mod+Alt+K {spawn "sh" "-c" "~/.config/niri/scripts/killport.sh 3000";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
 	Mod+Alt+S {spawn "sh" "-c" "foot speedtest-rs";}
-    // You can also use a shell:
-    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    // You can also use a shell
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -383,7 +372,7 @@ binds {
 	//F6 allow-when-locked=true {spawn "brightnessctl"  "s" "5%+";}
 	Shift+F6 allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
 Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
-   	F5 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
+   	F4 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
    	F6 allow-when-locked=true {spawn "brightnessctl" "s" "5%+";}
     
  
@@ -458,8 +447,7 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
-
-    Mod+Shift+Page_Down { move-workspace-down; }
+	
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
    // Mod+Shift+I         { move-workspace-up; }
@@ -504,25 +492,25 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
-    Mod+1 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "1"; }
- Mod+2 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "2"; }
- Mod+3 {spawn "~/.config/niri/scripts/workspaces.sh" "focus-workspace" "3"; }
-  
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+	Mod+1 {focus-workspace 1; }
+	Mod+2 {focus-workspace 2; }
+	Mod+3 {focus-workspace 3; }
+
+	Mod+4 { focus-workspace 4; }
+	Mod+5 { focus-workspace 5; }
+	Mod+6 { focus-workspace 6; }
+	Mod+7 { focus-workspace 7; }
+	Mod+8 { focus-workspace 8; }
+	Mod+9 { focus-workspace 9; }
+	Mod+Ctrl+1 { move-column-to-workspace 1; }
+	Mod+Ctrl+2 { move-column-to-workspace 2; }
+	Mod+Ctrl+3 { move-column-to-workspace 3; }
+	Mod+Ctrl+4 { move-column-to-workspace 4; }
+	Mod+Ctrl+5 { move-column-to-workspace 5; }
+	Mod+Ctrl+6 { move-column-to-workspace 6; }
+	Mod+Ctrl+7 { move-column-to-workspace 7; }
+	Mod+Ctrl+8 { move-column-to-workspace 8; }
+	Mod+Ctrl+9 { move-column-to-workspace 9; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
@@ -540,7 +528,7 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
     Mod+R { switch-preset-column-width; }
 //    Mod+Shift+R { reset-window-height; }
     Mod+W { maximize-column; }
-    Mod+Ctrl+F { fullscreen-window; }
+    Mod+Ctrl+W { fullscreen-window; }
     Mod+C { center-column; }
 
     // Finer width adjustments.
@@ -563,7 +551,7 @@ Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
+     //Mod+N       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }

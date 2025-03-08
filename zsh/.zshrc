@@ -13,8 +13,10 @@ alias c="clear"
 alias hx="helix"
 alias z="zellij"
 alias cat="bat"
+alias pg="source pgadmin4/bin/activate && pgadmin4 & zen-browser localhost:5050"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -28,4 +30,5 @@ SAVEHIST=1000
 path+=$HOME/.cargo/bin
 
 
-
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1 
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
