@@ -1,5 +1,5 @@
 
-# 🌿 Dotfiles Collection for Wayland Compositors  
+# Dotfiles 
 
 This repository contains my personal dotfiles for three Wayland compositors:  
 
