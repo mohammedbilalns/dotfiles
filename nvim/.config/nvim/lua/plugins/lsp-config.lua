@@ -9,7 +9,7 @@ return {
 	 "williamboman/mason-lspconfig.nvim",
 	config = function()
 		require("mason-lspconfig").setup({
-				ensure_installed = { "ts_ls", "lua_ls","texlab","bashls","basedpyright", "gopls", "clangd", "quick_lint_js","cssls","html","jsonls", "pylsp","vtsls","rust_analyzer","taplo", "jdtls", "tailwindcss"}	})
+				ensure_installed = { "ts_ls", "lua_ls","texlab","bashls","basedpyright", "gopls", "clangd", "quick_lint_js","cssls","html","jsonls", "pylsp","vtsls","rust_analyzer","taplo", "jdtls", "tailwindcss", "ast_grep"}	})
 		end
 	},
 	{
@@ -28,6 +28,9 @@ return {
 				capabilities = capabilities
 			})
 			lspconfig.texlab.setup({	capabilities = capabilities
+			})
+			lspconfig.ast_grep.setup({
+				capabilities = capabilities 
 			})
 			lspconfig.bashls.setup({	capabilities = capabilities
 			})

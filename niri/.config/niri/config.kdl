@@ -190,6 +190,7 @@ spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/winter.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
+spawn-at-startup "xwayland-satellite"
 //spawn-at-startup "sh" "-c" "fcitx5-remote -r"
 spawn-at-startup "sh" "-c" "swayidle -w"
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
@@ -321,6 +322,7 @@ hotkey-overlay{
 	skip-at-startup
 }
 environment{
+	DISPLAY ":0"
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	QT_AUTO_SCREEN_SCALE_FACTOR "1"
@@ -346,7 +348,7 @@ binds {
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+C { spawn "zeditor" ; }
+	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"  ; }
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--ignore-additional-command-line-flags" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ;}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
@@ -372,7 +374,7 @@ binds {
 	//F6 allow-when-locked=true {spawn "brightnessctl"  "s" "5%+";}
 	Shift+F6 allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
 Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
-   	F4 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
+   	F5 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
    	F6 allow-when-locked=true {spawn "brightnessctl" "s" "5%+";}
     
  
