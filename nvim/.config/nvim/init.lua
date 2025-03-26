@@ -12,7 +12,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
+vim.cmd [[set nomodeline]]
 require("vim-options") -- loading vim-options file  
 require("lazy").setup("plugins") -- for loading plugins directory 
 

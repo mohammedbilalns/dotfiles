@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if pgrep wlsunset 
+if pgrep gammastep 
 then
-	killall wlsunset
+	killall gammastep
 else
-	wlsunset -t 5600
+	gammastep -O 5600
 fi
