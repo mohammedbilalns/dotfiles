@@ -360,7 +360,7 @@ binds {
 	Mod+Shift+W {spawn "sh" "-c" "~/.config/niri/scripts/toggle_waybar.sh";}
 	Alt+P {spawn "sh" "-c" "foot -e sh -c 'cd dbIntegrationweek6 && nvim src/server.js'";}
 	Mod+Alt+K {spawn "sh" "-c" "~/.config/niri/scripts/killport.sh 3000";}
-	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/wlsunset.sh";}
+	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/gammastep.sh";}
 	Mod+Alt+S {spawn "sh" "-c" "foot speedtest-rs";}
     // You can also use a shell
 
