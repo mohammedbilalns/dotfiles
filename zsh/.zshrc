@@ -30,5 +30,3 @@ SAVEHIST=1000
 path+=$HOME/.cargo/bin
 
 
-
-

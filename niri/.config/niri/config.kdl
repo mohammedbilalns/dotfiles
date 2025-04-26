@@ -326,6 +326,8 @@ environment{
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	QT_AUTO_SCREEN_SCALE_FACTOR "1"
 	QT_STYLE_OVERRIDE "kvantum"
+	ELECTRON_OZONE_PLATFORM_HINT "auto"
+
 }
 
 /-window-rule {
@@ -347,7 +349,7 @@ binds {
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+C { spawn "zeditor"; }
+	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--ignore-additional-command-line-flags" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ;}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
@@ -376,7 +378,7 @@ binds {
 	F5 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
 	F6 allow-when-locked=true {spawn "brightnessctl" "s" "5%+";}
 
-
+	Mod+N {toggle-column-tabbed-display;}
 	Mod+Q { close-window; }
 	Mod+L {spawn "~/.config/niri/scripts/swaylock.sh";}
 	Ctrl+Alt+B {spawn "sh" "-c" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
@@ -565,4 +567,8 @@ binds {
 	// Powers off the monitors. To turn them back on, do any input like
 	// moving the mouse or pressing any other key.
 	// Mod+Shift+P { power-off-monitors; }
+}
+
+switch-events {
+	lid-close {spawn "systemctl hibernate "; }
 }
