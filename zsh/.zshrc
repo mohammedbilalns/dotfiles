@@ -29,4 +29,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 path+=$HOME/.cargo/bin
 
+export EDITOR=nvim
+export VISUAL=nvim
+
+
 

@@ -181,15 +181,18 @@ layout {
 	}
 }
 
+
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/stamina.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/win11.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "xwayland-satellite"
+//spawn-at-startup "kdeconnectd"
 //spawn-at-startup "sh" "-c" "fcitx5-remote -r"
 spawn-at-startup "sh" "-c" "swayidle -w"
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
@@ -222,7 +225,7 @@ animations {
 	// Uncomment to turn off all animations.
 	// off
 	// Slow down all animations by this factor. Values below 1 speed them up instead.
-	slowdown 0.9
+	slowdown 0.5
 	workspace-switch {
 		spring damping-ratio=1.0 stiffness=2000 epsilon=0.0001
 	}
@@ -345,7 +348,9 @@ binds {
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
 	Mod+Shift+B { spawn "zen-browser";}
 	Mod+P { spawn "wl-color-picker";}
+	Mod+O { toggle-overview; }
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+	
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
