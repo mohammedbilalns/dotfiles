@@ -13,6 +13,7 @@ alias c="clear"
 alias hx="helix"
 alias z="zellij"
 alias cat="bat"
+alias ping="prettyping"
 alias pg="source pgadmin4/bin/activate && pgadmin4 & zen-browser localhost:5050"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
@@ -31,6 +32,5 @@ path+=$HOME/.cargo/bin
 
 export EDITOR=nvim
 export VISUAL=nvim
-
 
 

@@ -50,9 +50,6 @@ return {
 			})
 			lspconfig.ts_ls.setup({	capabilities = capabilities
 			})
-
-
-
 			lspconfig.rust_analyzer.setup({	capabilities = capabilities
 			})
 			lspconfig.tailwindcss.setup({ capabilities = capabilities
@@ -61,9 +58,14 @@ return {
 			})
 			lspconfig.gopls.setup({ capabilities = capabilities
 			})
-
-
 			lspconfig.taplo.setup({	capabilities = capabilities})
+			vim.diagnostic.config({
+				virtual_text  = true, 
+				signs = true , 
+				underline = true , 
+				update_in_insert = false, 
+				severity_sort = true 
+			})
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
 			vim.keymap.set({ 'n', 'v' },'<leader>ca', vim.lsp.buf.code_action, {})

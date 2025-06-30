@@ -13,17 +13,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.cmd [[set nomodeline]]
-require("vim-options") -- loading vim-options file  
-require("lazy").setup("plugins") -- for loading plugins directory
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	pattern = "*",
--- 	callback = function()
--- 		vim.cmd("normal! gg=G")
--- 	end,
--- })
-
-
-
+require("vim-options") 
+require("lazy").setup("plugins") 
 
 
 
