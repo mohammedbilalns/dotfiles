@@ -20,7 +20,7 @@ output "eDP-1" {
 }
 
 layout {
-	gaps 7
+	gaps 5
 	background-color "transparent"
 	center-focused-column "never"
 	preset-column-widths {
@@ -32,14 +32,14 @@ layout {
 
 	focus-ring {
 		width 2
-		active-color "#737aa2"
-		inactive-color "#505050"
+		active-color "#A7C080"
+		inactive-color "#414B50"
 	}
 
 	border {
 		width 1
-		active-color "#737aa2"
-		inactive-color "#505050"
+		active-color "#A7C080"
+		inactive-color "#414B50"
 	}
 
 	struts {
@@ -59,7 +59,7 @@ layer-rule {
 }
 
 
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/arch.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/polyscape.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -209,15 +209,14 @@ binds {
 	Mod+D {spawn "sh" "-c" "pkill fuzzel || fuzzel drun";}
 	Mod+F {spawn "nemo";}
 	Mod+Shift+F {spawn "sh" "-c" "kitty yazi";}
-	Alt+J {spawn "sh" "-c" "foot nvim sample.js";}
-	Alt+M {spawn "sh" "-c" "foot mongosh";}
+	Alt+J {spawn "sh" "-c" "kitty nvim sample.js";}
+	Alt+M {spawn "sh" "-c" "kitty mongosh";}
 	Mod+Shift+W {spawn "sh" "-c" "~/.config/niri/scripts/toggle_waybar.sh";}
 	Alt+P {spawn "sh" "-c" "foot -e sh -c 'cd dbIntegrationweek6 && nvim src/server.js'";}
 	Mod+K {spawn "sh" "-c" "~/scripts/secondProject.sh";}
 	Mod+Alt+K {spawn "sh" "-c" "~/.config/niri/scripts/killport.sh 3000";}
 	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/gammastep.sh";}
 	Mod+Alt+S {spawn "sh" "-c" "foot speedtest-rs";}
-	Mod+Shift+D {spawn "sh" "-c" "~/scripts/logit.sh"; }
 	F3 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
 	F2 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
 	F1        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
@@ -268,8 +267,8 @@ binds {
 	Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
 	Mod+Ctrl+U         { move-column-to-workspace-down; }
 	Mod+Ctrl+I         { move-column-to-workspace-up; }
-	Mod+Shift+Page_Up   { move-workspace-up; }
-	Mod+Shift+U         { move-workspace-down; }
+	Mod+Shift+U   { move-workspace-up; }
+	Mod+Shift+D        { move-workspace-down; }
 	Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
 	Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
 	Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }

@@ -8,109 +8,110 @@
 }
 
 window#waybar {
-    color: #eeeeee;
     background: transparent;
+    color: #D3C6AA;
 }
 
 tooltip {
-    background: #1A1B26;
+    background: #272E33;
     opacity: 0.8;
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
-    border-color: #11111b;
+    border-color: #414B50;
 }
 
 tooltip label {
-    color: #eeeeee;
+    color: #D3C6AA;
 }
 
 #workspaces button {
     padding: 5px;
-    color: #7c7f93;
+    color: #A7C080;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #D3C6AA;
 }
 
 #workspaces button.focused {
-    color: #eeeeee;
-    background: #737aa2;
+    color: #D3C6AA;
+    background: #414B50;
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
+    color: #272E33;
+    background: #E67E80;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    background: #1A1B26;
-    color: #eeeeee;
+    background: #495156;
+    color: #D3C6AA;
     border-radius: 10px;
 }
 
-#custom-screenshot,
-#niri-workspaces,
-#custom-launch_wofi,
-#custom-lock_screen,
-#custom-light_dark,
-#custom-power_btn,
-#battery,
-#custom-weather,
-#custom-myhyprv,
-#window,
-#taskbar,
-#cpu,
-#disk,
-#custom-updates,
-#memory,
-#clock,
-#pulseaudio,
-#network,
-#tray,
-#temperature,
 #workspaces,
+#taskbar,
+#clock,
+#custom-pomodoro,
+#network,
+#pulseaudio,
 #backlight,
-#custom-pomodoro {
-    background: rgba(26, 27, 38, 0.7);
-    opacity: 1;
-    padding: 0px 10px;
-    margin: 1px 0px;
-    border: 0px;
+#battery,
+#tray {
+    background: #272E33;
+    padding: 0px 8px;
+    margin-bottom: 3px;
 }
 
+#network,
 #pulseaudio,
 #backlight,
-#memory,
 #battery {
     border-radius: 0;
+    border-top: 2px solid #414B50;
+    border-bottom: 2px solid #414B50;
+    border-left: none;
+    border-right: none;
 }
 
 #cpu,
 #custom-screenshot,
 #workspaces{
     border-radius: 10px 0px 0px 10px;
+    border-top: 2px solid #414B50;
+    border-bottom: 2px solid #414B50;
+    border-left: 2px solid #414B50;
+    border-right: none;
 }
 #network{
     border-radius: 0px 0px 0px 0px;
 }
 
-#taskbar,
-#tray {
+#taskbar {
     border-radius: 0 10px 10px 0;
+    border-top: 2px solid #414B50;
+    border-bottom: 2px solid #414B50;
+    border-right: 2px solid #414B50;
+    border-left: none;
 }
 
 #tray {
+    border-radius: 0 10px 10px 0;
     margin-right: 10px;
+    border-top: 2px solid #414B50;
+    border-bottom: 2px solid #414B50;
+    border-right: 2px solid #414B50;
+    border-left: none;
 }
 
 #clock {
     border-radius: 10px;
-    color: #7AA2F7;
+    color: #7FBBB3;
+    border: 2px solid #414B50;
 }
 
 #workspaces,
@@ -124,7 +125,7 @@ tooltip label {
 }
 
 #temperature.critical {
-    color: #F7768E;
+    color: #E67E80;
 }
 
 #workspaces {
@@ -133,7 +134,7 @@ tooltip label {
 }
 
 #custom-power_profile {
-    color: #9ECE6A;
+    color: #A7C080;
     border-left: 0px;
     border-right: 0px;
 }
@@ -143,47 +144,67 @@ tooltip label {
 }
 
 #pulseaudio {
-    color: #FF9E64;
+    color: #DBBC7F;
 }
 
 #pulseaudio.microphone {
-    color: #BB9AF7;
+    color: #83C092;
     border-left: 0px;
     border-right: 0px;
 }
 
 #battery {
-    color: #9ECE6A;
+    color: #A7C080;
     border-left: 0px;
 }
 
 #taskbar button:hover {
-    background: #1A2B26;
+    background: #383E4A;
 }
 
 #network {
-    color: #7DCFFF;
+    color: #7FBBB3;
 }
 
 #backlight {
-    color: #E0AF68;
+    color: #D699B6;
 }
 
 #custom-pomodoro {
-    color: #F7768E;
-    border-left: 0px;
-    border-right: 0px;
+    color: #E67E80;
     margin-right: 0px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    border-top: 2px solid #414B50;
+    border-bottom: 2px solid #414B50;
+    border-left: 2px solid #414B50;
+    border-right: none;
 }
 
 #temperature {
-    color: #BB9AF7;
+    color: #83C092;
 }
 
 #memory {
-    color: #73DACA;
+    color: #7FBBB3;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }

@@ -8,14 +8,15 @@
 }
 
 window#waybar {
- background: transparent;
+    background-color: #1A1B26;
     color: #eeeeee;
-	
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 tooltip {
-    background: #1A1B26;
-    opacity: 0.8;
+    background: #1a1b26;
+    opacity: 1;
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;

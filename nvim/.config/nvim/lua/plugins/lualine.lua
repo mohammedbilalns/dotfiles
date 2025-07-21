@@ -4,7 +4,7 @@ return {
 	config = function()
 		require('lualine').setup{
 			options ={
-				theme =  'nightfly' -- 'codedark'
+				theme =  'everforest' -- 'codedark'
 			},
 			tabline = {
  -- lualine_a = {'buffers'},
