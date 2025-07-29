@@ -11,12 +11,13 @@ alias u="paru -Syu"
 alias update="paru -Syu"
 alias c="clear"
 alias hx="helix"
-alias z="zellij"
+# alias z="zellij"
 alias cat="bat"
 alias ping="prettyping"
 alias pg="source pgadmin4/bin/activate && pgadmin4 & zen-browser localhost:5050"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
+alias cd="z"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -32,5 +33,7 @@ path+=$HOME/.cargo/bin
 
 export EDITOR=nvim
 export VISUAL=nvim
+eval "$(zoxide init zsh)"
+
 
 

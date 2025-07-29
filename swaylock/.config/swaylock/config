@@ -19,7 +19,7 @@ effect-vignette=0.5:0.5  # Softer vignette for better focus
 font="Inter"
 
 # Background and transparency
-color=1a2125cc  # slightly less opaque for softer overlay
+color=1a2125aa  # slightly less opaque for softer overlay
 
 # Indicator style
 indicator

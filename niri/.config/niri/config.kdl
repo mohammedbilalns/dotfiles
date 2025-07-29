@@ -14,13 +14,13 @@ input {
 
 output "eDP-1" {
 	mode "1920x1080@60"
-	scale 1.05
+	scale 1
 	transform  "normal"
 	position x=1280 y=0
 }
 
 layout {
-	gaps 5
+	gaps 3
 	background-color "transparent"
 	center-focused-column "never"
 	preset-column-widths {
