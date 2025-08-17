@@ -14,7 +14,7 @@ input {
 
 output "eDP-1" {
 	mode "1920x1080@60"
-	scale 1
+	scale 1.1
 	transform  "normal"
 	position x=1280 y=0
 }
@@ -32,14 +32,14 @@ layout {
 
 	focus-ring {
 		width 2
-		active-color "#A7C080"
-		inactive-color "#414B50"
+		active-color "#7aa2f7"
+		inactive-color "#414868"
 	}
 
 	border {
 		width 1
-		active-color "#A7C080"
-		inactive-color "#414B50"
+		active-color "#7aa2f7"
+		inactive-color "#414868"
 	}
 
 	struts {
@@ -59,7 +59,7 @@ layer-rule {
 }
 
 
-spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/polyscape.png"
+spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/mountain.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"

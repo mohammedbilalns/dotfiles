@@ -17,7 +17,7 @@ alias ping="prettyping"
 alias pg="source pgadmin4/bin/activate && pgadmin4 & zen-browser localhost:5050"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
-alias cd="z"
+alias rm_modules='find . -type d -name node_modules -prune -exec rm -rf {} +'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -37,3 +37,4 @@ eval "$(zoxide init zsh)"
 
 
 
+export PATH="$PATH:$(go env GOPATH)/bin"

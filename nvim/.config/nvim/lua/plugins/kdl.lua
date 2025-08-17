@@ -1,3 +1,4 @@
 return{
-	"imsnif/kdl.vim"
+	"imsnif/kdl.vim",
+	ft = "kdl"
 }

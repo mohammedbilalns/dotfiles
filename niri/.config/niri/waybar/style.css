@@ -1,3 +1,11 @@
+@define-color background      #1a1b26;
+@define-color foreground      #a9b1d6;
+@define-color accent-primary  #7aa2f7;
+@define-color accent-second   #bb9af7;
+@define-color warning         #f7768e;
+@define-color good            #9ece6a;
+@define-color neutral         #414868;
+
 * {
     border: none;
     border-radius: 10px;
@@ -9,47 +17,47 @@
 
 window#waybar {
     background: transparent;
-    color: #D3C6AA;
+    color: @foreground;
 }
 
 tooltip {
-    background: #272E33;
+    background: @background;
     opacity: 0.8;
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
-    border-color: #414B50;
+    border-color: @neutral;
 }
 
 tooltip label {
-    color: #D3C6AA;
+    color: @foreground;
 }
 
 #workspaces button {
     padding: 5px;
-    color: #A7C080;
+    color: @accent-second;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #D3C6AA;
+    color: @foreground;
 }
 
 #workspaces button.focused {
-    color: #D3C6AA;
-    background: #414B50;
+    color: @foreground;
+    background: @neutral;
     border-radius: 10px;
 }
 
 #workspaces button.urgent {
-    color: #272E33;
-    background: #E67E80;
+    color: @background;
+    background: @warning;
     border-radius: 10px;
 }
 
 #workspaces button:hover {
-    background: #495156;
-    color: #D3C6AA;
+    background: @neutral;
+    color: @foreground;
     border-radius: 10px;
 }
 
@@ -62,7 +70,7 @@ tooltip label {
 #backlight,
 #battery,
 #tray {
-    background: #272E33;
+    background: @background;
     padding: 0px 8px;
     margin-bottom: 3px;
 }
@@ -72,8 +80,8 @@ tooltip label {
 #backlight,
 #battery {
     border-radius: 0;
-    border-top: 2px solid #414B50;
-    border-bottom: 2px solid #414B50;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
     border-left: none;
     border-right: none;
 }
@@ -82,9 +90,9 @@ tooltip label {
 #custom-screenshot,
 #workspaces{
     border-radius: 10px 0px 0px 10px;
-    border-top: 2px solid #414B50;
-    border-bottom: 2px solid #414B50;
-    border-left: 2px solid #414B50;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: 2px solid @neutral;
     border-right: none;
 }
 #network{
@@ -93,25 +101,25 @@ tooltip label {
 
 #taskbar {
     border-radius: 0 10px 10px 0;
-    border-top: 2px solid #414B50;
-    border-bottom: 2px solid #414B50;
-    border-right: 2px solid #414B50;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-right: 2px solid @neutral;
     border-left: none;
 }
 
 #tray {
     border-radius: 0 10px 10px 0;
     margin-right: 10px;
-    border-top: 2px solid #414B50;
-    border-bottom: 2px solid #414B50;
-    border-right: 2px solid #414B50;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-right: 2px solid @neutral;
     border-left: none;
 }
 
 #clock {
     border-radius: 10px;
-    color: #7FBBB3;
-    border: 2px solid #414B50;
+    color: @accent-primary;
+    border: 2px solid @neutral;
 }
 
 #workspaces,
@@ -125,7 +133,7 @@ tooltip label {
 }
 
 #temperature.critical {
-    color: #E67E80;
+    color: @warning;
 }
 
 #workspaces {
@@ -134,7 +142,7 @@ tooltip label {
 }
 
 #custom-power_profile {
-    color: #A7C080;
+    color: @good;
     border-left: 0px;
     border-right: 0px;
 }
@@ -144,17 +152,17 @@ tooltip label {
 }
 
 #pulseaudio {
-    color: #DBBC7F;
+    color: @accent-second;
 }
 
 #pulseaudio.microphone {
-    color: #83C092;
+    color: @good;
     border-left: 0px;
     border-right: 0px;
 }
 
 #battery {
-    color: #A7C080;
+    color: @good;
     border-left: 0px;
 }
 
@@ -163,32 +171,32 @@ tooltip label {
 }
 
 #network {
-    color: #7FBBB3;
+    color: @accent-primary;
 }
 
 #backlight {
-    color: #D699B6;
+    color: @accent-second;
 }
 
 #custom-pomodoro {
-    color: #E67E80;
+    color: @warning;
     margin-right: 0px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    border-top: 2px solid #414B50;
-    border-bottom: 2px solid #414B50;
-    border-left: 2px solid #414B50;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: 2px solid @neutral;
     border-right: none;
 }
 
 #temperature {
-    color: #83C092;
+    color: @good;
 }
 
 #memory {
-    color: #7FBBB3;
+    color: @accent-primary;
 }
 
 
