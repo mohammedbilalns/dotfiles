@@ -1,0 +1,7 @@
+layout {
+
+  pane {
+	command  "nvim"
+	cwd "~/skillsphere-backend/identity-service"
+  }
+}

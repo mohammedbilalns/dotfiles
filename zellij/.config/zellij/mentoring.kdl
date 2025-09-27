@@ -1,0 +1,45 @@
+layout {
+  pane split_direction="vertical" {
+	pane  {
+	  pane name="api gateway"{
+		command "npm"
+		args "run" "dev"
+		cwd "~/skillsphere-backend/api-gateway"
+	  }
+	  pane name="identity service"{
+		command "npm"
+		args "run" "dev"
+		cwd "~/skillsphere-backend/identity-service"
+	  }
+	  pane name="mail service"{
+		cwd "~/skillsphere-backend/mail-service"
+	  }
+	  pane name="article service"{
+		cwd "~/skillsphere-backend/article-service"
+	  }
+	  pane name="chat service"{
+		cwd "~/skillsphere-backend/chat-service"
+	  }
+	}
+	pane { 
+	  pane name="notification service"{
+		cwd "~/skillsphere-backend/notification-service"
+	  }
+	  pane name="sessions service" {
+		cwd "~/skillsphere-backend/sessions-service"
+	  }
+	  pane name="media service" {
+		command "npm"
+		args "run" "dev"
+		cwd "~/skillsphere-backend/media-service"
+	  }
+	  pane name="frontend"{
+		command "npm"
+		args "run" "dev"
+		cwd "~/skillsphere-frontend"
+	  }
+	}
+  }
+}
+
+

@@ -5,11 +5,7 @@ return {
     {
       "<C-n>",
       function()
-        if vim.bo.filetype == "oil" then
-          vim.cmd("bd")
-        else
-          vim.cmd("Oil")
-        end
+        vim.cmd("Oil")
       end,
       desc = "Toggle Oil file browser"
     }

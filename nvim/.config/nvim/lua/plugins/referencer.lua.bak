@@ -1,0 +1,12 @@
+return {
+	'romus204/referencer.nvim',
+	config = function()
+		require('referencer').setup({
+			highlight = 'Search',
+			show_file = true,
+			show_line = true,
+			show_col = true,
+			show_all = false,
+		})
+	end,
+}

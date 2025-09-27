@@ -64,6 +64,13 @@ return {
 				on_attach = on_attach,
 				settings = {
 					typescript = {
+						suggest = {
+							autoImports = true
+						},
+						preferences = {
+							importModuleSpecifier = "relative",
+							allowTextChangesInNewFiles = true,
+						},
 						inlayHints = {
 							parameterNames = { enabled = "none" },
 							parameterTypes = { enabled = false },
@@ -74,6 +81,13 @@ return {
 						}
 					},
 					javascript = {
+						suggest = {
+							autoImports = true
+						},
+						preferences = {
+							importModuleSpecifier = "relative",
+							allowTextChangesInNewFiles = true,
+						},
 						inlayHints = {
 							parameterNames = { enabled = "none" },
 							parameterTypes = { enabled = false },

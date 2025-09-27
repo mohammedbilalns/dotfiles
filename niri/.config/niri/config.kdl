@@ -44,6 +44,13 @@ layout {
 
 	struts {
 	}
+	tab-indicator {
+	  width 7 
+	  gap 0 
+	  length total-proportion=1.0
+	  position "left"
+	  place-within-column
+	}
 }
 
 overview {
@@ -63,10 +70,12 @@ spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/mountain.jpg"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
+//spawn-at-startup "xwayland-satellite"
 spawn-at-startup "sh" "-c" "swayidle -w"
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
 spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
 spawn-at-startup "sh" "-c" "kdeconnect-cli --refresh"
+
 prefer-no-csd
 cursor {
 	hide-when-typing
@@ -172,7 +181,7 @@ hotkey-overlay{
 	skip-at-startup
 }
 environment{
-    DISPLAY ":0" 
+
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	QT_AUTO_SCREEN_SCALE_FACTOR "1"
@@ -201,7 +210,8 @@ binds {
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	// Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+Shift+C {spawn "zeditor";}
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }

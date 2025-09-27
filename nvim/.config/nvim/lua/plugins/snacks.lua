@@ -1,3 +1,4 @@
+
 return{
   "folke/snacks.nvim",
   event = "VeryLazy",
@@ -6,11 +7,11 @@ return{
     dashboard = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    notifier = { enabled = true },
+    notifier = { enabled = false },
     quickfile = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-	explorer = {enable = true }
+	explorer = {enable = true },
   },
 }
