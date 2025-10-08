@@ -1,3 +1,4 @@
+local vim = vim 
 return {
 	{
 		"williamboman/mason.nvim",
@@ -9,59 +10,54 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				automatic_installation = false
 			})
 		end
 	},
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			local lspconfig = require("lspconfig")
+			local base_config = {
+				capabilities = require('cmp_nvim_lsp').default_capabilities(),
+				on_attach = function(client, bufnr)
+					vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-			local on_attach = function(client, bufnr)
-				-- Enable completion triggered by <c-x><c-o>
-				vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+					local opts = { noremap = true, silent = true, buffer = bufnr }
+					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+					vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", 'ga', vim.lsp.buf.declaration, opts)
+					vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+					vim.keymap.set('n', '<leader>i', function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+					end, { desc = "Toggle inlay hints", buffer = bufnr })
 
-				-- Keymaps
-				local opts = { noremap=true, silent=true, buffer=bufnr }
-				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-				vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.definition() end, opts)
-				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", 'ga', vim.lsp.buf.declaration, opts)
-				vim.keymap.set({ 'n', 'v' },'<leader>ca', vim.lsp.buf.code_action, opts)
-				vim.keymap.set('n', '<leader>i', function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-				end, { desc = "Toggle inlay hints" })
+					if client.supports_method("textDocument/inlayHint") then
+						vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+					end
+				end,
+			}
 
-				if client.supports_method("textDocument/inlayHint") then
-					vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
-				end
-			end
-
-			lspconfig.lua_ls.setup({
+			vim.lsp.enable("lua_ls", vim.tbl_deep_extend("force", base_config, {
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = {'vim'}
+							globals = { 'vim' }
 						}
 					}
-				},
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			local servers = { "emmet_language_server", "bashls", "basedpyright", "clangd", "cssls", "html", "jsonls", "rnix", "rust_analyzer", "tailwindcss", "ast_grep", "gopls", "taplo", "postgres_lsp", "prismals", "vala_ls" }
-			for _, lsp in ipairs(servers) do
-				lspconfig[lsp].setup {
-					on_attach = on_attach,
-					capabilities = capabilities,
 				}
-			end
+			}))
 
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
+			vim.lsp.enable("basedpyright", vim.tbl_deep_extend("force", base_config, {
+				settings = {
+					basedpyright = {
+						analysis = {
+							typeCheckingMode = "off"
+						}
+					}
+				}
+			}))
+
+			vim.lsp.enable("ts_ls", vim.tbl_deep_extend("force", base_config, {
 				settings = {
 					typescript = {
 						suggest = {
@@ -98,18 +94,21 @@ return {
 						}
 					}
 				}
-			})
+			}))
+
+			local servers = { "emmet_language_server", "bashls", "basedpyright", "clangd", "cssls", "html", "jsonls", "rnix", "rust_analyzer", "tailwindcss", "ast_grep", "gopls", "taplo", "postgres_lsp", "prismals", "vala_ls" }
+			for _, lsp in ipairs(servers) do
+				vim.lsp.enable(lsp, base_config)
+			end
 
 			vim.diagnostic.config({
-				virtual_text  = true,
-				signs = true ,
-				underline = true ,
+				virtual_text = true,
+				signs = true,
+				underline = true,
 				update_in_insert = false,
 				severity_sort = true
 			})
 		end
-
 	}
-
 }
 

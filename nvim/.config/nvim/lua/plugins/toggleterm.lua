@@ -3,7 +3,10 @@ return {
   config = function()
     require('toggleterm').setup({
       open_mapping = [[<c-T>]],
-      direction = 'tab'
+      direction = 'float',
+			float_opts = {
+				border = "curved"
+			}
     })
   end
 }
