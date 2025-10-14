@@ -4,7 +4,7 @@ return     {
 	cmd = { 'LiveServerStart', 'LiveServerStop' },
 	config = true,
 
-	vim.keymap.set('n', '<leader>lss', ':LiveServerStart<CR>', { noremap = true, silent = true }),
-	vim.keymap.set('n', '<leader>lsk', ':LiveServerStop<CR>', { noremap = true, silent = true })
+	vim.keymap.set('n', '<leader>lss', ':LiveServerStart<CR>', { desc="Start Live Server", noremap = true, silent = true }),
+	vim.keymap.set('n', '<leader>lsk', ':LiveServerStop<CR>', { desc="Stop Live Server", noremap = true, silent = true })
 }
 

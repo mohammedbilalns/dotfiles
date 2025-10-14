@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": [
         "niri/workspaces",
-        "wlr/taskbar"
+				"cffi/niri-taskbar"
     ],
     "modules-center": [
         "clock"
@@ -89,16 +89,28 @@
         "on-click": "~/.config/waybar/volume --toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "~/.config/waybar/volume --inc",
-        "on-scroll-down": "~/.config/waybar/volume --dec",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "󰋎",
-            "headset": "󰋎",
-            "phone": "󰏲",
-            "portable": "󰏲",
-            "car": "󰄋",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        }
-    }
+				"on-scroll-down": "~/.config/waybar/volume --dec",
+				"scroll-step": 5,
+				"format-icons": {
+					"headphone": "󰋋",
+					"hands-free": "󰋎",
+					"headset": "󰋎",
+					"phone": "󰏲",
+					"portable": "󰏲",
+					"car": "󰄋",
+					"default": ["󰕿", "󰖀", "󰕾"]
+				}
+		},
+		"cffi/niri-taskbar": {
+			"module_path": "/usr/lib/waybar/libniri_taskbar.so",
+			"apps": {
+				"signal": [
+					{
+						"match": "\\([0-9]+\\)$",
+						"class": "unread"
+					}
+				]
+			}
+		}
+}
 }

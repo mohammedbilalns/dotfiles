@@ -9,12 +9,14 @@ alias ls='lsd -a --group-directories-first'
 alias ll="lsd -la --group-directories-first"
 alias u="paru -Syu"
 alias update="paru -Syu"
+alias rm_cache="sudo pacman -Scc"
 # Git 
 alias gs="git status"
 alias ga="git add"
 alias gp="git push"
 alias gb="git branch"
 alias gl"git log"
+alias learn_bash""
 
 # Utils 
 alias c="clear"
@@ -50,3 +52,5 @@ export EDITOR=nvim
 export VISUAL=nvim
 eval "$(zoxide init zsh)"
 export PATH="$PATH:$(go env GOPATH)/bin"
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

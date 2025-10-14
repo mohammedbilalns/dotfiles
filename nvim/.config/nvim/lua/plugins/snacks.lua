@@ -20,7 +20,7 @@ return{
 		picker = {enabled = true}
 	},
 	keys = {
-		{ "<leader>ff", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+		{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
 		{ "<leader>rg", function() Snacks.picker.grep() end, desc = "Grep" }, 
 		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" }, 
 		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, -- map to st 

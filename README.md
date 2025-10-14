@@ -4,7 +4,6 @@
 This repository contains my personal dotfiles for three Wayland compositors:  
 
 - [Niri](https://github.com/YaLTeR/niri)  
-- [Hyprland](https://hyprland.org/)  
 - [SwayFX](https://github.com/WillPower3309/swayfx)  
 
 ## 📸 Preview  
@@ -39,7 +38,7 @@ stow niri mako swayidle swaylock fuzzel
 
 #### 🔗 Dependencies  
 ```sh
-niri stow mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg
+niri stow mako foot swayidle swaylock-effects fuzzel waybar gammastep swaybg
 ```
 
 #### 📦 Install  
@@ -47,19 +46,6 @@ niri stow mako foot swayidle swaylock-effects fuzzel waybar wlsunset swaybg
 stow niri mako swayidle swaylock fuzzel
 ```
 
----
-
-### 🔵 Hyprland  
-
-#### 🔗 Dependencies  
-```sh
-hyprland stow hyprlock hyprpaper hyprshade hyprpicker mako waybar foot fuzzel
-```
-
-#### 📦 Install  
-```sh
-stow hypr mako waybar fuzzel
-```
 
 ---
 

@@ -16,6 +16,8 @@ layout {
 	  }
 	  pane name="article service"{
 		cwd "~/skillsphere-backend/article-service"
+		command "npm"
+		args "run" "dev"
 	  }
 	  pane name="chat service"{
 		cwd "~/skillsphere-backend/chat-service"

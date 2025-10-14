@@ -5,8 +5,6 @@ return {
 		require('lualine').setup{
 			options ={
 				theme =  'tokyonight', -- 'codedark'
-               	component_separators = "",
-				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "Outline" }
 			},
 			sections = {
@@ -34,15 +32,31 @@ return {
 						symbols = { added = " ", modified = " ", removed = " " },
 						colored = false,
 					},
+                    {
+                        function()
+                            return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+                        end,
+                        icon = "",
+                    },
 				},
 				lualine_x = {
+                    {
+                        function()
+                            if require("supermaven-nvim.api").is_running() then
+                                return "SM:  running"
+                            else
+                                return "SM:  off"
+                            end
+                        end,
+                        icon = "󰗚",
+                    },
 					{
 						"diagnostics",
 						symbols = { error = " ", warn = " ", info = " ", hint = " " },
 						update_in_insert = true,
 					},
 				},
-				lualine_y = { clients_lsp },
+				lualine_y = {},
 				lualine_z = {
 					{ "location", separator = { left = "", right = " " }, icon = "" },
 				},

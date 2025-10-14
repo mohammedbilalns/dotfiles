@@ -63,6 +63,7 @@ tooltip label {
 
 #workspaces,
 #taskbar,
+.niri-taskbar,
 #clock,
 #custom-pomodoro,
 #network,
@@ -99,7 +100,8 @@ tooltip label {
     border-radius: 0px 0px 0px 0px;
 }
 
-#taskbar {
+#taskbar,
+.niri-taskbar {
     border-radius: 0 10px 10px 0;
     border-top: 2px solid @neutral;
     border-bottom: 2px solid @neutral;
@@ -166,7 +168,8 @@ tooltip label {
     border-left: 0px;
 }
 
-#taskbar button:hover {
+#taskbar button:hover,
+.niri-taskbar button:hover {
     background: #383E4A;
 }
 
@@ -216,3 +219,4 @@ tooltip label {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+
