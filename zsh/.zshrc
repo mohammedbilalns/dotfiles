@@ -15,16 +15,16 @@ alias gs="git status"
 alias ga="git add"
 alias gp="git push"
 alias gb="git branch"
-alias gl"git log"
-alias learn_bash""
+alias gl="git log"
+alias gc="git commit"
 
 # Utils 
 alias c="clear"
 alias hx="helix"
 alias cat="bat"
+alias dwyt='echo -n "Enter video URL: "; read url; yt-dlp -F "$url"; echo -n "Enter format ID to download: "; read fid; yt-dlp -f "$fid" "$url"'
 alias asr="atuin scripts run"
-alias run="zellij --layout .config/zellij/mentoring.kdl"
-alias open="./scripts/open.sh"
+alias run="~/skillsphere-backend/init-workspace.sh"
 alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias rm_modules='find . -type d -name node_modules -prune -exec rm -rf {} +'
 alias list_content="find . -type f -exec echo '==== {} ====' \; -exec bat --paging=never {} \;"

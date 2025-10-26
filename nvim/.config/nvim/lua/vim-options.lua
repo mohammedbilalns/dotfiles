@@ -1,21 +1,38 @@
--- general configurations 
-vim.cmd([[ 
-	set shiftwidth=2
-	set tabstop=2
-]]) --configure default shift and tab stop width 
-vim.g.mapleader = " " --configure leader key 
-vim.opt.termguicolors = true 
-vim.opt.cursorline = true --highlighs the current line to improve visibility 
-vim.wo.number = true --show the line number
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldlevelstart = 99
-vim.opt.foldcolumn = '1'
-vim.opt.fillchars:append { fold = ' ' }
+local opt = vim.opt
+-- line numbers
+opt.relativenumber = true
+opt.number = true
+-- tabs & indentation
+opt.tabstop = 2 --  2 spaces for tabs 
+opt.shiftwidth = 2 -- 2 spaces for indend width 
+opt.expandtab = true -- expand tab to space  
+opt.autoindent = true -- copy indent from current line when starting a new one  
+opt.wrap  = true -- keep the line wrapping on   
+-- search settings 
+opt.ignorecase = true -- ignore case when searching 
+opt.smartcase = true -- assumes case sensitive for mixed case search  
+-- cursor 
+opt.cursorline = true --highlighs the current line to improve visibility 
+-- appearance 
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes" -- show sign column on the left 
+-- backspace 
+opt.backspace = "indent,eol,start" -- ? 
+-- clipboard 
+opt.clipboard:append("unnamedplus") -- system clipboard as default register 
+-- window splitting
+opt.splitright = true -- vertical window to the right
+opt.splitbelow = true -- horizontal window to the bottom  
+-- vim.wo.number = true --show the line number
+-- folding 
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldlevelstart = 99
+opt.foldcolumn = '1'
+opt.fillchars:append { fold = ' ' }
 
--- KeyBindings 
-vim.keymap.set('v', '<leader>y', '"+y', {})
-
+--
 function FoldText()
   local line = vim.fn.getline(vim.v.foldstart)
   local line_count = vim.v.foldend - vim.v.foldstart

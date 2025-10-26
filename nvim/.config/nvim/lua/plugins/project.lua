@@ -10,7 +10,7 @@ return {
     }
   },
   init = function()
-    vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+    vim.opt.sessionoptions:append("globals") 
   end,
   dependencies = {
     { "nvim-lua/plenary.nvim" },

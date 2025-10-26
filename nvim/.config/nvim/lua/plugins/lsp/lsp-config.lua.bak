@@ -20,23 +20,21 @@ return {
 				capabilities = require('cmp_nvim_lsp').default_capabilities(),
 				on_attach = function(client, bufnr)
 					vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 					local opts = { noremap = true, silent = true, buffer = bufnr }
 					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 					vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+					vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, opts)
 					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", 'ga', vim.lsp.buf.declaration, opts)
 					vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
 					vim.keymap.set('n', '<leader>i', function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
 					end, { desc = "Toggle inlay hints", buffer = bufnr })
-
 					if client.supports_method("textDocument/inlayHint") then
 						vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
 					end
 				end,
 			}
-
 			vim.lsp.enable("lua_ls", vim.tbl_deep_extend("force", base_config, {
 				settings = {
 					Lua = {
@@ -46,7 +44,6 @@ return {
 					}
 				}
 			}))
-
 			vim.lsp.enable("basedpyright", vim.tbl_deep_extend("force", base_config, {
 				settings = {
 					basedpyright = {
@@ -56,7 +53,6 @@ return {
 					}
 				}
 			}))
-
 			vim.lsp.enable("ts_ls", vim.tbl_deep_extend("force", base_config, {
 				settings = {
 					typescript = {
@@ -95,12 +91,10 @@ return {
 					}
 				}
 			}))
-
 			local servers = { "emmet_language_server", "bashls", "basedpyright", "clangd", "cssls", "html", "jsonls", "rnix", "rust_analyzer", "tailwindcss", "ast_grep", "gopls", "taplo", "postgres_lsp", "prismals", "vala_ls" }
 			for _, lsp in ipairs(servers) do
 				vim.lsp.enable(lsp, base_config)
 			end
-
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,
@@ -111,4 +105,3 @@ return {
 		end
 	}
 }
-

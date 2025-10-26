@@ -26,6 +26,8 @@ layout {
 	pane { 
 	  pane name="notification service"{
 		cwd "~/skillsphere-backend/notification-service"
+		command "npm"
+		args "run" "dev"
 	  }
 	  pane name="sessions service" {
 		cwd "~/skillsphere-backend/sessions-service"

@@ -1,11 +1,3 @@
-#fsldfj sdlafkdsl 
-fsldfj sdlafkdsl 
-
-| Column1 |
-| ------------- |
-| Item1 |
-| Item2 |
-| Item3 |
 !/bin/bash
 
 # network_traffic.sh [-tPOLLING_INTERVAL] [NETWORK_INTERFACE...]

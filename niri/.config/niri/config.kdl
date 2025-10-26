@@ -1,14 +1,13 @@
 input {
 	keyboard {
-		xkb {	
-		}
+		xkb {}
+	
 	}
 	touchpad {
 		tap
 		natural-scroll
 	}
-	mouse {
-	}
+	mouse {}
 	focus-follows-mouse max-scroll-amount="0%"
 }
 
@@ -29,21 +28,21 @@ layout {
 		proportion 0.66667
 	}
 	default-column-width { proportion 0.5; }
-
 	focus-ring {
 		width 2
 		active-color "#7aa2f7"
 		inactive-color "#414868"
 	}
-
 	border {
-		width 1
-		active-color "#7aa2f7"
-		inactive-color "#414868"
+	  width 1
+	  active-color "#7aa2f7"
+	  inactive-color "#414868"
+	  urgent-color "#9b0000"
 	}
-
-	struts {
+	shadow{
+	  on
 	}
+	struts {}
 	tab-indicator {
 	  width 7 
 	  gap 0 
@@ -55,9 +54,7 @@ layout {
 
 overview {
 	zoom 1
-	workspace-shadow {
-		off
-	}
+	workspace-shadow {}
 }
 
 layer-rule {
@@ -65,16 +62,16 @@ layer-rule {
 	place-within-backdrop true
 }
 
-
+// startup 
 spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/js_original.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
-//spawn-at-startup "xwayland-satellite"
 spawn-at-startup "sh" "-c" "swayidle -w"
 spawn-at-startup "sh" "-c" "wl-paste --type text --watch cliphist store"
 spawn-at-startup "sh" "-c" "wl-paste --type image --watch cliphist store"
 spawn-at-startup "sh" "-c" "kdeconnect-cli --refresh"
+spawn-at-startup "battwatch"
 
 prefer-no-csd
 cursor {
@@ -202,7 +199,7 @@ binds {
 	Mod+Space { toggle-window-floating; }
 	Mod+T {spawn "foot";}
 	Mod+Shift+T { spawn "sh" "-c" "foot zellij" ; }
-	Mod+Shift+B { spawn "zen-browser";}
+	Mod+Shift+B { spawn "floorp";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+O { toggle-overview; }
 	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
@@ -210,7 +207,7 @@ binds {
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	// Mod+Shift+C { spawn "code" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+A {spawn "sh" "-c" "~/.config/scripts/open_chatbots.sh";}
 	Mod+Shift+C {spawn "zeditor";}
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
