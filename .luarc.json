@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
         "vim",
-        "TodoTelescope"
+        "TodoTelescope",
+        "Snacks"
     ]
 }

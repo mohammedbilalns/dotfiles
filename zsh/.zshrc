@@ -30,7 +30,6 @@ alias rm_modules='find . -type d -name node_modules -prune -exec rm -rf {} +'
 alias list_content="find . -type f -exec echo '==== {} ====' \; -exec bat --paging=never {} \;"
 alias rm_git='find . -mindepth 2 -type d -name ".git" -exec rm -rf {} +'
 
-
 setopt CORRECT
 
 eval "$(atuin init zsh)"
@@ -53,4 +52,3 @@ export VISUAL=nvim
 eval "$(zoxide init zsh)"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

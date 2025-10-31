@@ -26,7 +26,7 @@ return {
       ensure_installed = {
         "c", "lua", "vim", "vimdoc", "latex", "rust", "bash",
         "json", "javascript", "typescript", "tsx", "prisma",
-        "python", "yaml", "dockerfile", "gitignore"
+        "python", "yaml", "dockerfile", "gitignore","go"
       },
       incremental_selection = {
         enable = true,

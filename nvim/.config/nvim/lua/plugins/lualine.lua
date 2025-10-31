@@ -4,7 +4,7 @@ return {
   config = function()
     require('lualine').setup{
       options ={
-        theme =  'tokyonight', 
+        theme =  'auto',
         disabled_filetypes = { "alpha", "Outline" }
       },
       sections = {
@@ -69,9 +69,9 @@ return {
         lualine_y = {},
         lualine_z = { "location" },
       },
-      -- tabline = {
-      --   lualine_a = {{'buffers', padding = { left = 0 }}},
-      -- }
+      tabline = {
+        lualine_a = {{'buffers', padding = { left = 0 }}},
+      }
     }
 
   end

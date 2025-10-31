@@ -2,7 +2,7 @@
 return{
 	"folke/snacks.nvim",
 	priority = 1000,
-	lazy = false, 
+	lazy = false,
 	opts = {
 		animate = { enabled = true },
 		bigfile = { enabled = true },
@@ -21,11 +21,11 @@ return{
 	},
 	keys = {
 		{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-		{ "<leader>rg", function() Snacks.picker.grep() end, desc = "Grep" }, 
-		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" }, 
+		{ "<leader>rg", function() Snacks.picker.grep() end, desc = "Grep" },
+		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, -- map to st 
-		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" }, 
-		{ "<leader>sc",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" }, 
+		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+		{ "<leader>sc",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
 		{ "<leader>nh",  function() Snacks.notifier.show_history() end, desc = "Notification History" }, -- map to notifiction history 
 		{ "<leader>hn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 

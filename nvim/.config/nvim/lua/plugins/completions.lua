@@ -61,7 +61,6 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           {name = "path"},
-          { name = "nvim_lsp" },
           {name= "supermaven"}
         }),
       })

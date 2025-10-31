@@ -14,9 +14,6 @@ return { {'nvim-telescope/telescope.nvim',
     keymap.set("n","<leader>fc",builtin.grep_string, {desc = "Find string under cursor in cwd"})
     keymap.set("n","<leader>fo", "<cmd>TodoTelescope<cr>", {desc="Find todos"})
     keymap.set("n", "<leader>fz", "<cmd>TodoTelescope<CR>", { desc = "Todo Comments" })
-
-
-
   end
 },
   {
@@ -32,7 +29,7 @@ return { {'nvim-telescope/telescope.nvim',
       }
 
       require("telescope").load_extension("ui-select","fzf")
-    end 
+    end
   }}
 
 

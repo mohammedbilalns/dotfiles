@@ -10,7 +10,8 @@ return {
       "emmet_ls",
       "prismals",
       "pyright",
-      "eslint"
+      "eslint",
+      "gopls"
     }
   },
   dependencies = {
