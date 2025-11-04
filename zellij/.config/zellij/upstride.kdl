@@ -4,43 +4,45 @@ layout {
 	  pane name="api gateway"{
 		command "npm"
 		args "run" "dev"
-		cwd "~/skillsphere-backend/api-gateway"
+		cwd "~/upstride-backend/api-gateway"
 	  }
 	  pane name="identity service"{
 		command "npm"
 		args "run" "dev"
-		cwd "~/skillsphere-backend/identity-service"
+		cwd "~/upstride-backend/identity-service"
 	  }
 	  pane name="mail service"{
-		cwd "~/skillsphere-backend/mail-service"
+		cwd "~/upstride-backend/mail-service"
 	  }
 	  pane name="article service"{
-		cwd "~/skillsphere-backend/article-service"
+		cwd "~/upstride-backend/article-service"
 		command "npm"
 		args "run" "dev"
 	  }
 	  pane name="chat service"{
-		cwd "~/skillsphere-backend/chat-service"
+		cwd "~/upstride-backend/chat-service"
+        command "npm"
+        args "run" "dev"
 	  }
 	}
 	pane { 
 	  pane name="notification service"{
-		cwd "~/skillsphere-backend/notification-service"
+		cwd "~/upstride-backend/notification-service"
 		command "npm"
 		args "run" "dev"
 	  }
 	  pane name="sessions service" {
-		cwd "~/skillsphere-backend/sessions-service"
+		cwd "~/upstride-backend/sessions-service"
 	  }
 	  pane name="media service" {
 		command "npm"
 		args "run" "dev"
-		cwd "~/skillsphere-backend/media-service"
+		cwd "~/upstride-backend/media-service"
 	  }
 	  pane name="frontend"{
 		command "npm"
 		args "run" "dev"
-		cwd "~/skillsphere-frontend"
+		cwd "~/upstride-frontend"
 	  }
 	}
   }

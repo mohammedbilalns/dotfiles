@@ -65,6 +65,7 @@ layer-rule {
 // startup 
 spawn-at-startup "sh" "-c" "swaybg -i .config/walpapers/js_original.png"
 spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
+// spawn-at-startup "sh" "-c" "/usr/lib/xfce-polkit/xfce-polkit"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "sh" "-c" "swayidle -w"
