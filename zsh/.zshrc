@@ -52,3 +52,4 @@ export VISUAL=nvim
 eval "$(zoxide init zsh)"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
+export PATH="$HOME/.supermaven/binary/v20/linux-x86_64:$PATH"

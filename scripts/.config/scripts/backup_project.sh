@@ -1,0 +1,37 @@
+#!/bin/bash
+
+frontend_dir="$HOME/upstride-frontend"
+backend_dir="$HOME/upstride-backend"
+backup_dir="$HOME/back"
+backup_filename="upstride-backup-$(date +%Y-%m-%d).tar.gz"
+backup_filepath="$backup_dir/$backup_filename"
+
+BOT_TOKEN="$(pass telegram_bot_token)"
+CHAT_ID="$(pass telegram_chat_id)"
+
+
+## create backup directory 
+mkdir -p "$backup_dir"
+
+## copy projects
+cp -r "$frontend_dir" "$backup_dir"
+cp -r "$backend_dir" "$backup_dir"
+
+## remove node_modules folders
+find $backup_dir -type d -name node_modules -prune -exec rm -rf {} +
+
+## create tar archive
+tar -czvf "$backup_dir/$backup_filename" -C "$backup_dir" .
+cd "$backup_dir"
+split -b 48M "$backup_filepath" "${backup_filename}."
+
+
+for part in ${backup_filepath}.*; do
+  curl -F "chat_id=$CHAT_ID" \
+       -F "document=@${part}" \
+       -F "caption=📦 Part $(basename $part)" \
+       "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument"
+done
+
+
+

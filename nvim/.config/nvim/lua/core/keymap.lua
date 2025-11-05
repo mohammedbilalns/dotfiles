@@ -14,3 +14,5 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", {desc = "Close curren Tab"})
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", {desc = "Go to next tab"})
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
+keymap.set('v', '<leader>dd', '"_dd', { noremap = true, silent = true, desc = "Delete line without copying" })
+
