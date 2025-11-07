@@ -188,12 +188,6 @@ environment{
 
 }
 
-/-window-rule {
-	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-	match app-id=r#"^org\.gnome\.World\.Secrets$"#
-	block-out-from "screen-capture"
-}
-
 binds { 
 	Mod+Shift+Slash { show-hotkey-overlay; }
 	Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
@@ -203,12 +197,12 @@ binds {
 	Mod+Shift+B { spawn "floorp";}
 	Mod+P { spawn "wl-color-picker";}
 	Mod+O { toggle-overview; }
-	Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+	//Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
 	
 	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-	Mod+A {spawn "sh" "-c" "~/.config/scripts/open_chatbots.sh";}
+	Mod+A {spawn "sh" "-c" "~/.local/bin/open_chatbots";}
 	Mod+Shift+C {spawn "zeditor";}
 	Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
@@ -219,11 +213,11 @@ binds {
 	Mod+Shift+F {spawn "sh" "-c" "kitty yazi";}
 	Alt+J {spawn "sh" "-c" "kitty nvim sample.js";}
 	Alt+M {spawn "sh" "-c" "kitty mongosh";}
-	Mod+Shift+W {spawn "sh" "-c" "~/.config/niri/scripts/toggle_waybar.sh";}
+	Mod+Shift+W {spawn "sh" "-c" "~/.local/bin/toggle_waybar";}
 	Alt+P {spawn "sh" "-c" "foot -e sh -c 'cd dbIntegrationweek6 && nvim src/server.js'";}
 	Mod+K {spawn "sh" "-c" "~/scripts/secondProject.sh";}
-	Mod+Alt+K {spawn "sh" "-c" "~/.config/niri/scripts/killport.sh 3000";}
-	Mod+Shift+R { spawn "sh" "-c" "~/.config/niri/scripts/gammastep.sh";}
+	Mod+Alt+K {spawn "sh" "-c" "~/.local/bin/killport 3000";}
+	Mod+Shift+R { spawn "sh" "-c" "~/.local/bin/gammastep";}
 	Mod+Alt+S {spawn "sh" "-c" "foot speedtest-rs";}
 	F3 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
 	F2 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -239,7 +233,7 @@ binds {
 	Mod+L {spawn "swaylock";}
 	Ctrl+Alt+B {spawn "sh" "-c" "~/.config/hypr/scripts/bluetooth_toggle.sh";}
 	Ctrl+Alt+H {spawn "sh" "-c" " swaylock & systemctl hibernate";}
-	Ctrl+Alt+I {spawn "sh" "-c" "~/.config/niri/scripts/idle_inhibitor.sh";} 
+	Ctrl+Alt+I {spawn "sh" "-c" "~/.local/bin/idle_inhibitor";} 
 	Ctrl+Alt+P {spawn "poweroff";}
 	Ctrl+Alt+R {spawn "reboot";}
 	Mod+Left  { focus-column-left; }

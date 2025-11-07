@@ -10,7 +10,6 @@ alias ll="lsd -la --group-directories-first"
 alias u="paru -Syu"
 alias update="paru -Syu"
 alias rm_cache="sudo pacman -Scc"
-alias pkginstall="~/.config/scripts/install_packages.sh"
 # Git 
 alias gs="git status"
 alias ga="git add"
@@ -27,9 +26,6 @@ alias dwyt='echo -n "Enter video URL: "; read url; yt-dlp -F "$url"; echo -n "En
 alias asr="atuin scripts run"
 alias run="~/upstride-backend/init-workspace.sh"
 alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
-alias rm_modules='find . -type d -name node_modules -prune -exec rm -rf {} +'
-alias list_content="find . -type f -exec echo '==== {} ====' \; -exec bat --paging=never {} \;"
-alias rm_git='find . -mindepth 2 -type d -name ".git" -exec rm -rf {} +'
 
 setopt CORRECT
 
@@ -51,6 +47,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export EDITOR=nvim
 export VISUAL=nvim
 eval "$(zoxide init zsh)"
+# paths 
 export PATH="$PATH:$(go env GOPATH)/bin"
-
-export PATH="$HOME/.supermaven/binary/v20/linux-x86_64:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

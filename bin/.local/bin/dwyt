@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -n "Enter video URL: "; read url; yt-dlp -F "$url"; echo -n "Enter format ID to download: "; read fid; yt-dlp -f "$fid" "$url"
