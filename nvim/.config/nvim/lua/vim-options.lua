@@ -32,7 +32,7 @@ opt.foldlevelstart = 99
 opt.foldcolumn = '1'
 opt.fillchars:append { fold = ' ' }
 
---
+-- cutstom folding 
 function FoldText()
   local line = vim.fn.getline(vim.v.foldstart)
   local line_count = vim.v.foldend - vim.v.foldstart
@@ -48,4 +48,16 @@ end
 
 vim.opt.foldtext = 'v:lua.FoldText()'
 
+
+
+-- Auto-create missing directories before saving 
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   callback = function(event)
+--     local file = event.match
+--     local dir = vim.fn.fnamemodify(file, ":p:h")
+--     if vim.fn.isdirectory(dir) == 0 then
+--       vim.fn.mkdir(dir, "p")
+--     end
+--   end,
+-- })
 

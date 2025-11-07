@@ -10,6 +10,7 @@ alias ll="lsd -la --group-directories-first"
 alias u="paru -Syu"
 alias update="paru -Syu"
 alias rm_cache="sudo pacman -Scc"
+alias pkginstall="~/.config/scripts/install_packages.sh"
 # Git 
 alias gs="git status"
 alias ga="git add"

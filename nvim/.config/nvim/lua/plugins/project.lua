@@ -1,32 +1,33 @@
 return {
   "coffebar/neovim-project",
-  opts = {
-    projects = {
-      "~/projects/*",
-      "~/.config/*",
-    },
-    picker = {
-      type = "telescope", 
-    }
-  },
-  init = function()
-    vim.opt.sessionoptions:append("globals") 
-  end,
-  dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    -- optional picker
-    { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-    -- optional picker
-    { "ibhagwan/fzf-lua" },
-    -- optional picker
-    { "folke/snacks.nvim" },
-    { "Shatur/neovim-session-manager" },
-  },
   lazy = false,
   priority = 100,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "folke/snacks.nvim",
+    "Shatur/neovim-session-manager",
+  },
   config = function()
-    require("session_manager").setup({
-      autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir, -- only autoload session for current dir
+    vim.opt.sessionoptions:append("globals")
+
+    require("neovim-project").setup({
+      projects = {
+        "~/projects/*",
+        "~/.config/*",
+        "~/upstride-backend/*",
+        "~/upstride-frontend/",
+      },
+      picker = { type = "snacks" },
+      forget_project_keys = { i = "<C-d>", n = "d" },
+      last_session_on_startup = true,
     })
+
+    -- Session manager config
+    require("session_manager").setup({
+      autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
+    })
+
+    vim.keymap.set("n", "<leader>p", "<cmd>NeovimProjectHistory<CR>", { desc = "Switch Project" })
   end,
 }
+
