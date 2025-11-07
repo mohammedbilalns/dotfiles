@@ -1,0 +1,9 @@
+bat
+helix
+ttf-jetbrains-mono-nerd
+waybar-niri-taskbar
+tree-sitter
+tree-sitter-cli
+gammastep
+cliphist
+brightnessctl

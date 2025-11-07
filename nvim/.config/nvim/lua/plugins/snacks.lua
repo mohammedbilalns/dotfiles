@@ -20,10 +20,16 @@ return{
 		picker = {enabled = true}
 	},
 	keys = {
+    --pickers 
 		{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-		{ "<leader>rg", function() Snacks.picker.grep() end, desc = "Grep" },
+		{ "<leader>rg", function() Snacks.picker.grep() end, desc = "Search text in project" },
 		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+    {"<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find string under cursor in project"},
+    {"<leader>fb", function() Snacks.picker.buffers() end, desc = "List open buffers"},
 		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, -- map to st 
+    {"<leader>fh", function () Snacks.picker.help() end, desc="Search help tags"},
+    {"<leader>fo", function() Snacks.picker.todo_comments() end, desc = "show todo comments"},
+
 		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		{ "<leader>sc",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
 		{ "<leader>nh",  function() Snacks.notifier.show_history() end, desc = "Notification History" }, -- map to notifiction history 
