@@ -1,8 +1,9 @@
 chromium
+stow
 noto-fonts
 telegram-desktop
 brave-bin
-joplin-desktop
+joplin-beta
 acpi
 nemo
 nemo-fileroller

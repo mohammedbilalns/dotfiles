@@ -11,9 +11,10 @@ jq
 pass
 fd
 ripgrep
-gh
+github-cli
+github-desktop
 rabbitmq
-mongosh 
+#mongosh  
 mongodb
-aur/redis
+aur/redis-bin
 docker

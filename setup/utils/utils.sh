@@ -8,7 +8,6 @@ is_dir_exists(){
   [[ -d $1 ]]
 }
 
-
 parse_list() {
   local file="$1"
   local -n _result="$2"  
@@ -45,4 +44,20 @@ check_and_install_from_list() {
   for pkg in "${pkg_list[@]}"; do
     check_and_install "$pkg"
   done
+}
+
+check_and_enable_service(){
+  local service="$1"
+  if systemctl is-enabled "$service" &>/dev/null; then
+    echo "✅ $service is already enabled"
+  else
+    systemctl enable --now "$service"
+  fi
+}
+
+check_and_enable_service_from_list() {
+  local -n service_list="$1"
+  for service in "${service_list[@]}"; do
+    check_and_enable_service "$service"
+  done 
 }
