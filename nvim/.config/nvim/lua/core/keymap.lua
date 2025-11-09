@@ -16,3 +16,11 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
 keymap.set('v', '<leader>dd', '"_dd', { noremap = true, silent = true, desc = "Delete line without copying" })
 
+vim.keymap.set("n", "<leader>bq", function()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and buf ~= current and vim.bo[buf].buflisted then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end, { desc = "Close all other buffers" })

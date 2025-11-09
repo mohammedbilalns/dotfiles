@@ -64,3 +64,4 @@ for list in "${SRVCS[@]}"; do
   parse_list "$list" local_services
   check_and_enable_service_from_list local_services
 done 
+

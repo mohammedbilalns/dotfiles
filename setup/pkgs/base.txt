@@ -1,4 +1,6 @@
 chromium
+zathura
+zathura-pdf-poppler
 stow
 noto-fonts
 telegram-desktop
