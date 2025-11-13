@@ -25,3 +25,4 @@ gnome-keyring
 papirus-icon-theme
 tokyonight-gtk-theme-git
 nwg-look
+pass

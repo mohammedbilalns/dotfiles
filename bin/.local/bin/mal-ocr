@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -e
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <input_file> <output_pdf>"
+  exit 1
+fi
+
+INPUT="$1"
+OUTPUT="$2"
+
+# Check dependencies
+for cmd in ocrmypdf tesseract; do
+  if ! command -v $cmd &>/dev/null; then
+    echo "❌ Missing dependency: $cmd"
+    exit 1
+  fi
+done
+
+# Handle images → PDF
+if [[ "$INPUT" =~ \.(jpg|jpeg|png|tif|tiff)$ ]]; then
+  TMP_PDF=$(mktemp --suffix=.pdf)
+  echo "🖼️ Converting image to PDF..."
+  convert "$INPUT" "$TMP_PDF"
+  INPUT="$TMP_PDF"
+fi
+
+echo "🔠 Performing OCR..."
+ocrmypdf --language mal --force-ocr --rotate-pages --deskew --clean --optimize 3 "$INPUT" "$OUTPUT"
+
+echo "✅ OCR  PDF created: $OUTPUT"
+

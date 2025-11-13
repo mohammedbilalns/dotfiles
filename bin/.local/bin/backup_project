@@ -19,6 +19,7 @@ cp -r "$backend_dir" "$backup_dir"
 
 ## remove node_modules folders
 find $backup_dir -type d -name node_modules -prune -exec rm -rf {} +
+find $backup_dir -type d -name logs -prune -exec rm -rf {} +
 
 ## create tar archive
 tar -czvf "$backup_dir/$backup_filename" -C "$backup_dir" .

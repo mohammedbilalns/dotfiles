@@ -26,14 +26,14 @@ return{
 		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     {"<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find string under cursor in project"},
     {"<leader>fb", function() Snacks.picker.buffers() end, desc = "List open buffers"},
-		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, -- map to st 
+		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, 
     {"<leader>fh", function () Snacks.picker.help() end, desc="Search help tags"},
     {"<leader>fo", function() Snacks.picker.todo_comments() end, desc = "show todo comments"},
 
 		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		{ "<leader>sc",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-		{ "<leader>nh",  function() Snacks.notifier.show_history() end, desc = "Notification History" }, -- map to notifiction history 
-		{ "<leader>hn", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+		{ "<leader>nl",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+		{ "<leader>nh", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 
 	},
 }
