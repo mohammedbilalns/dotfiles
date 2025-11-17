@@ -1,4 +1,5 @@
 {
+  "show_edit_predictions": false,
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
@@ -9,6 +10,9 @@
     "enabled_in_text_threads": false
   },
   "languages": {
+    "JavaScript": {
+      "show_edit_predictions": false
+    },
     "TypeScript": {
       "show_edit_predictions": true
     }

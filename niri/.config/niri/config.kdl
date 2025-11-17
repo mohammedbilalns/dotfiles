@@ -59,19 +59,32 @@ overview {
   }
 }
 
+recent-windows {
+
+  highlight {
+    active-color "#7aa2f7"
+    urgent-color "#9b0000"
+    padding 10
+    corner-radius 10
+  }
+}
+
 layer-rule {
 	match namespace="^wallpaper$"
 	place-within-backdrop true
 }
 
+workspace "Dev"
+workspace "Debug"
+workspace "Research"
 // startup 
-spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/"
-//spawn-sh-at-startup "swaybg -i .config/walpapers/js_original.png"
-//spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
-// spawn-at-startup "sh" "-c" "/usr/lib/xfce-polkit/xfce-polkit"
-// spawn-at-startup "blueman-applet"
-// spawn-at-startup "nm-applet"
-// spawn-sh-at-startup "swayidle -w"
+//spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/" // quickshell
+spawn-sh-at-startup "swaybg -i .config/walpapers/js_original.png"
+spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
+//spawn-sh-at-startup "/usr/lib/xfce-polkit/xfce-polkit"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "nm-applet"
+spawn-sh-at-startup "swayidle -w"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup  "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup  "kdeconnect-cli --refresh"
@@ -216,14 +229,14 @@ binds {
 	Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
 	Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
 	Mod+V { spawn-sh "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
-	//Mod+D {spawn-sh "pkill fuzzel || fuzzel drun";}
-    Mod+D {spawn-sh "qs -c noctalia-shell ipc call launcher toggle";}
+	Mod+D {spawn-sh "pkill fuzzel || fuzzel drun";}
+    //Mod+D {spawn-sh "qs -c noctalia-shell ipc call launcher toggle";}
 	Mod+F {spawn "nemo";}
 	Mod+Shift+F {spawn-sh "kitty yazi";}
 	Alt+J {spawn-sh "foot nvim sample.js";}
 	Alt+M {spawn-sh "kitty mongosh";}
-	//Mod+Shift+W {spawn-sh "~/.local/bin/toggle_waybar";}
-    Mod+Shift+W {spawn-sh "qs -c noctalia-shell ipc call bar toggle";}
+	Mod+Shift+W {spawn-sh "~/.local/bin/toggle_waybar";}
+    //Mod+Shift+W {spawn-sh "qs -c noctalia-shell ipc call bar toggle";}
 	Mod+Alt+K {spawn-sh "~/.local/bin/killport 3000";}
 	Mod+Shift+R { spawn-sh "~/.local/bin/gammastep";}
 	Mod+Alt+S {spawn-sh "foot speedtest-rs";}
@@ -238,11 +251,11 @@ binds {
 
 	Mod+N {toggle-column-tabbed-display;}
 	Mod+Q { close-window; }
-	//Mod+L {spawn "swaylock";}
-    Mod+L {spawn-sh "qs -c noctalia-shell ipc call lockScreen lock";} 
+	Mod+L {spawn "swaylock";}
+    //Mod+L {spawn-sh "qs -c noctalia-shell ipc call lockScreen lock";} 
 	Ctrl+Alt+H {spawn-sh "swaylock & systemctl hibernate";}
-	// Ctrl+Alt+I {spawn-sh "~/.local/bin/idle_inhibitor";} 
-    Ctrl+Alt+I {spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle";}
+	Ctrl+Alt+I {spawn-sh "~/.local/bin/idle_inhibitor";} 
+    //Ctrl+Alt+I {spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle";}
 	Ctrl+Alt+P {spawn "poweroff";}
 	Ctrl+Alt+R {spawn "reboot";}
 	Mod+Left  { focus-column-left; }
