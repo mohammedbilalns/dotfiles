@@ -1,4 +1,0 @@
-pre-commit:
-  jobs:
-    - name: format qml
-      run: cd "$(git rev-parse --show-toplevel)" && ./Bin/dev/qmlfmt.sh && git update-index --again

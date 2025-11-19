@@ -11,7 +11,7 @@ CHAT_ID="$(pass telegram_chat_id)"
 
 
 ## create backup directory 
-mkdir -p "$backup_dir"
+mkdir -p "$backup_dir-$(date +%Y-%m-%d)"
 
 ## copy projects
 cp -r "$frontend_dir" "$backup_dir"
