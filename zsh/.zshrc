@@ -32,17 +32,17 @@ export VISUAL=nvim
 # PACKAGE MANAGEMENT (paru / pacman)
 ########################################
 
-alias i="paru -S"
-alias install="paru -S"
+alias i="sudo dnf install"
+alias install="sudo dnf install"
 
-alias r="paru -R"
-alias remove="paru -R"
+alias r="sudo dnf remove"
+alias remove="sudo dnf remove"
 
-alias s="paru -Ss"
-alias search="paru -Ss"
+alias s="dnf search"
+alias search="dnf search"
 
-alias u="paru -Syu"
-alias update="paru -Syu"
+alias u="sudo dnf update"
+alias update="sudo dnf update"
 
 alias rm_cache="sudo pacman -Scc"
 

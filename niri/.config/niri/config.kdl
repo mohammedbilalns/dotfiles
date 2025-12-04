@@ -5,6 +5,7 @@ input {
 	touchpad {
 		tap
 		natural-scroll
+        scroll-factor 2.0
 	}
 	mouse {}
 	focus-follows-mouse max-scroll-amount="0%"
@@ -59,24 +60,12 @@ overview {
   }
 }
 
-recent-windows {
-
-  highlight {
-    active-color "#7aa2f7"
-    urgent-color "#9b0000"
-    padding 10
-    corner-radius 10
-  }
-}
 
 layer-rule {
 	match namespace="^wallpaper$"
 	place-within-backdrop true
 }
 
-workspace "Dev"
-workspace "Debug"
-workspace "Research"
 // startup 
 //spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/" // quickshell
 spawn-sh-at-startup "swaybg -i .config/walpapers/js_original.png"
@@ -220,7 +209,7 @@ binds {
 	Mod+O { toggle-overview; }
 	//Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
 	
-	Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
+	Mod+B {spawn "brave-browser" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
 	Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
 	Mod+A {spawn-sh "~/.local/bin/open_chatbots";}
