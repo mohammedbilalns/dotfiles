@@ -21,7 +21,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 path+=$HOME/.cargo/bin
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:$(go env GOPATH)/bin"
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export EDITOR=nvim

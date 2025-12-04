@@ -1,3 +1,0 @@
- timeout 180 'swaylock' 
-timeout 300 'systemctl hibernate' 
-before-sleep 'swaylock -f -c 000000'

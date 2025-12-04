@@ -1,5 +1,0 @@
-device_name = "AT Translated Set 2 keyboard"
-
-[[remap]]
-input = ["KEY_NUMLOCK"]
-output = ["BTN_0"]
