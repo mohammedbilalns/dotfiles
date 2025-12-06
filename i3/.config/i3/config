@@ -1,6 +1,3 @@
-
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 
 font pango:SpaceMono Nerd Font 12
@@ -27,7 +24,6 @@ bindsym $mod+shift+b exec brave
 bindsym $mod+c exec code 
 bindsym $mod+g exec github-desktop
 bindsym $mod+f exec nemo
-
 
 bindsym $mod+q kill
 
