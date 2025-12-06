@@ -14,10 +14,7 @@ source <(fzf --zsh)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-########################################
 # PATHS & ENVIRONMENT VARIABLES
-########################################
 
 path+=$HOME/.cargo/bin
 export PATH="$HOME/.local/bin:$PATH"
@@ -27,10 +24,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export EDITOR=nvim
 export VISUAL=nvim
 
-
-########################################
 # PACKAGE MANAGEMENT (paru / pacman)
-########################################
 
 alias i="paru -S"
 alias install="paru -S"
@@ -46,10 +40,7 @@ alias update="paru -Syu"
 
 alias rm_cache="sudo pacman -Scc"
 
-
-########################################
 # GIT SHORTCUTS
-########################################
 
 alias gs="git status"
 alias ga="git add"
@@ -58,18 +49,16 @@ alias gp="git push"
 alias gb="git branch"
 alias gl="git log"
 
-
-########################################
 # UTILITIES 
-########################################
 
 alias c="clear"
+alias suod="sudo"
 alias hx="helix"
 alias cat="bat"
 alias asr="atuin scripts run"
 alias run="~/upstride-backend/init-workspace.sh"
+alias hl="rg --passthru"
 
 alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
-

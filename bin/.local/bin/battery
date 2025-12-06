@@ -10,9 +10,7 @@ do
 
     # Only show notifications if charging
     if [ "$charging_status" = "Charging" ]; then
-        if [ "$battery_level" -ge 75 ]; then
-            notify-send "Battery is above 75%!" "Charging: ${battery_level}%"
-        elif [ "$battery_level" -le 25 ]; then
+        if [ "$battery_level" -le 25 ]; then
             notify-send "Battery is below 25%!" "Charging: ${battery_level}%"
         fi
     fi

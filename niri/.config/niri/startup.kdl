@@ -1,0 +1,13 @@
+// startup 
+//spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/" // quickshell
+spawn-sh-at-startup "swaybg -i .config/walpapers/js_original.png"
+spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
+spawn-sh-at-startup "~/.local/bin/battery"
+//spawn-sh-at-startup "/usr/lib/xfce-polkit/xfce-polkit"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "nm-applet"
+spawn-sh-at-startup "swayidle -w"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup  "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup  "kdeconnect-cli --refresh"
+//spawn-at-startup "battwatch"

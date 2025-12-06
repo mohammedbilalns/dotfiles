@@ -1,0 +1,20 @@
+#!/bin/bash
+
+linecount() {
+  rg . --line-number --no-heading | wc -l
+}
+
+fileCount() {
+  rg --files | wc -l
+}
+
+
+
+case "$1" in
+  linecount)  linecount ;;
+  filecount)   fileCount ;;
+  *)
+    echo "Usage: $0 {linecount|filecount}"
+    exit 1
+    ;;
+esac

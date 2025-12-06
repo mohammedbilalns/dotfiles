@@ -6,6 +6,7 @@
     "modules-left": [
         "niri/workspaces",
 				"cffi/niri-taskbar"
+        //"wlr/taskbar"
     ],
     "modules-center": [
         "clock"
@@ -18,10 +19,6 @@
         "battery",
         "tray"
     ],
-    "custom/workspaces": {
-        "exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
-        "signal": 8
-    },
     "custom/screenshot": {
         "format": "󰹑",
         "on-click": "grimshot save output && notify-send 'Screenshot Saved'",
@@ -104,13 +101,18 @@
 		"cffi/niri-taskbar": {
 			"module_path": "/usr/lib/waybar/libniri_taskbar.so",
 			"apps": {
-				"signal": [
-					{
-						"match": "\\([0-9]+\\)$",
-						"class": "unread"
-					}
-				]
-			}
-		}
+      "signal": [
+        {
+          "match": "\\([0-9]+\\)$",
+          "class": "unread"
+        }
+      ]
+    }
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 24,
+    "tooltip": false,
+  },
 }
 }

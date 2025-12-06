@@ -9,7 +9,7 @@ return {
       },
       sections = {
         lualine_a = {
-          { "mode", separator = { left = " ", right = "" }, icon = "" },
+          { "mode", icons_enabled = false},
         },
         lualine_b = {
           {
@@ -56,9 +56,9 @@ return {
             update_in_insert = true,
           },
         },
-        lualine_y = {},
+        lualine_y = {'progress'},
         lualine_z = {
-          { "location", separator = { left = "", right = " " }, icon = "" },
+          { "location", icon = "" },
         },
       },
       inactive_sections = {

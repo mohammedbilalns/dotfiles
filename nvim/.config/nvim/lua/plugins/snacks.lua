@@ -34,6 +34,7 @@ return{
 		{ "<leader>sc",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
 		{ "<leader>nl",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
 		{ "<leader>nh", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    {"<leader>lg", function () Snacks.lazygit.open() end, desc = "Open Lazygit"}
 
 	},
 }

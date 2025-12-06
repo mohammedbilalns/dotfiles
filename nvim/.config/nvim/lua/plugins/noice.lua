@@ -4,8 +4,7 @@ return{
 		opts = {
 		},
 		dependencies = {
-			"MunifTanjim/nui.nvim"	
-
+			"MunifTanjim/nui.nvim"
 		}
 }
 

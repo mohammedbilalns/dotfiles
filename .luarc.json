@@ -3,5 +3,8 @@
         "vim",
         "TodoTelescope",
         "Snacks"
+    ],
+    "diagnostics.disable": [
+        "unused-local"
     ]
 }

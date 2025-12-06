@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Use nullglob so * expands to nothing if directory is empty
+shopt -s nullglob
+
+# List files and directories (one per line)
+ITEMS=(*)
+
+if [ ${#ITEMS[@]} -eq 0 ]; then
+  echo "No files in this directory."
+  exit 1
+fi
+
+# Let gum handle selection; store result into an array safely
+mapfile -t SELECTED < <(
+  printf '%s\n' "${ITEMS[@]}" | \
+  gum choose --no-limit --height 20 --cursor ">" --header "Select files to compress"
+)
+
+if [ ${#SELECTED[@]} -eq 0 ]; then
+  echo "Nothing selected. Exiting."
+  exit 1
+fi
+
+# Ask compression format
+FORMAT=$(gum choose "zip" "tar.xz" --header "Choose Compression Format")
+if [ -z "$FORMAT" ]; then
+  echo "Compression format not selected. Exiting."
+  exit 1
+fi
+
+# Ask output file name
+FILENAME=$(gum input --placeholder "Enter output file name (without extension)")
+if [ -z "$FILENAME" ]; then
+  echo "File name is required. Exiting."
+  exit 1
+fi
+
+
+echo "Starting compression..."
+
+# Calculate total size of selected items (for PV)
+SIZE=$(du -cb "${SELECTED[@]}" | tail -1 | awk '{print $1}')
+
+if [ "$FORMAT" = "zip" ]; then
+    {
+        zip -r - "${SELECTED[@]}" | pv -s "$SIZE" > "${FILENAME}.zip"
+    } 2>&1 | while read -r line; do
+        gum style --foreground 212 "Progress: $line"
+    done
+    RESULT="${FILENAME}.zip"
+
+else
+    {
+        tar -cf - "${SELECTED[@]}" | pv -s "$SIZE" | xz -9 -c > "${FILENAME}.tar.xz"
+    } 2>&1 | while read -r line; do
+        gum style --foreground 212 "Progress: $line"
+    done
+    RESULT="${FILENAME}.tar.xz"
+fi
+
+echo -e "\nDone! Created: $RESULT"

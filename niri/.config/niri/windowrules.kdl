@@ -1,0 +1,46 @@
+window-rule {
+	geometry-corner-radius 3
+	clip-to-geometry true
+}
+window-rule{
+	match app-id="code"
+	open-maximized true 
+}
+
+window-rule {
+	match app-id="firefox$" title="^Picture-in-Picture$"
+	open-floating true
+	default-floating-position x=32 y=32 relative-to="bottom-left"
+}
+
+window-rule {
+	match app-id="xfce-polkit" 
+	open-floating true
+	default-floating-position x=728 y=400 relative-to="bottom-left"
+}
+
+window-rule {
+	match app-id="zen$" title="^Picture-in-Picture$"
+	open-floating true
+	default-floating-position x=32 y=32 relative-to="bottom-left"	
+}
+
+window-rule {
+	match app-id="kdenlive"
+	open-maximized true
+}
+
+window-rule {
+	match title="Nemo"
+}
+
+window-rule {
+	match title="Picture in picture"
+	open-floating true 
+	default-floating-position x=32 y=32 relative-to="bottom-left"
+}
+
+window-rule {
+	match app-id="Alacritty"
+	max-height 300
+}

@@ -1,0 +1,11 @@
+input {
+	keyboard {
+		xkb {}
+	}
+	touchpad {
+		tap
+		natural-scroll
+	}
+	mouse {}
+	focus-follows-mouse max-scroll-amount="0%"
+}

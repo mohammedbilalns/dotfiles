@@ -9,7 +9,6 @@ return {
   },
   config = function()
     vim.opt.sessionoptions:append("globals")
-
     require("neovim-project").setup({
       projects = {
         "~/projects/*",
