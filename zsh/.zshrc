@@ -25,18 +25,18 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # PACKAGE MANAGEMENT (paru / pacman)
+PKG_MGR="yay"
+alias i="${PKG_MGR} -S"
+alias install="${PKG_MGR} -S"
 
-alias i="paru -S"
-alias install="paru -S"
+alias r="${PKG_MGR} -R"
+alias remove="${PKG_MGR} -R"
 
-alias r="paru -R"
-alias remove="paru -R"
+alias s="${PKG_MGR} -Ss"
+alias search="${PKG_MGR} -Ss"
 
-alias s="paru -Ss"
-alias search="paru -Ss"
-
-alias u="paru -Syu"
-alias update="paru -Syu"
+alias u="${PKG_MGR} -Syu"
+alias update="${PKG_MGR} -Syu"
 
 alias rm_cache="sudo pacman -Scc"
 

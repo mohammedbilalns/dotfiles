@@ -14,8 +14,6 @@ This repository contains my personal dotfiles for three Wayland compositors:
 https://github.com/user-attachments/assets/bd963331-7df0-47c6-96f5-e1357c816439
 
 
-
-
 ## 🛠 Setup & Installation  
 
 This repository is managed using [`stow`](https://www.gnu.org/software/stow/), a symlink manager. To install the dotfiles for a specific compositor, run:  
@@ -83,5 +81,4 @@ stow zsh
 - These configurations are optimized for a Wayland environment.  
 - Feel free to modify and adapt these dotfiles for your setup!  
 
-🚀 **Happy Tiling!** 🎨
 

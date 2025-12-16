@@ -67,7 +67,6 @@ layer-rule {
 	place-within-backdrop true 
 }
 
-
 prefer-no-csd
 cursor {
 	hide-when-typing

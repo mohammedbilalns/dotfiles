@@ -2,85 +2,46 @@
 
 print_usage() {
     echo "Usage: $0 -i input_file -p parts -t timestamp1 timestamp2 ..."
-    echo "Example: $0 -i \"video.mp4\" -p 4 -t 00:30:00 01:00:00 01:30:00"
     exit 1
 }
 
 INPUT=""
 PARTS=0
 TIMESTAMPS=()
-
 PARSE_TIMESTAMPS=0
 
-# Argument parsing
 while [[ $# -gt 0 ]]; do
-    case "$1" in
-        -i)
-            INPUT="$2"
-            shift 2
-            ;;
-        -p)
-            PARTS="$2"
-            shift 2
-            ;;
-        -t)
-            PARSE_TIMESTAMPS=1
-            shift
-            ;;
-        -*)
-            echo "Unknown option: $1"
-            print_usage
-            ;;
-        *)
-            if [[ $PARSE_TIMESTAMPS -eq 1 ]]; then
-                TIMESTAMPS+=("$1")
-                shift
-            else
-                echo "Unknown parameter passed: $1"
-                print_usage
-            fi
-            ;;
-    esac
+  case "$1" in
+    -i) INPUT="$2"; shift 2 ;;
+    -p) PARTS="$2"; shift 2 ;;
+    -t) PARSE_TIMESTAMPS=1; shift ;;
+    *)  [[ $PARSE_TIMESTAMPS -eq 1 ]] && TIMESTAMPS+=("$1") && shift || print_usage ;;
+  esac
 done
 
-# Validation
-if [[ -z "$INPUT" || "$PARTS" -le 0 ]]; then
-    echo "❌ Error: input file (-i) and number of parts (-p) are required."
-    print_usage
-fi
+[[ -z "$INPUT" || "$PARTS" -le 0 ]] && print_usage
+[[ ${#TIMESTAMPS[@]} -ne $((PARTS - 1)) ]] && print_usage
 
-if [[ ${#TIMESTAMPS[@]} -ne $((PARTS - 1)) ]]; then
-    echo "❌ Error: Expected $((PARTS - 1)) timestamps for $PARTS parts, got ${#TIMESTAMPS[@]}"
-    print_usage
-fi
-
-# Convert time (HH:MM:SS) to seconds
-time_to_seconds() {
+# Convert HH:MM:SS to seconds
+to_sec() {
     IFS=: read -r h m s <<< "$1"
-    echo $((10#$h * 3600 + 10#$m * 60 + 10#$s))
+    echo $((10#$h*3600 + 10#$m*60 + 10#$s))
 }
 
-# Prepare times
-STARTS=("00:00:00" "${TIMESTAMPS[@]}")
-ENDS=("${TIMESTAMPS[@]}" "end")
+# Build ffmpeg command
+CMD=(ffmpeg -hide_banner -loglevel error -i "$INPUT")
 
-# Run split
-for i in "${!STARTS[@]}"; do
-    START="${STARTS[$i]}"
-    END="${ENDS[$i]}"
-    OUTPUT="part$((i + 1)).mp4"
-
-    if [[ "$END" == "end" ]]; then
-        echo "▶️ $OUTPUT: from $START to end"
-        ffmpeg -hide_banner -loglevel error -ss "$START" -i "$INPUT" -c copy "$OUTPUT"
-    else
-        START_SEC=$(time_to_seconds "$START")
-        END_SEC=$(time_to_seconds "$END")
-        DURATION=$((END_SEC - START_SEC))
-        echo "▶️ $OUTPUT: from $START for $DURATION seconds"
-        ffmpeg -hide_banner -loglevel error -ss "$START" -t "$DURATION" -i "$INPUT" -c copy "$OUTPUT"
-    fi
+START_SEC=0
+for i in "${!TIMESTAMPS[@]}"; do
+  END_SEC=$(to_sec "${TIMESTAMPS[$i]}")
+  DURATION=$((END_SEC - START_SEC))
+  CMD+=(-map 0 -ss "$START_SEC" -t "$DURATION" -c copy "part$((i+1)).mp4")
+  START_SEC=$END_SEC
 done
 
-echo "✅ Done splitting '$INPUT' into $PARTS parts."
+# Last part until end
+CMD+=(-map 0 -ss "$START_SEC" -c copy "part$PARTS.mp4")
 
+echo "▶️ Running optimized split..."
+"${CMD[@]}"
+echo "✅ Done splitting '$INPUT' into $PARTS parts."
