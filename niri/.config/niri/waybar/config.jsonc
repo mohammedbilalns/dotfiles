@@ -5,35 +5,18 @@
     "spacing": 0,
     "modules-left": [
         "niri/workspaces",
-				"cffi/niri-taskbar"
+				"niri/window",
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-        "custom/pomodoro",
         "network",
         "pulseaudio",
         "backlight",
         "battery",
         "tray"
     ],
-    "custom/workspaces": {
-        "exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
-        "signal": 8
-    },
-    "custom/screenshot": {
-        "format": "󰹑",
-        "on-click": "grimshot save output && notify-send 'Screenshot Saved'",
-        "tooltip-format": "{Screenshot a region}"
-    },
-    "custom/pomodoro": {
-        "format": "{}",
-        "return-type": "json",
-        "exec": "waybar-module-pomodoro",
-        "on-click": "waybar-module-pomodoro toggle",
-        "on-click-right": "waybar-module-pomodoro reset"
-    },
     "tray": {
         "spacing": 10
     },
@@ -101,16 +84,9 @@
 					"default": ["󰕿", "󰖀", "󰕾"]
 				}
 		},
-		"cffi/niri-taskbar": {
-			"module_path": "/usr/lib/waybar/libniri_taskbar.so",
-			"apps": {
-				"signal": [
-					{
-						"match": "\\([0-9]+\\)$",
-						"class": "unread"
-					}
-				]
-			}
-		}
+    "niri/window": {
+        "format": "",
+        "icon": true
+    },
 }
 }

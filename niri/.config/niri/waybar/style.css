@@ -62,10 +62,10 @@ tooltip label {
 }
 
 #workspaces,
+#window,
 #taskbar,
 .niri-taskbar,
 #clock,
-#custom-pomodoro,
 #network,
 #pulseaudio,
 #backlight,
@@ -76,7 +76,6 @@ tooltip label {
     margin-bottom: 3px;
 }
 
-#network,
 #pulseaudio,
 #backlight,
 #battery {
@@ -87,8 +86,6 @@ tooltip label {
     border-right: none;
 }
 
-#cpu,
-#custom-screenshot,
 #workspaces{
     border-radius: 10px 0px 0px 10px;
     border-top: 2px solid @neutral;
@@ -100,9 +97,25 @@ tooltip label {
     border-radius: 0px 0px 0px 0px;
 }
 
+#network {
+    border-radius: 10px 0px 0px 10px;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: 2px solid @neutral;
+    border-right: none;
+}
+
+
 #taskbar,
 .niri-taskbar {
     border-radius: 0 10px 10px 0;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-right: 2px solid @neutral;
+    border-left: none;
+}
+#window {
+    border-radius: 0px 10px 10px 0px;
     border-top: 2px solid @neutral;
     border-bottom: 2px solid @neutral;
     border-right: 2px solid @neutral;
@@ -149,9 +162,7 @@ tooltip label {
     border-right: 0px;
 }
 
-#window {
-    border-radius: 10px;
-}
+
 
 #pulseaudio {
     color: @accent-second;
@@ -181,18 +192,6 @@ tooltip label {
     color: @accent-second;
 }
 
-#custom-pomodoro {
-    color: @warning;
-    margin-right: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-left: 2px solid @neutral;
-    border-right: none;
-}
 
 #temperature {
     color: @good;
