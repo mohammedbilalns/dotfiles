@@ -26,7 +26,7 @@ return{
 		{ "<leader>ft", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     {"<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find string under cursor in project"},
     {"<leader>fb", function() Snacks.picker.buffers() end, desc = "List open buffers"},
-		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" }, 
+		{ "<leader>st", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
     {"<leader>fh", function () Snacks.picker.help() end, desc="Search help tags"},
     {"<leader>fo", function() Snacks.picker.todo_comments() end, desc = "show todo comments"},
 

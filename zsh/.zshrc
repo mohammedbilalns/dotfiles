@@ -25,7 +25,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # PACKAGE MANAGEMENT (paru / pacman)
-PKG_MGR="yay"
+PKG_MGR="paru"
 alias i="${PKG_MGR} -S"
 alias install="${PKG_MGR} -S"
 
@@ -62,3 +62,16 @@ alias hl="rg --passthru"
 alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
+
+# pnpm
+export PNPM_HOME="/home/bilalnsmuhammed/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+

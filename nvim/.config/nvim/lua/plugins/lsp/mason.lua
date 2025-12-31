@@ -12,7 +12,8 @@ return {
       "pyright",
       "eslint",
       "gopls",
-      "rust_analyzer"
+      "rust_analyzer",
+      "astro",
     }
   },
   dependencies = {
