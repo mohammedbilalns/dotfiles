@@ -9,10 +9,8 @@ return {
   dependencies = {
     {
       "williamboman/mason.nvim",
-      opts = {}
+      opts={}
     },
     "neovim/nvim-lspconfig"
   }
 }
-
-

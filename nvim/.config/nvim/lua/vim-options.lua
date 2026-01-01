@@ -8,12 +8,19 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.wrap = true 
+-- search settings
+opt.ignorecase = true 
+opt.smartcase = true
 -- cursor
 opt.cursorline = true
 -- apprearance
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+--backspace
+opt.backspace = "indent,eol,start"
+-- clipboard
+opt.clipboard:append("unnamedplus")
 -- window splitting 
 opt.splitright = true
 opt.splitbelow = true
