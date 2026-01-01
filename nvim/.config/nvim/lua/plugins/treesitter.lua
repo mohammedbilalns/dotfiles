@@ -4,10 +4,6 @@ return {
   build = ":TSUpdate",
   branch = "master",
   dependencies = {
-    {
-      "windwp/nvim-ts-autotag",
-      ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    },
   },
   config = function()
     local treesitter = require("nvim-treesitter.configs")
@@ -24,9 +20,8 @@ return {
       indent = { enable = true },
       fold = { enable = true },
       ensure_installed = {
-        "c", "lua", "vim", "vimdoc", "latex", "rust", "bash",
-        "json", "javascript", "typescript", "tsx", "prisma",
-        "python", "yaml", "dockerfile", "gitignore","go"
+         "lua", "vim", "vimdoc", "bash",
+        "json", "python", "yaml", "dockerfile", "gitignore","go"
       },
       incremental_selection = {
         enable = true,
@@ -40,4 +35,5 @@ return {
     })
   end,
 }
+
 

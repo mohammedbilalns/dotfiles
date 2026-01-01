@@ -4,8 +4,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local buf = ev.buf
 
-    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", { buffer = buf, silent = true, desc = "Show LSP references" })
-    keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, silent = true, desc = "Go to declaration" })
+    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", {
+      buffer = buf, silent = true, desc = "Show LSP references"
+    })
+    keymap.set("n", "gD", vim.lsp.buf.declaration, {
+      buffer = buf, silent = true, desc = "Go to declaration"
+    })
     --keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, silent = true, desc = "Show LSP definition" })
     keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", { buffer = buf, silent = true, desc = "Show LSP implementations" })
     keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", { buffer = buf, silent = true, desc = "Show LSP type definitions" })

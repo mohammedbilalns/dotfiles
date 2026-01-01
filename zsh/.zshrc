@@ -28,22 +28,22 @@ export VISUAL=nvim
 
 
 ########################################
-# PACKAGE MANAGEMENT (paru / pacman)
+# PACKAGE MANAGEMENT (apt)
 ########################################
 
-alias i="paru -S"
-alias install="paru -S"
+alias i="sudo apt install"
+alias install="sudo apt install"
 
-alias r="paru -R"
-alias remove="paru -R"
+alias r="sudo apt remove"
+alias remove="sudo apt remove"
 
-alias s="paru -Ss"
-alias search="paru -Ss"
+alias s="apt search"
+alias search="apt search"
 
-alias u="paru -Syu"
-alias update="paru -Syu"
+alias u="sudo apt update && sudo apt upgrade"
+alias update="sudo apt update && sudo apt upgrade"
 
-alias rm_cache="sudo pacman -Scc"
+alias rm_cache="sudo apt autoremove"
 
 
 ########################################
@@ -72,3 +72,10 @@ alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
+
+# bun completions
+[ -s "/root/.bun/_bun" ] && source "/root/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
