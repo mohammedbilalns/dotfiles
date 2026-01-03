@@ -1,0 +1,222 @@
+@define-color background      #1a1b26;
+@define-color foreground      #a9b1d6;
+@define-color accent-primary  #7aa2f7;
+@define-color accent-second   #bb9af7;
+@define-color warning         #f7768e;
+@define-color good            #9ece6a;
+@define-color neutral         #414868;
+
+* {
+    border: none;
+    border-radius: 10px;
+    font-family: "Cousine Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @foreground;
+}
+
+tooltip {
+    background: @background;
+    opacity: 0.8;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @neutral;
+}
+
+tooltip label {
+    color: @foreground;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: @accent-second;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: @foreground;
+}
+
+#workspaces button.focused {
+    color: @foreground;
+    background: @neutral;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: @background;
+    background: @warning;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: @neutral;
+    color: @foreground;
+    border-radius: 10px;
+}
+
+#workspaces,
+#taskbar,
+#dwl-window,
+#clock,
+#custom-pomodoro,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#tray {
+    background: @background;
+    padding: 0px 8px;
+    margin-bottom: 3px;
+}
+
+#network,
+#pulseaudio,
+#backlight,
+#battery {
+    border-radius: 0;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: none;
+    border-right: none;
+}
+
+#cpu,
+#custom-screenshot,
+#workspaces{
+    border-radius: 10px 0px 0px 10px;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: 2px solid @neutral;
+    border-right: none;
+}
+#network{
+    border-radius: 0px 0px 0px 0px;
+}
+
+#taskbar,
+.dwl-window {
+    border-radius: 0 10px 10px 0;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-right: 2px solid @neutral;
+    border-left: none;
+}
+
+#tray {
+    border-radius: 0 10px 10px 0;
+    margin-right: 10px;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-right: 2px solid @neutral;
+    border-left: none;
+}
+
+#clock {
+    border-radius: 10px;
+    color: @accent-primary;
+    border: 2px solid @neutral;
+}
+
+#workspaces,
+#custom-screenshot {
+    margin-left: 10px;
+}
+
+#custom-lock_screen,
+#clock {
+    margin-right: 10px;
+}
+
+#temperature.critical {
+    color: @warning;
+}
+
+#workspaces {
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-power_profile {
+    color: @good;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 10px;
+}
+
+#pulseaudio {
+    color: @accent-second;
+}
+
+#pulseaudio.microphone {
+    color: @good;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#battery {
+    color: @good;
+    border-left: 0px;
+}
+
+#taskbar button:hover,
+.dwl-window button:hover {
+    background: #383E4A;
+}
+
+#network {
+    color: @accent-primary;
+}
+
+#backlight {
+    color: @accent-second;
+}
+
+#custom-pomodoro {
+    color: @warning;
+    margin-right: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top: 2px solid @neutral;
+    border-bottom: 2px solid @neutral;
+    border-left: 2px solid @neutral;
+    border-right: none;
+}
+
+#temperature {
+    color: @good;
+}
+
+#memory {
+    color: @accent-primary;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
