@@ -2,7 +2,7 @@ binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
   Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
   Mod+Space { toggle-window-floating; }
-  Mod+T {spawn "foot";}
+  Mod+T {spawn "kitty";}
   Mod+Shift+T { spawn-sh "foot zellij" ; }
   Mod+Shift+B { spawn "floorp";}
   Mod+P { spawn "wl-color-picker";}
@@ -19,7 +19,8 @@ binds {
   Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
   Mod+G { spawn "github-desktop"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";   }
   Mod+V { spawn-sh "cliphist list | wofi --dmenu | cliphist decode | wl-copy";}
-  Mod+D {spawn-sh "pkill fuzzel || fuzzel drun";}
+  //Mod+D {spawn-sh "pkill fuzzel || fuzzel drun";}
+  Mod+D {spawn-sh "pkill anyrun || anyrun" ;}
   //Mod+D {spawn-sh "qs -c noctalia-shell ipc call launcher toggle";}
   Mod+F {spawn "nemo";}
   Mod+Shift+F {spawn-sh "kitty yazi";}
@@ -41,7 +42,7 @@ binds {
 
   Mod+N {toggle-column-tabbed-display;}
   Mod+Q { close-window; }
-  Mod+L allow-inhibiting=false {spawn "swaylock";}
+  Mod+L allow-inhibiting=false {spawn "hyprlock";}
   //Mod+L {spawn-sh "qs -c noctalia-shell ipc call lockScreen lock";} 
   Ctrl+Alt+H {spawn-sh "swaylock & systemctl hibernate";}
   Ctrl+Alt+I {spawn-sh "~/.local/bin/idle_inhibitor";} 

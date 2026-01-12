@@ -13,8 +13,8 @@ return {
       projects = {
         "~/projects/*",
         "~/.config/*",
-        "~/upstride-backend/*",
-        "~/upstride-frontend/",
+        "~/upstride/upstride-backend/*",
+        "~/upstride/upstride-frontend/",
       },
       picker = { type = "snacks" },
       forget_project_keys = { i = "<C-d>", n = "d" },

@@ -1,0 +1,121 @@
+@define-color accent #6366f1;
+@define-color bg-color #0f172a;
+@define-color fg-color #f1f5f9;
+@define-color desc-color #94a3b8;
+@define-color card-bg #1e293b;
+@define-color hover-bg #334155;
+
+window {
+  background: transparent;
+}
+
+box.main {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  background-color: @bg-color;
+  background: linear-gradient(145deg, @bg-color, #0c1220);
+  box-shadow: 
+    0 4px 12px -2px rgba(0, 0, 0, 0.2),
+    inset 0 0 8px rgba(99, 102, 241, 0.1);
+}
+
+
+text {
+  min-height: 26px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: @fg-color;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+text:focus {
+  border-color: @accent;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.matches {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+  padding: 1px 0;
+}
+
+box.plugin:first-child {
+  margin-top: 2px;
+}
+
+box.plugin {
+  padding: 2px;
+  margin: 1px 0;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+box.plugin:hover {
+  background-color: @hover-bg;
+}
+
+box.plugin.info {
+  min-width: 180px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+list.plugin {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 1px;
+}
+
+label.match {
+  color: @fg-color;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+label.match.description {
+  font-size: 12px;
+  color: @desc-color;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+label.plugin.info {
+  font-size: 14px;
+  color: @fg-color;
+  line-height: 1.4;
+}
+
+.match {
+  background: transparent;
+  border-radius: 4px;
+  margin: 0.5px 0;
+  padding: 2px 6px;
+  transition: all 0.2s ease;
+}
+
+.match:hover {
+  background: @hover-bg;
+}
+
+.match:selected {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), transparent);
+  border-left: 2px solid @accent;
+  padding-left: 6px;
+  animation: fadeInSlide 0.2s ease;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
