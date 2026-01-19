@@ -2,7 +2,7 @@ binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
   Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
   Mod+Space { toggle-window-floating; }
-  Mod+T {spawn "kitty";}
+  Mod+T {spawn "foot";}
   Mod+Shift+T { spawn-sh "foot zellij" ; }
   Mod+Shift+B { spawn "floorp";}
   Mod+P { spawn "wl-color-picker";}
