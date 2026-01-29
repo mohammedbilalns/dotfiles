@@ -4,6 +4,7 @@ return {
     ensure_installed = {
       "ts_ls",
       "lua_ls",
+
     }
   },
   dependencies = {

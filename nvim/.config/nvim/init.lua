@@ -1,4 +1,5 @@
 vim.cmd [[set nomodeline]]
 require("vim-options")
-require("lazy-config")
+require("core.init")
 require("lsp")
+require("lazy-config")
