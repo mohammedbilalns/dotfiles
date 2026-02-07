@@ -12,8 +12,8 @@ grace-no-mouse
 grace-no-touch
 
 # Blur and vignette effects
-effect-blur=20x20
-effect-vignette=0.5:0.5  # Softer vignette for better focus
+effect-blur=7x7
+effect-vignette=2:2  # Softer vignette for better focus
 
 # Font
 font="Inter"
@@ -26,7 +26,7 @@ indicator
 indicator-radius=160
 indicator-thickness=12
 
-# Colors - Forest Night inspired
+# Colors -
 line-color=1a2125
 ring-color=1a2125
 inside-color=1a2125
@@ -65,4 +65,4 @@ separator-color=00000000  # fully transparent
 # Time & date format
 datestr=%A, %d %B
 timestr=%I:%M %p
-
+screen

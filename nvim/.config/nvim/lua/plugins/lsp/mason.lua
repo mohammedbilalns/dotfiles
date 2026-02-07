@@ -9,7 +9,7 @@ return {
       "lua_ls",
       "emmet_ls",
       "prismals",
-      "pyright",
+      "ruff",
       "eslint",
       "gopls",
       "rust_analyzer",

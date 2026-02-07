@@ -14,6 +14,16 @@ window-rule {
 }
 
 window-rule {
+  match app-id="firefox"
+  open-on-workspace "Explore"
+}
+
+window-rule {
+  match app-id="brave"
+  open-on-workspace "Explore"
+}
+
+window-rule {
 	match app-id="xfce-polkit" 
 	open-floating true
 	default-floating-position x=728 y=400 relative-to="bottom-left"

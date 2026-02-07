@@ -1,2 +1,17 @@
 #!/bin/bash
-find . -type f -exec echo '==== {} ====' \; -exec bat --paging=never {} \;
+
+tree -a \
+  -I 'node_modules|dist|.git' \
+  --prune
+
+echo
+echo "================ FILE CONTENTS ================"
+echo
+
+# 2️⃣ Show file contents (skip same dirs + .env*)
+find . \
+  \( -type d \( -name node_modules -o -name dist -o -name .git \) -prune \) -o \
+  \( -type f ! -name ".env*" \
+     -exec echo '==== {} ====' \; \
+     -exec cat {} \; \
+  \)

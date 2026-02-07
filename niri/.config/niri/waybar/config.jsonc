@@ -27,7 +27,7 @@
     "custom/pomodoro": {
         "format": "{}",
         "return-type": "json",
-        "exec": "waybar-module-pomodoro -w 40",
+        "exec": "waybar-module-pomodoro -w 25",
         "on-click": "waybar-module-pomodoro toggle",
         "on-click-right": "waybar-module-pomodoro reset"
     },

@@ -5,49 +5,51 @@ include "keybindings.kdl"
 include "animations.kdl"
 
 output "eDP-1" {
-	mode "1920x1080@60"
-	scale 1.1
-	transform  "normal"
-	position x=1280 y=0
+  mode "1920x1080@60"
+  scale 1.1
+  transform  "normal"
+  position x=1280 y=0
 }
-
+output "HDMI-A-1"{
+  scale 1.5
+}
 layout {
-	gaps 3
-	background-color "transparent"
-	center-focused-column "never"
-	preset-column-widths {
-		proportion 0.33333
-		proportion 0.5
-		proportion 0.66667
-	}
-	default-column-width { proportion 0.5; }
-	focus-ring {
-		width 2
-		active-color "#7aa2f7"
-		inactive-color "#414868"
-	}
-	border {
-	  width 1
-	  active-color "#7aa2f7"
-	  inactive-color "#414868"
-	  urgent-color "#9b0000"
-	}
-	shadow{
-	  on
-	}
-	tab-indicator {
-	  width 7 
-	  gap 0 
-	  length total-proportion=1.0
-	  position "left"
-	  place-within-column
-	}
+  gaps 3
+  background-color "transparent"
+  center-focused-column "never"
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+  default-column-width { proportion 0.5; }
+  focus-ring {
+    width 2
+    active-color "#7aa2f7"
+    inactive-color "#414868"
+  }
+  border {
+    width 1
+    active-color "#7aa2f7"
+    inactive-color "#414868"
+    urgent-color "#9b0000"
+  }
+  shadow{
+    on
+  }
+  tab-indicator {
+    width 7 
+    gap 0 
+    length total-proportion=1.0
+    position "left"
+    place-within-column
+  }
 }
 
 overview {
-	zoom 1
-    backdrop-color "#26233a"
-	workspace-shadow {
+  zoom 1
+  backdrop-color "#26233a"
+  workspace-shadow {
     off
   }
 }
@@ -63,26 +65,26 @@ recent-windows {
 }
 
 layer-rule {
-	match namespace="^wallpaper$"
-	place-within-backdrop true 
+  match namespace="^wallpaper$"
+  place-within-backdrop true 
 }
 
 prefer-no-csd
 cursor {
-	hide-when-typing
-	hide-after-inactive-ms 5000
+  hide-when-typing
+  hide-after-inactive-ms 5000
 }
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 hotkey-overlay{
-	skip-at-startup
+  skip-at-startup
 }
 environment{
-	QT_QPA_PLATFORMTHEME "qt6ct"
-	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-	QT_AUTO_SCREEN_SCALE_FACTOR "1"
-	QT_STYLE_OVERRIDE "kvantum"
-	ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  QT_AUTO_SCREEN_SCALE_FACTOR "1"
+  QT_STYLE_OVERRIDE "kvantum"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 debug {
@@ -90,5 +92,6 @@ debug {
 }
 
 switch-events {
-	lid-close {spawn "systemctl hibernate "; }
+  lid-close {spawn "systemctl hibernate "; }
 }
+
