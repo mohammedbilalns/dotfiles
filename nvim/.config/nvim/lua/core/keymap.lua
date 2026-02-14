@@ -24,3 +24,9 @@ vim.keymap.set("n", "<leader>bq", function()
     end
   end
 end, { desc = "Close all other buffers" })
+
+-- Resize with Ctrl + hjkl
+keymap.set("n", "<C-h>", "<C-w><", { desc = "Decrease window width" })
+keymap.set("n", "<C-l>", "<C-w>>", { desc = "Increase window width" })
+keymap.set("n", "<C-k>", "<C-w>+", { desc = "Increase window height" })
+keymap.set("n", "<C-j>", "<C-w>-", { desc = "Decrease window height" })

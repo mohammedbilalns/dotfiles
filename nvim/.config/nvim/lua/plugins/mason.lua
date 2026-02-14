@@ -1,11 +1,11 @@
 return {
-  "williamboman/mason-lspconfig.nvim",
-  dependencies = {
-    "williamboman/mason.nvim",
-    "neovim/nvim-lspconfig",
-  },
+  "williamboman/mason.nvim",
+  config = function(_, opts)
+    require("mason").setup(opts)
+  end,
   opts = {
     ensure_installed = {
+      -- LSPs from your existing config
       "tsgo",
       "html",
       "cssls",
@@ -18,6 +18,10 @@ return {
       "gopls",
       "rust_analyzer",
       "astro",
+
+      -- DAPs we need
+      "js-debug-adapter",
+      "delve",
     },
   },
 }

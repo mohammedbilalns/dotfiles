@@ -37,6 +37,8 @@ binds {
   XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
   Shift+F6 allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
   Shift+F5 allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
+  XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl"  "s" "1%+";}
+  XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl"  "s" "1%-";}
   F5 allow-when-locked=true {spawn "brightnessctl"  "s" "5%-";}
   F6 allow-when-locked=true {spawn "brightnessctl" "s" "5%+";}
 

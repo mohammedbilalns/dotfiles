@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+PROJECT_LOCATION="$HOME/upstride/upstride-backend"
+
+LAYOUT1="layout1.kdl"
+LAYOUT2="layout2.kdl"
+
+cd "$PROJECT_LOCATION"
+
+foot -e zellij --layout "$LAYOUT1" &
+
+foot -e zellij --layout "$LAYOUT2" &

@@ -12,3 +12,4 @@ alias u="${PKG_MGR} -Syu"
 alias update="${PKG_MGR} -Syu"
 
 alias rm_cache="sudo pacman -Scc"
+alias rm_orphans="sudo pacman -Rns $(pacman -Qdtq)"
