@@ -11,6 +11,7 @@ return {
     { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
     { "<leader>du", function() require("dapui").toggle() end, desc = "Toggle DAP UI" },
     { "<leader>dk", function() require("dap").terminate() end, desc = "Terminate" },
+    { "<leader>de", function() require("dapui").eval() end, desc = "Evaluate expression under cursor" },
   },
 
   config = function()
@@ -22,7 +23,6 @@ return {
         port = "${port}",
         executable = {
           command = "node",
-          -- 💀 Make sure to update this path to point to your installation
           args = {
             vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
             "${port}",
