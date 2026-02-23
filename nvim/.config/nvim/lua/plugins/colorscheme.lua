@@ -4,9 +4,14 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      comments = {italic = true}
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     },
-    config = function()
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
       vim.cmd[[colorscheme tokyonight-night]]
     end
   }

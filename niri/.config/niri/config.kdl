@@ -13,6 +13,13 @@ output "eDP-1" {
 output "HDMI-A-1"{
   scale 1.5
 }
+
+blur {
+  passes 2
+  offset 4.0
+  noise 0.08
+  saturation 1.5
+}
 layout {
   gaps 3
   background-color "transparent"

@@ -16,11 +16,7 @@ window-rule {
 window-rule {
   match app-id="firefox"
   open-on-workspace "Explore"
-}
-
-window-rule {
-  match app-id="brave"
-  open-on-workspace "Explore"
+  opacity 0.95
 }
 
 window-rule {
@@ -41,7 +37,8 @@ window-rule {
 }
 
 window-rule {
-	match title="Nemo"
+	match app-id="nemo"
+	opacity 0.9
 }
 
 window-rule {
@@ -54,3 +51,56 @@ window-rule {
 	match app-id="Alacritty"
 	max-height 300
 }
+
+window-rule{
+  match app-id="^foot$"
+
+  background-effect {
+    blur true 
+  }
+}
+
+layer-rule {
+  match namespace="^launcher$"
+
+  background-effect{
+    blur true 
+  }
+  opacity 0.9
+}
+
+window-rule {
+    match app-id="GitHub Desktop"
+    opacity 0.95
+}
+
+layer-rule {
+    match namespace="^anyrun$"
+    opacity 0.95
+}
+
+window-rule {
+    match app-id="^zed$"
+    opacity 0.4
+}
+
+window-rule {
+    match app-id="^dev\\.zed\\.Zed$"
+    opacity 0.9
+}
+
+window-rule {
+    match app-id="^kitty$"
+    opacity 0.9
+}
+
+layer-rule {
+    match namespace="^waybar$"
+    opacity 0.9
+}
+
+window-rule {
+    match app-id="chromium"
+    opacity 0.95
+}
+

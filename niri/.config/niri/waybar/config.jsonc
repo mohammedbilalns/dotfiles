@@ -1,106 +1,105 @@
 {
-    "layer": "top",
-    "position": "bottom",
-    "height": 20,
-    "spacing": 0,
-    "modules-left": [
-        "niri/workspaces",
-				"cffi/niri-taskbar"
-        //"wlr/taskbar"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "custom/pomodoro",
-        "network",
-        "pulseaudio",
-        "backlight",
-        "battery",
-        "tray"
-    ],
-    "custom/screenshot": {
-        "format": "󰹑",
-        "on-click": "grimshot save output && notify-send 'Screenshot Saved'",
-        "tooltip-format": "{Screenshot a region}"
+  "layer": "top",
+  "position": "bottom",
+  "height": 20,
+  "spacing": 0,
+  "modules-left": [
+    "niri/workspaces",
+    "cffi/niri-taskbar"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "custom/pomodoro",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "tray"
+  ],
+  "custom/screenshot": {
+    "format": "󰹑",
+    "on-click": "grimshot save output && notify-send 'Screenshot Saved'",
+    "tooltip-format": "{Screenshot a region}"
+  },
+  "custom/pomodoro": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "waybar-module-pomodoro -w 25",
+    "on-click": "waybar-module-pomodoro toggle",
+    "on-click-right": "waybar-module-pomodoro reset"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": " {:%H:%M %a}",
+    "format-alt": "󰃭 {:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "󰍛 {}%"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "󰔏 {temperatureC}°C {icon}",
+    "format-icons": ["󱃃", "󰔏", "󱃂"]
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓"]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "custom/pomodoro": {
-        "format": "{}",
-        "return-type": "json",
-        "exec": "waybar-module-pomodoro -w 25",
-        "on-click": "waybar-module-pomodoro toggle",
-        "on-click-right": "waybar-module-pomodoro reset"
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%H:%M %a}",
-        "format-alt": "󰃭 {:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "󰻠 {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "󰍛 {}%"
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "󰔏 {temperatureC}°C {icon}",
-        "format-icons": ["󱃃", "󰔏", "󱃂"]
-    },
-    "backlight": {
-        "format": "{icon}  {percent}%",
-        "format-icons": ["󰃞", "󰃟", "󰃠", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓"]
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-full": "󰁹 {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󰚥 {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-    "network": {
-        "interval": 1,
-        "format": "{ifname}",
-        "format-wifi": "󰤨  {bandwidthDownBytes} 󰤥  {bandwidthUpBytes}",
-        "format-ethernet": "󰈀 {bandwidthDownBytes} 󰤥 {bandwidthUpBytes}",
-        "format-disconnected": "󰤮",
-        "tooltip-format": "{ipaddr}",
-        "format-linked": "󰈁 {ifname} (No IP)",
-        "tooltip-format-wifi": "󰤨 {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "󰈀 {ifname}",
-        "tooltip-format-disconnected": "󰤮 Disconnected",
-        "max-length": 40
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟",
-        "on-click": "~/.config/waybar/volume --toggle",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "~/.config/waybar/volume --inc",
-				"on-scroll-down": "~/.config/waybar/volume --dec",
-				"scroll-step": 5,
-				"format-icons": {
-					"headphone": "󰋋",
-					"hands-free": "󰋎",
-					"headset": "󰋎",
-					"phone": "󰏲",
-					"portable": "󰏲",
-					"car": "󰄋",
-					"default": ["󰕿", "󰖀", "󰕾"]
-				}
-		},
-		"cffi/niri-taskbar": {
-			"module_path": "/usr/lib/waybar/libniri_taskbar.so",
-			"apps": {
+    "format": "{icon} {capacity}%",
+    "format-full": "󰁹 {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  "network": {
+    "interval": 1,
+    "format": "{ifname}",
+    "format-wifi": "󰤨  {bandwidthDownBytes} 󰤥  {bandwidthUpBytes}",
+    "format-ethernet": "󰈀 {bandwidthDownBytes} 󰤥 {bandwidthUpBytes}",
+    "format-disconnected": "󰤮",
+    "tooltip-format": "{ipaddr}",
+    "format-linked": "󰈁 {ifname} (No IP)",
+    "tooltip-format-wifi": "󰤨 {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "󰈀 {ifname}",
+    "tooltip-format-disconnected": "󰤮 Disconnected",
+    "max-length": 40
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "on-click": "~/.config/waybar/volume --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/waybar/volume --inc",
+    "on-scroll-down": "~/.config/waybar/volume --dec",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+  "cffi/niri-taskbar": {
+    "module_path": "/usr/lib/waybar/libniri_taskbar.so",
+    "apps": {
       "signal": [
         {
           "match": "\\([0-9]+\\)$",
@@ -114,5 +113,13 @@
     "icon-size": 24,
     "tooltip": false,
   },
-}
+},
+  "custom/tomat": {
+    "exec": "tomat status",
+    "interval": 1,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "tomat toggle",
+    "on-click-right": "tomat skip"
+  }
 }

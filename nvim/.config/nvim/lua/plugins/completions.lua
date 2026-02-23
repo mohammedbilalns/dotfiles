@@ -43,16 +43,9 @@ return {
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = require("lspkind").cmp_format({
-            mode = "symbol_text",    -- shows both icon and text
-            maxwidth = 50,           -- prevent overflowing
-            ellipsis_char = "...",   -- truncation symbol
-            -- menu = {                 
-            --   buffer = "[Buffer]",
-            --   nvim_lsp = "[LSP]",
-            --   luasnip = "[LuaSnip]",
-            --   nvim_lua = "[Lua]",
-            --   latex_symbols = "[Latex]",
-            -- },
+            mode = "symbol_text",
+            maxwidth = 50,
+            ellipsis_char = "...",
           }),
         },
         mapping = cmp.mapping.preset.insert({

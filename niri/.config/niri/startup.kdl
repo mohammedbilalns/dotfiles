@@ -1,6 +1,6 @@
 // startup 
 //spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/" // quickshell
-spawn-sh-at-startup "swaybg -i .config/walpapers/bin_original.png"
+spawn-sh-at-startup "swaybg -i .config/walpapers/invader.png"
 spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-sh-at-startup "battwatch"
 //spawn-sh-at-startup "/usr/lib/xfce-polkit/xfce-polkit"
