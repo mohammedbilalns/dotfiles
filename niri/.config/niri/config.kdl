@@ -102,3 +102,7 @@ switch-events {
   lid-close {spawn "systemctl hibernate "; }
 }
 
+workspace "Code"
+workspace "Browse"
+workspace "Note"
+workspace "Misc"

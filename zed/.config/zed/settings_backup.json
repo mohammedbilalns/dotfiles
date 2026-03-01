@@ -1,7 +1,6 @@
 {
   "show_edit_predictions": false,
   "edit_predictions": {
-    "provider": "supermaven",
     "mode": "subtle",
     "copilot": {
       "proxy": null,
@@ -17,6 +16,9 @@
     "TypeScript": {
       "show_edit_predictions": true
     }
+  },
+  "features": {
+    "edit_prediction_provider": "supermaven"
   },
   "autosave": "on_focus_change",
   "icon_theme": {

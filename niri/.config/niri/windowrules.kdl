@@ -1,106 +1,75 @@
-window-rule {
-	geometry-corner-radius 3
-	clip-to-geometry true
-}
+
+// Open Maximized 
 window-rule{
-	match app-id="code"
-	open-maximized true 
+  match app-id="code"
+  match app-id="kdenlive"
+  open-maximized true 
 }
 
+// Open on Browse
 window-rule {
-	match app-id="firefox$" title="^Picture-in-Picture$"
-	open-floating true
-	default-floating-position x=32 y=32 relative-to="bottom-left"
-}
-
-window-rule {
+  match app-id="brave"
   match app-id="firefox"
-  open-on-workspace "Explore"
-  opacity 0.95
+  match app-id="chromium"
+  open-on-workspace "Browse" 
+}
+
+// Open on Code 
+window-rule{
+  match app-id="GitHub Desktop"
+  open-on-workspace "Code"
+}
+
+// Open as Floating
+window-rule {
+  match app-id="xfce-polkit" 
+  open-floating true
+  default-floating-position x=728 y=400 relative-to="bottom-left"
+}
+
+// Picture in Picture
+window-rule {
+  match title="Picture in picture"
+  match title="Picture-in-Picture"
+  open-floating true
+  default-floating-position x=32 y=32 relative-to="bottom-left"
 }
 
 window-rule {
-	match app-id="xfce-polkit" 
-	open-floating true
-	default-floating-position x=728 y=400 relative-to="bottom-left"
+  geometry-corner-radius 3
+  clip-to-geometry true
 }
 
-window-rule {
-	match app-id="zen$" title="^Picture-in-Picture$"
-	open-floating true
-	default-floating-position x=32 y=32 relative-to="bottom-left"	
-}
-
-window-rule {
-	match app-id="kdenlive"
-	open-maximized true
-}
-
-window-rule {
-	match app-id="nemo"
-	opacity 0.9
-}
-
-window-rule {
-	match title="Picture in picture"
-	open-floating true 
-	default-floating-position x=32 y=32 relative-to="bottom-left"
-}
-
-window-rule {
-	match app-id="Alacritty"
-	max-height 300
-}
-
+// window rules for opacity
 window-rule{
   match app-id="^foot$"
-
   background-effect {
     blur true 
   }
 }
 
-layer-rule {
-  match namespace="^launcher$"
+window-rule {
+  match app-id="^dev\\.zed\\.Zed$"
+  match app-id="dev.zed.Zed"
+  match app-id="^kitty$"
+  match app-id="Alacritty"
 
+  match app-id="nemo"
   background-effect{
-    blur true 
+    blur true
   }
   opacity 0.9
 }
 
 window-rule {
-    match app-id="GitHub Desktop"
-    opacity 0.95
+  match app-id="chromium"
+  match app-id="GitHub Desktop"
+  opacity 0.95
 }
 
+// layer rules for opacity 
 layer-rule {
-    match namespace="^anyrun$"
-    opacity 0.95
+  match namespace="^anyrun$"
+  match namespace="^waybar$"
+  opacity 0.95
 }
-
-window-rule {
-    match app-id="^zed$"
-    opacity 0.4
-}
-
-window-rule {
-    match app-id="^dev\\.zed\\.Zed$"
-    opacity 0.9
-}
-
-window-rule {
-    match app-id="^kitty$"
-    opacity 0.9
-}
-
-layer-rule {
-    match namespace="^waybar$"
-    opacity 0.9
-}
-
-window-rule {
-    match app-id="chromium"
-    opacity 0.95
-}
-

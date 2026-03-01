@@ -42,6 +42,20 @@ return {
         lualine_x = {
           {
             function()
+              local clients = vim.lsp.get_clients({ bufnr = 0 })
+              if #clients == 0 then
+                return "LSP: Off"
+              end
+              local names = {}
+              for _, client in ipairs(clients) do
+                table.insert(names, client.name)
+              end
+              return "LSP: " .. table.concat(names, ", ")
+            end,
+            icon = "",
+          },
+          {
+            function()
               if require("supermaven-nvim.api").is_running() then
                 return "SM:  running"
               else
