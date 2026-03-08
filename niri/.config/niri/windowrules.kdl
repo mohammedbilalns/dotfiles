@@ -43,10 +43,12 @@ window-rule {
 // window rules for opacity
 window-rule{
   match app-id="^foot$"
+  match app-id="^helium$"
   background-effect {
     blur true 
   }
 }
+
 
 window-rule {
   match app-id="^dev\\.zed\\.Zed$"
@@ -63,8 +65,9 @@ window-rule {
 
 window-rule {
   match app-id="chromium"
+  match app-id="helium"
   match app-id="GitHub Desktop"
-  opacity 0.95
+  opacity 0.9
 }
 
 // layer rules for opacity 

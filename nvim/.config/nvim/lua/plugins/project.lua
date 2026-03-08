@@ -28,4 +28,3 @@ return {
     vim.keymap.set("n", "<leader>p", "<cmd>NeovimProjectHistory<CR>", { desc = "Switch Project" })
   end,
 }
-

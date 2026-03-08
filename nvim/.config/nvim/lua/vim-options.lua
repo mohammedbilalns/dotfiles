@@ -7,7 +7,7 @@ opt.tabstop = 2 --  2 spaces for tabs
 opt.shiftwidth = 2 -- 2 spaces for indend width 
 opt.expandtab = true -- expand tab to space  
 opt.autoindent = true -- copy indent from current line when starting a new one  
-opt.wrap  = true -- keep the line wrapping on   
+opt.wrap  = false -- keep wrapping off by default (better for code)  
 -- search settings 
 opt.ignorecase = true -- ignore case when searching 
 opt.smartcase = true -- assumes case sensitive for mixed case search  
@@ -24,13 +24,15 @@ opt.clipboard:append("unnamedplus") -- system clipboard as default register
 -- window splitting
 opt.splitright = true -- vertical window to the right
 opt.splitbelow = true -- horizontal window to the bottom  
+opt.timeout = true
+opt.timeoutlen = 400
 -- vim.wo.number = true --show the line number
 -- folding 
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.foldlevelstart = 99
 opt.foldcolumn = '1'
-opt.fillchars:append { fold = ' ' }
+opt.fillchars:append { fold = " ", eob = " " }
 
 -- cutstom folding 
 function FoldText()

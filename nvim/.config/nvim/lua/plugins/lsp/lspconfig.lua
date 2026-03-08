@@ -16,7 +16,7 @@ return {
     })
 
     -- Configure TypeScript/JavaScript server
-    vim.lsp.config("ts_ls", {
+    vim.lsp.config("tsgo", {
       settings = {
         typescript = {
           format = {
@@ -37,7 +37,8 @@ return {
       },
     })
 
-    -- Explicitly enable the server (modern 0.11 bridge way)
-    vim.lsp.enable("ts_ls")
+    -- Explicitly keep ts_ls disabled and tsgo enabled.
+    pcall(vim.lsp.enable, "ts_ls", false)
+    vim.lsp.enable("tsgo")
   end,
 }

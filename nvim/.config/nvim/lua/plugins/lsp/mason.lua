@@ -6,7 +6,7 @@ return {
   },
   opts = {
     ensure_installed = {
-      "ts_ls",
+      "tsgo",
       "html",
       "cssls",
       "tailwindcss",

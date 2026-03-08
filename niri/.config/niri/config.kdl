@@ -16,7 +16,7 @@ output "HDMI-A-1"{
 
 blur {
   passes 4
-  offset 3.0
+  offset 2.3
   noise 0.08
   saturation 1.5
 }

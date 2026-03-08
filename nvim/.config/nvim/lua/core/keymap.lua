@@ -9,14 +9,20 @@ keymap.set("n","<leader>se", "<C-w>=", {desc = "Split windows equally"})
 keymap.set("n","<leader>sx", "<cmd>close<CR>", {desc = "Close current split"})
 
 -- tab management 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", {desc="Open a new Tab"})
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", {desc = "Close curren Tab"})
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", {desc = "Go to next tab"})
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
+keymap.set("n", "<leader>uo", "<cmd>tabnew<CR>", {desc="Open a new Tab"})
+keymap.set("n", "<leader>ux", "<cmd>tabclose<CR>", {desc = "Close curren Tab"})
+keymap.set("n", "<leader>un", "<cmd>tabn<CR>", {desc = "Go to next tab"})
+keymap.set("n", "<leader>up", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
+keymap.set("n", "<leader>uf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
 keymap.set('v', '<leader>dd', '"_dd', { noremap = true, silent = true, desc = "Delete line without copying" })
 
 vim.keymap.set("n", "<leader>bq", function()
+  local ok, snacks = pcall(require, "snacks")
+  if ok and snacks.bufdelete and snacks.bufdelete.other then
+    snacks.bufdelete.other({ force = true })
+    return
+  end
+
   local current = vim.api.nvim_get_current_buf()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(buf) and buf ~= current and vim.bo[buf].buflisted then
