@@ -11,7 +11,6 @@ dotfiles/
     wayland/   # shared wayland components
     wm/        # compositor/window-manager configs
     apps/      # optional app configs
-    host/      # machine-specific overrides (optional)
   setup/       # installation and bootstrap scripts
   notes/
 ```
@@ -67,26 +66,3 @@ stow --restow --dir pkgs/core --target "$HOME" zsh
 stow --delete --dir pkgs/core --target "$HOME" zsh
 ```
 
-## Automated Setup Script
-
-`setup/setup.sh` installs packages and then stows profiles listed in `setup/stow/*.txt`:
-
-- `core.txt`
-- `wayland.txt`
-- `apps.txt`
-- one WM profile (`wm-niri.txt` by default)
-
-To pick a different WM during setup:
-
-```sh
-STOW_WM_PROFILE=wm-sway.txt ./setup/setup.sh
-# or
-STOW_WM_PROFILE=wm-hypr.txt ./setup/setup.sh
-```
-
-You can also create `setup/stow/wm.txt`; if present it overrides `STOW_WM_PROFILE`.
-
-## Notes
-
-- Backup behavior for existing shell configs and `~/.local/bin` is handled in `setup/lib/stow.sh`.
-- Keep package names stable and short; add new packages to the matching `setup/stow/*.txt` profile file.
