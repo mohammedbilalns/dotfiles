@@ -1,0 +1,13 @@
+atuin
+evremap
+fastfetch
+htop
+lsd
+mango
+mpv
+neofetch
+tomat
+wallpapers
+yazi
+zed
+zellij

@@ -1,0 +1,38 @@
+-- leader key 
+vim.g.mapleader = " "
+
+local keymap = vim.keymap
+-- window management 
+keymap.set("n","<leader>sv","<C-w>v", {desc = "Split window vertically"})
+keymap.set("n","<leader>sh", "<C-w>s", {desc = "Split window horizontally"})
+keymap.set("n","<leader>se", "<C-w>=", {desc = "Split windows equally"})
+keymap.set("n","<leader>sx", "<cmd>close<CR>", {desc = "Close current split"})
+
+-- tab management 
+keymap.set("n", "<leader>uo", "<cmd>tabnew<CR>", {desc="Open a new Tab"})
+keymap.set("n", "<leader>ux", "<cmd>tabclose<CR>", {desc = "Close curren Tab"})
+keymap.set("n", "<leader>un", "<cmd>tabn<CR>", {desc = "Go to next tab"})
+keymap.set("n", "<leader>up", "<cmd>tabp<CR>", {desc = "Go to previouse tab"})
+keymap.set("n", "<leader>uf", "<cmd>tabnew %<CR>", {desc = "Open buffer in new tab"})
+keymap.set('v', '<leader>dd', '"_dd', { noremap = true, silent = true, desc = "Delete line without copying" })
+
+vim.keymap.set("n", "<leader>bq", function()
+  local ok, snacks = pcall(require, "snacks")
+  if ok and snacks.bufdelete and snacks.bufdelete.other then
+    snacks.bufdelete.other({ force = true })
+    return
+  end
+
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and buf ~= current and vim.bo[buf].buflisted then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end, { desc = "Close all other buffers" })
+
+-- Resize with Ctrl + hjkl
+keymap.set("n", "<C-h>", "<C-w><", { desc = "Decrease window width" })
+keymap.set("n", "<C-l>", "<C-w>>", { desc = "Increase window width" })
+keymap.set("n", "<C-k>", "<C-w>+", { desc = "Increase window height" })
+keymap.set("n", "<C-j>", "<C-w>-", { desc = "Decrease window height" })

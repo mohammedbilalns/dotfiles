@@ -43,16 +43,15 @@ else
 fi
 
 
-# install packages 
-# FIX: Some Packages fails to install 
+# install packages
 for list in "${PKGS[@]}"; do
   local_pkgs=() 
   parse_list "$list" local_pkgs
   check_and_install_from_list local_pkgs
 done
 
-# backup and symlink the existing configs
-# FIX: stow: ERROR: The stow directory dotfiles/setup does not contain package atuin
+# backup and symlink configs from stow profiles
+# override default WM profile with: STOW_WM_PROFILE=wm-sway.txt ./setup/setup.sh
 create_config_symlinks
 
 # configure shell 
@@ -64,4 +63,3 @@ for list in "${SRVCS[@]}"; do
   parse_list "$list" local_services
   check_and_enable_service_from_list local_services
 done 
-

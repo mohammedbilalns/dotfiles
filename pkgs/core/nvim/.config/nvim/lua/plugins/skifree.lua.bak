@@ -1,0 +1,4 @@
+return {
+  'piersolenski/skifree.nvim',
+  cmd = 'SkiFree',
+}

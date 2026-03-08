@@ -1,84 +1,92 @@
+# Dotfiles
 
-# Dotfiles 
+Personal Linux dotfiles managed with GNU Stow.
 
-This repository contains my personal dotfiles for three Wayland compositors:  
+## Repository Layout
 
-- [Niri](https://github.com/YaLTeR/niri)  
-- [SwayFX](https://github.com/WillPower3309/swayfx)  
-
-## 📸 Preview  
-
-### Niri  
-
-
-https://github.com/user-attachments/assets/bd963331-7df0-47c6-96f5-e1357c816439
-
-
-## 🛠 Setup & Installation  
-
-This repository is managed using [`stow`](https://www.gnu.org/software/stow/), a symlink manager. To install the dotfiles for a specific compositor, run:  
-
-```sh
-stow <compositor-name>
+```text
+dotfiles/
+  pkgs/
+    core/      # shell/editor/terminal/binaries
+    wayland/   # shared wayland components
+    wm/        # compositor/window-manager configs
+    apps/      # optional app configs
+    host/      # machine-specific overrides (optional)
+  setup/       # installation and bootstrap scripts
+  notes/
 ```
 
-For example, to set up Niri:  
+Each package keeps the real target path inside it (for example `.config/...`, `.local/bin/...`, `.zshrc`).
+
+## Stow Usage
+
+Run commands from the repository root:
 
 ```sh
-stow niri mako swayidle swaylock fuzzel
+cd ~/dotfiles
 ```
 
----
+### 1) Core packages
 
-## 🖥️ Compositor-Specific Configurations  
-
-### 🟢 Niri  
-
-#### 🔗 Dependencies  
 ```sh
-niri stow mako foot swayidle swaylock-effects fuzzel waybar gammastep swaybg
+stow --dir pkgs/core --target "$HOME" bash bin helix kitty nano nushell nvim tmux zsh
 ```
 
-#### 📦 Install  
+### 2) Shared wayland packages
+
 ```sh
-stow niri mako swayidle swaylock fuzzel
+stow --dir pkgs/wayland --target "$HOME" anyrun foot fuzzel mako swayidle swaylock waybar
 ```
 
+### 3) Select one WM/compositor profile
 
----
-
-### 🔴 SwayFX  
-
-#### 🔗 Dependencies  
 ```sh
-stow swayfx mako swayidle swaylock-effects fuzzel waybar wlsunset swaybg
+# Niri
+stow --dir pkgs/wm --target "$HOME" niri
+
+# Sway
+stow --dir pkgs/wm --target "$HOME" sway
+
+# Hyprland
+stow --dir pkgs/wm --target "$HOME" hypr
 ```
 
-#### 📦 Install  
+### 4) Optional app packages
+
 ```sh
-stow sway mako swayidle swaylock fuzzel
+stow --dir pkgs/apps --target "$HOME" atuin evremap fastfetch htop lsd mango mpv neofetch tomat wallpapers yazi zed zellij
 ```
 
----
+## Restow / Unstow
 
-## 🐚 Zsh Configuration  
-
-### 🔗 Dependencies  
 ```sh
-zsh atuin lsd bat starship fzf
+# Re-apply an existing package
+stow --restow --dir pkgs/core --target "$HOME" zsh
+
+# Remove links for a package
+stow --delete --dir pkgs/core --target "$HOME" zsh
 ```
 
-#### 📦 Install  
+## Automated Setup Script
+
+`setup/setup.sh` installs packages and then stows profiles listed in `setup/stow/*.txt`:
+
+- `core.txt`
+- `wayland.txt`
+- `apps.txt`
+- one WM profile (`wm-niri.txt` by default)
+
+To pick a different WM during setup:
+
 ```sh
-stow zsh
+STOW_WM_PROFILE=wm-sway.txt ./setup/setup.sh
+# or
+STOW_WM_PROFILE=wm-hypr.txt ./setup/setup.sh
 ```
 
----
+You can also create `setup/stow/wm.txt`; if present it overrides `STOW_WM_PROFILE`.
 
-## 📜 Notes  
+## Notes
 
-- Ensure all dependencies are installed before running `stow`.  
-- These configurations are optimized for a Wayland environment.  
-- Feel free to modify and adapt these dotfiles for your setup!  
-
-
+- Backup behavior for existing shell configs and `~/.local/bin` is handled in `setup/lib/stow.sh`.
+- Keep package names stable and short; add new packages to the matching `setup/stow/*.txt` profile file.

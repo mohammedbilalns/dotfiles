@@ -1,0 +1,9 @@
+bash
+bin
+helix
+kitty
+nano
+nushell
+nvim
+tmux
+zsh

@@ -1,0 +1,7 @@
+anyrun
+foot
+fuzzel
+mako
+swayidle
+swaylock
+waybar
