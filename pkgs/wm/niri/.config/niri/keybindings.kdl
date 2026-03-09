@@ -8,9 +8,7 @@ binds {
   Mod+P { spawn "wl-color-picker";}
   Mod+O { toggle-overview; }
   //Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
-  //Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-  Mod+B {spawn "helium-browser"; }
-  //Mod+B {spawn "helium-browser";}
+  Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
   Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
   Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
   Mod+A {spawn-sh "~/.local/bin/open_chatbots";}
