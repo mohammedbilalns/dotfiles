@@ -6,6 +6,7 @@ SAVEHIST=1000
 
 # Plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Utils 
 source ~/.config/zsh/utils.zsh
