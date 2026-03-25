@@ -6,11 +6,15 @@ Personal Linux dotfiles managed with GNU Stow.
 
 ```text
 dotfiles/
-  pkgs/
-    core/      # shell/editor/terminal/binaries
-    wayland/   # shared wayland components
-    wm/        # compositor/window-manager configs
-    apps/      # optional app configs
+  nvim/        # Neovim config (submodule)
+  zsh/         # Zsh config
+  tmux/        # Tmux config
+  kitty/       # Kitty config
+  waybar/      # Waybar config
+  hypr/        # Hyprland config
+  sway/        # Sway config
+  niri/        # Niri config
+  ...          # other app/window-manager packages
   setup/       # installation and bootstrap scripts
   notes/
 ```
@@ -28,41 +32,40 @@ cd ~/dotfiles
 ### 1) Core packages
 
 ```sh
-stow --dir pkgs/core --target "$HOME" bash bin helix kitty nano nushell nvim tmux zsh
+stow --target "$HOME" bash bin helix kitty nano nushell nvim tmux zsh
 ```
 
 ### 2) Shared wayland packages
 
 ```sh
-stow --dir pkgs/wayland --target "$HOME" anyrun foot fuzzel mako swayidle swaylock waybar
+stow --target "$HOME" anyrun foot fuzzel mako swayidle swaylock waybar
 ```
 
 ### 3) Select one WM/compositor profile
 
 ```sh
 # Niri
-stow --dir pkgs/wm --target "$HOME" niri
+stow --target "$HOME" niri
 
 # Sway
-stow --dir pkgs/wm --target "$HOME" sway
+stow --target "$HOME" sway
 
 # Hyprland
-stow --dir pkgs/wm --target "$HOME" hypr
+stow --target "$HOME" hypr
 ```
 
 ### 4) Optional app packages
 
 ```sh
-stow --dir pkgs/apps --target "$HOME" atuin evremap fastfetch htop lsd mango mpv neofetch tomat wallpapers yazi zed zellij
+stow --target "$HOME" atuin evremap fastfetch htop lsd mango mpv neofetch tomat wallpapers yazi zed zellij
 ```
 
 ## Restow / Unstow
 
 ```sh
 # Re-apply an existing package
-stow --restow --dir pkgs/core --target "$HOME" zsh
+stow --restow --target "$HOME" zsh
 
 # Remove links for a package
-stow --delete --dir pkgs/core --target "$HOME" zsh
+stow --delete --target "$HOME" zsh
 ```
-
