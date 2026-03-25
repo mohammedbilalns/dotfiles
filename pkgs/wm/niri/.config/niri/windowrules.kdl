@@ -47,7 +47,7 @@ window-rule {
 
 // window rules for opacity
 window-rule{
- // match app-id="^foot$"
+  match app-id="^foot$"
   match app-id="^helium$"
   background-effect {
     blur true 
