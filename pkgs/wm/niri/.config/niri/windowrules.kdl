@@ -14,6 +14,11 @@ window-rule {
   open-on-workspace "Browse" 
 }
 
+window-rule {
+  match app-id="Joplin"
+  open-on-workspace "Note"
+}
+
 // Open on Code 
 window-rule{
   match app-id="GitHub Desktop"
@@ -42,7 +47,7 @@ window-rule {
 
 // window rules for opacity
 window-rule{
-  match app-id="^foot$"
+ // match app-id="^foot$"
   match app-id="^helium$"
   background-effect {
     blur true 
@@ -51,8 +56,6 @@ window-rule{
 
 
 window-rule {
-  match app-id="^dev\\.zed\\.Zed$"
-  match app-id="dev.zed.Zed"
   match app-id="^kitty$"
   match app-id="Alacritty"
 
@@ -64,7 +67,6 @@ window-rule {
 }
 
 window-rule {
-  match app-id="chromium"
   match app-id="helium"
   match app-id="GitHub Desktop"
   opacity 0.9
