@@ -39,54 +39,85 @@ animations {
         }"
     }
 
-    window-close {
-        duration-ms 1400
-        curve "ease-out-expo"
-        custom-shader r"
-        // ease-in-out cubic curve helper
-        float ease_curve(float x) {
-            return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
-        }
+   window-close {
+         duration-ms 1200
+         curve "ease-out-quad"
 
-        vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-            float t = niri_clamped_progress;
+         custom-shader r"
+             float hash21(vec2 p) {
+                 return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+             }
 
-            float prog = ease_curve(t);
+             float value_noise(vec2 p) {
+                 vec2 i = floor(p);
+                 vec2 f = fract(p);
+                 vec2 u = f * f * (3.0 - 2.0 * f);
+                 return mix(
+                     mix(hash21(i), hash21(i + vec2(1.0, 0.0)), u.x),
+                     mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), u.x),
+                     u.y
+                 );
+             }
 
-            // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
+             float fbm(vec2 p) {
+                 float v = 0.0;
+                 float amp = 0.5;
+                 float freq = 1.0;
+                 for (int i = 0; i < 5; i++) {
+                     v += amp * value_noise(p * freq);
+                     freq *= 2.0;
+                     amp *= 0.5;
+                 }
+                 return v;
+             }
 
-            int corner = 0; 
-            vec2 start;
-            if (corner == 0) start = vec2(0.0,0.0);
-            else if (corner == 1) start = vec2(1.0,0.0);
-            else if (corner == 2) start = vec2(0.0,1.0);
-            else start = vec2(1.0,1.0);
+             vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                 vec2 uv = coords_geo.xy;
+                 float p = niri_clamped_progress;
+                 float seed = niri_random_seed * 100.0;
 
+                 // Distance from nearest edge of window rect
+                 float dx = min(uv.x, 1.0 - uv.x);
+                 float dy = min(uv.y, 1.0 - uv.y);
+                 float edge_dist = min(dx, dy);
 
-            // compute distance along diagonal from corner
+                 // Noise-driven edge erosion: breaks the box shape
+                 float edge_noise = fbm((uv + seed) * 8.0 * 1.5);
+                 float erode = p * 0.80;
+                 float edge_threshold = edge_noise * erode;
+                 float edge_alpha = smoothstep(edge_threshold - 0.02, edge_threshold + 0.02, edge_dist);
 
-            vec2 p = coords_geo.xy;
-            float dist = dot(p - start, vec2(1.0,1.0));
+                 // Skip pixels far outside eroded boundary
+                 if (edge_dist < -0.15) {
+                     return vec4(0.0);
+                 }
 
-            // normalize distance to max diagonal
-            float max_diag = 2.0; // max of vec2(1,1)
-            float norm_dist = dist / max_diag;
+                 // Wobble the window content
+                 vec2 np = (uv + seed) * 8.0;
+                 float wx = fbm(np + vec2(17.3, 0.0)) - 0.5;
+                 float wy = fbm(np + vec2(0.0, 43.1)) - 0.5;
 
+                 vec3 warped = coords_geo;
+                 warped.x += wx * 0.080 * p;
+                 warped.y += wy * 0.080 * p;
 
-            // If pixel is behind the sweeping line, make it invisible
+                 vec3 tex_coords = niri_geo_to_tex * warped;
+                 vec4 color = texture2D(niri_tex, tex_coords.st);
 
-            if (norm_dist <= prog) {
-                return vec4(0.0);
-            }
+                 // Overall fade
+                 float alpha = edge_alpha * (1.0 - p * p);
+                 alpha = clamp(alpha, 0.0, 1.0);
 
-            // sample normally
-            vec3 coords_tex = niri_geo_to_tex * coords_geo;
-            vec4 col = texture2D(niri_tex, coords_tex.xy);
+                 // Warm glow at dissolving edges
+                 float glow = smoothstep(edge_threshold - 0.04, edge_threshold, edge_dist)
+                            * (1.0 - smoothstep(edge_threshold, edge_threshold + 0.04, edge_dist));
+                 glow *= (1.0 - p) * 0.6;
+                 color.rgb += vec3(0.478, 0.635, 0.969) * glow;
 
-            return col;
-        }"
-    }
-
+                 return color * alpha;
+             }
+         "
+     }
     horizontal-view-movement {
         spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
     }
