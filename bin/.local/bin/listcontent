@@ -1,17 +1,54 @@
 #!/bin/bash
 
+EXCLUDES='node_modules|dist|.git|.agents|.netlify|.tanstack|__pycache__|.pytest_cache|.mypy_cache|.ruff_cache|.venv|venv|target|pkg|bin|vendor|.cargo|.tox|.coverage|htmlcov|coverage'
+
 tree -a \
-  -I 'node_modules|dist|.git' \
+  -I "$EXCLUDES" \
   --prune
 
 echo
 echo "================ FILE CONTENTS ================"
 echo
 
-# 2️⃣ Show file contents (skip same dirs + .env*)
 find . \
-  \( -type d \( -name node_modules -o -name dist -o -name .git \) -prune \) -o \
-  \( -type f ! -name ".env*" \
-     -exec echo '==== {} ====' \; \
-     -exec cat {} \; \
+  \( -type d \
+    \( -name node_modules \
+    -o -name dist \
+    -o -name .git \
+    -o -name .agents \
+    -o -name .netlify \
+    -o -name .tanstack \
+    -o -name __pycache__ \
+    -o -name .pytest_cache \
+    -o -name .mypy_cache \
+    -o -name .ruff_cache \
+    -o -name .venv \
+    -o -name venv \
+    -o -name .tox \
+    -o -name htmlcov \
+    -o -name target \
+    -o -name vendor \
+    -o -name bin \
+    -o -name pkg \
+    -o -name .cargo \
+    \) -prune \
+  \) -o \
+  \( -type f \
+    ! -name ".env*" \
+    ! -name "*.pyc" \
+    ! -name "*.pyo" \
+    ! -name "*.so" \
+    ! -name "*.o" \
+    ! -name "*.a" \
+    ! -name "*.rlib" \
+    ! -name "*.exe" \
+    -exec sh -c '
+      for file do
+        if file "$file" | grep -q text; then
+          echo "==== $file ===="
+          cat "$file"
+          echo
+        fi
+      done
+    ' sh {} + \
   \)

@@ -8,8 +8,8 @@ window-rule{
 
 // Open on Browse
 window-rule {
-  match app-id="brave"
-  match app-id="firefox"
+  //match app-id="brave"
+  //match app-id="firefox"
   match app-id="chromium"
   open-on-workspace "Browse" 
 }

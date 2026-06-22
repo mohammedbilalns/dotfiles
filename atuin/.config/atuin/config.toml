@@ -6,3 +6,6 @@ records = true
 name="tokyo-night"
 [search]
 
+[ai]
+enabled = true
+

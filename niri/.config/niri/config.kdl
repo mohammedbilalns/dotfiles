@@ -11,7 +11,7 @@ output "eDP-1" {
   position x=1280 y=0
 }
 output "HDMI-A-1"{
-  scale 1.5
+  scale 1
 }
 
 blur {
@@ -86,6 +86,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 hotkey-overlay{
   skip-at-startup
 }
+
 environment{
   QT_QPA_PLATFORMTHEME "qt6ct"
   QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
@@ -94,12 +95,12 @@ environment{
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
-debug {
-  honor-xdg-activation-with-invalid-serial
-}
+// debug {
+//   honor-xdg-activation-with-invalid-serial
+// }
 
 switch-events {
-  lid-close {spawn "systemctl hibernate "; }
+ // lid-close {spawn "systemctl hibernate "; }
 }
 
 workspace "Code"

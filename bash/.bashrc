@@ -62,3 +62,4 @@ alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
+export PATH="$HOME/.npm-global/bin:$PATH"
