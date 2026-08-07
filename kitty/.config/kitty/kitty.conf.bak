@@ -2973,7 +2973,7 @@ bold_italic_font auto
 #: }}}
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Alien Blood
 include current-theme.conf
 # END_KITTY_THEME
 

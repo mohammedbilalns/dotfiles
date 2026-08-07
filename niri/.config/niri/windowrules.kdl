@@ -8,8 +8,8 @@ window-rule{
 
 // Open on Browse
 window-rule {
-  //match app-id="brave"
-  //match app-id="firefox"
+  match app-id="brave"
+  match app-id="firefox"
   match app-id="chromium"
   open-on-workspace "Browse" 
 }
@@ -25,7 +25,7 @@ window-rule{
   open-on-workspace "Code"
 }
 
-// Open as Floating
+// polkit as float 
 window-rule {
   match app-id="xfce-polkit" 
   open-floating true
@@ -37,7 +37,7 @@ window-rule {
   match title="Picture in picture"
   match title="Picture-in-Picture"
   open-floating true
-  default-floating-position x=32 y=32 relative-to="bottom-left"
+  default-floating-position x=32 y=32 relative-to="bottom-right"
 }
 
 window-rule {
@@ -62,19 +62,22 @@ window-rule {
   match app-id="nemo"
   background-effect{
     blur true
+    xray true 
   }
-  opacity 0.9
 }
 
 window-rule {
   match app-id="helium"
   match app-id="GitHub Desktop"
-  opacity 0.9
+  opacity 0.97
 }
 
 // layer rules for opacity 
 layer-rule {
   match namespace="^anyrun$"
   match namespace="^waybar$"
+  background-effect{
+    blur true
+  }
   opacity 0.95
 }

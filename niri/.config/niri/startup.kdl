@@ -1,6 +1,6 @@
 // startup 
 //spawn-sh-at-startup "qs -c ~/.config/quickshell/noctalia-shell/" // quickshell
-spawn-sh-at-startup "swaybg -i .config/walpapers/pacman.png"
+//spawn-sh-at-startup "swaybg -i .config/walpapers/cartoon.jpg"
 //spawn-sh-at-startup "phonto ~/videos/walpapers/whispering-lights-forest.3840x2160.mp4"
 spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-sh-at-startup "battwatch"

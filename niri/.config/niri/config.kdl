@@ -8,17 +8,22 @@ output "eDP-1" {
   mode "1920x1080@60"
   scale 1.1
   transform  "normal"
-  position x=1280 y=0
+  // laptop screen position as left 
+  //position x=1280 y=0
 }
 output "HDMI-A-1"{
   scale 1
+
+  // monitior position as left 
+  position x=1280 y=0
 }
 
 blur {
-  passes 4
-  offset 2.3
-  noise 0.08
-  saturation 1.5
+  
+  // passes 4
+  // offset 2.3
+  // noise 0.08
+  // saturation 1.5
 }
 layout {
   gaps 3
@@ -103,7 +108,7 @@ switch-events {
  // lid-close {spawn "systemctl hibernate "; }
 }
 
-workspace "Code"
-workspace "Browse"
-workspace "Note"
-workspace "Misc"
+workspace ""
+workspace "󰖟"
+workspace "󰈙"
+workspace ""

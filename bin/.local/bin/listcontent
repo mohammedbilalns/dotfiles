@@ -1,6 +1,18 @@
 #!/bin/bash
 
-EXCLUDES='node_modules|dist|.git|.agents|.netlify|.tanstack|__pycache__|.pytest_cache|.mypy_cache|.ruff_cache|.venv|venv|target|pkg|bin|vendor|.cargo|.tox|.coverage|htmlcov|coverage'
+set -euo pipefail
+
+EXCLUDES='node_modules|dist|.git|.next|.agents|.netlify|.tanstack|__pycache__|.pytest_cache|.mypy_cache|.ruff_cache|.venv|venv|.tox|.hypothesis|.nox|.pyre|__pypackages__|.cache|target|pkg|bin|vendor|.cargo|.coverage|htmlcov|coverage'
+
+# Build additional exclusions from command-line arguments.
+# Example:
+#   ./context.sh package-lock.json README.md
+# will skip those files.
+SKIP_ARGS=()
+for f in "$@"; do
+  [[ "$f" != ./* ]] && f="./$f"
+  SKIP_ARGS+=(! -path "$f")
+done
 
 tree -a \
   -I "$EXCLUDES" \
@@ -42,6 +54,7 @@ find . \
     ! -name "*.a" \
     ! -name "*.rlib" \
     ! -name "*.exe" \
+    "${SKIP_ARGS[@]}" \
     -exec sh -c '
       for file do
         if file "$file" | grep -q text; then

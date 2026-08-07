@@ -1,120 +1,195 @@
 {
-	"layer": "top", // Waybar at top layer
-	"position": "bottom", // Waybar position (top|bottom|left|right)
-	"height": 30, // Waybar height (to be removed for auto height)
-	// "width": 1280, // Waybar width
-	"spacing": 0, // Gaps between modules (4px)
-	// Choose the order of the modules
-	"modules-left": [
-		"hyprland/workspaces",
-		"niri-taskbar",
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 6,
 
-	],
-	"modules-center": [
-		"clock"
-	],
-	"modules-right": [
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "custom/screenshot"
+    ],
 
-		"network",
-		"pulseaudio",	
-		"backlight",
-		"battery",
-		"tray"
-	],
-		"custom/workspaces": {
-			"exec": "~/.config/niri/scripts/workspaces.sh \"$WAYBAR_OUTPUT_NAME\"",
+    "modules-center": [
+        "hyprland/window",
+        "clock"
+    ],
 
-        		"signal": 8
-		},
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
 
-	"custom/screenshot" :{
-		"format" : "󰄄",
-		"on-click" : "grimshot save output && notify-send 'Screenshot Saved'",
-		"tooltip-format" : "{Screenshot a region}"
-
-
-	},
-
-  
-       "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+    // Modules Configuration
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "rofi -show drun || wofi --show drun",
+        "tooltip-format": "Application Launcher"
     },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{name} {icon}",
+        "format-icons": {
+            "1": "󰋜",
+            "2": "󰈹",
+            "3": "󰅩",
+            "4": "󰓓",
+            "5": "󰓇",
+            "6": "󰙯",
+            "urgent": "󰵙",
+            "focused": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        }
     },
-    "cpu": {
-        "format": "{usage}% ",
+
+    "hyprland/submap": {
+        "format": "󰌌 <span color='#a6e3a1'>{}</span>",
+        "max-length": 12,
         "tooltip": false
     },
+
+    "custom/screenshot": {
+        "format": "󰄄",
+        "on-click": "grimshot save output && notify-send 'Screenshot Saved'",
+        "tooltip-format": "Take Screenshot"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 45,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Google Chrome": " $1",
+            "(.*) - Visual Studio Code": "󰨞 $1",
+            "(.*) - Code - OSS": "󰨞 $1",
+            "kitty (.*)": " $1",
+            "foot (.*)": " $1",
+            "Alacritty": " Terminal",
+            "Thunar (.*)": "󰝰 $1",
+            "Spotify": "󰓇 Spotify",
+            "Discord (.*)": "󰙯 $1"
+        }
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "󰥔 {:%H:%M}",
+        "format-alt": "󰃭 {:%A, %B %d, %Y  󰥔 %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#cba6f7'><b>{}</b></span>",
+                "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+                "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+                "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": "󰍛 {usage}%",
+        "tooltip": true
+    },
+
     "memory": {
-        "format": "{}% "
+        "interval": 2,
+        "format": "󰘚 {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB ({percentage}%)\nSwap: {swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB"
     },
+
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
     },
+
     "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
     },
+
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}%",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    
-        "network": {
-		"interval": 1,
-		"format": "{ifname}",
-		"format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
-		"format-ethernet": "{icon} {bandwidthDownBytes}  {bandwidthUpBytes} ",
-		"format-disconnected": "󰌙",
-		"tooltip-format": "{ipaddr}",
-		"format-linked": "󰈁 {ifname} (No IP)",
-		"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-		"tooltip-format-ethernet": "{ifname} 󰌘",
-		"tooltip-format-disconnected": "󰌙 Disconnected",
-		"max-length": 40,
-		"format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
- 
+
+    "network": {
+        "format-wifi": "󰤨 {bandwidthDownBytes}",
+        "format-ethernet": "󰈀 {bandwidthDownBytes}",
+        "format-disconnected": "󰤭 Offline",
+        "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}\nDown: {bandwidthDownBytes}  Up: {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nDown: {bandwidthDownBytes}  Up: {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 2,
+        "on-click": "nm-connection-editor || nmtui"
     },
-      
 
-
-      "pulseaudio": {
-        "format": "{icon}   {volume}%",
-        "format-muted": "",
-        "on-click": "~/.config/waybar/volume --toggle",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "~/.config/waybar/volume --inc",
-        "on-scroll-down": "~/.config/waybar/volume --dec",
-        "scroll-step": 5,
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
-        }
-    }	
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle || ~/.config/waybar/volume --toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5% || ~/.config/waybar/volume --inc",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5% || ~/.config/waybar/volume --dec"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "wlogout || hyprlock || loginctl terminate-user $USER",
+        "tooltip-format": "Power Menu"
+    }
 }

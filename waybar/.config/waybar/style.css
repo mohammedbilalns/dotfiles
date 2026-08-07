@@ -1,158 +1,222 @@
+/* =============================================================================
+ * Modern Floating Pill Waybar Theme for Hyprland
+ * Colors inspired by Catppuccin Mocha & Tokyo Night
+ * ============================================================================= */
+
 * {
     border: none;
-    border-radius: 10px;
-    font-family: "Cousine Nerd Font";
-    font-size: 16px;
-    font-weight: bold ;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Cousine Nerd Font", monospace;
+    font-size: 13px;
+    font-weight: bold;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: #1A1B26;
-    color: #eeeeee;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+    background: transparent;
+    color: #c0caf5;
 }
 
+/* Tooltip styling */
 tooltip {
     background: #1a1b26;
-    opacity: 1;
+    border: 1px solid #7aa2f7;
     border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #11111b;
+    padding: 8px;
 }
-network {
-   color: #eeeeee;
-   border-radius: 10px;
+
+tooltip label {
+    color: #c0caf5;
 }
-tooltip label{
-    color: #eeeeee;
+
+/* Base style for modules */
+#custom-launcher,
+#workspaces,
+#submap,
+#custom-screenshot,
+#window,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-power {
+    background: #1a1b26;
+    color: #c0caf5;
+    padding: 2px 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Module Hover Effect */
+#custom-launcher:hover,
+#custom-screenshot:hover,
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#custom-power:hover {
+    background: #24283b;
+    border: 1px solid rgba(122, 162, 247, 0.3);
+}
+
+/* Left Modules */
+#custom-launcher {
+    color: #7aa2f7;
+    font-size: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 12px;
+}
+
+#workspaces {
+    background: #16161e;
+    padding: 2px 4px;
 }
 
 #workspaces button {
-    padding: 5px;
-    color: #313244;
-    margin-right: 5px;
-
-}
-
-#workspaces button.active {
-    color: #a6adc8;
-}
-
-#workspaces button.focused {
-    color: #eeeeee;
-    background:   #737aa2  ;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 10px;
+    padding: 2px 8px;
+    color: #565f89;
+    border-radius: 8px;
+    margin: 2px;
+    transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    background: #1A1B26;
-    color: #eeeeee;
-    border-radius: 10px;
+    background: #24283b;
+    color: #c0caf5;
 }
 
-#custom-screenshot,
-#niri-workspaces,
-#custom-launch_wofi
-#custom-lock_screen,
-#custom-light_dark,
-#custom-power_btn,
-#battery,
-#custom-weather,
-#custom-myhyprv,
-#window,
-#taskbar,
-#cpu,
-#disk,
-#custom-updates,
-#memory,
-#clock,
-#pulseaudio,
-#network,
-#tray,
-#temperature,
-#workspaces,
-#backlight {
-    background: #1A1B26;
-     opacity: 1;
-    padding: 0px 10px;
-    margin: 1px 0px;
-    border: 0px;
+#workspaces button.active {
+    background: #7aa2f7;
+    color: #15161e;
+    font-weight: bold;
+    border-radius: 8px;
 }
 
-#pulseaudio,#backlight,#memory ,#battery{
-	border-radius : 0 ;
-}
-#cpu,#custom-screenshot, #workspaces, #network{
-	border-radius : 10px 0 0 10px; 
-}
-#taskbar, #tray{
-	border-radius : 0 10px 10px 0;
-}
-#tray{
-	margin-right: 10px;
-}
-#clock{
-	border-radius: 10px;
+#workspaces button.urgent {
+    background: #f7768e;
+    color: #15161e;
+    border-radius: 8px;
 }
 
-#workspaces,#custom-screenshot {
-margin-left: 10px;
-}
-#custom-lock_screen, #clock{
-   margin-right: 10px;
+#submap {
+    background: #bb9af7;
+    color: #15161e;
 }
 
+#custom-screenshot {
+    color: #7dcfff;
+}
 
+/* Center Modules */
+#window {
+    background: #1a1b26;
+    color: #7aa2f7;
+    font-weight: bold;
+    padding: 2px 14px;
+    border-radius: 12px;
+}
 
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#clock {
+    color: #bb9af7;
+    background: #1a1b26;
+    font-weight: bold;
+}
+
+/* Right Modules */
+#cpu {
+    color: #f7768e;
+}
+
+#memory {
+    color: #ff9e64;
+}
+
+#temperature {
+    color: #e0af68;
+}
 
 #temperature.critical {
-    color: #e92d4d;
+    background: #f7768e;
+    color: #15161e;
 }
 
-
-#workspaces {
-    padding-right: 0px;
-    padding-left: 5px;
+#network {
+    color: #9ece6a;
 }
 
-#custom-power_profile {
-    color: #a6e3a1;
-    border-left: 0px;
-    border-right: 0px;
+#network.disconnected {
+    color: #f7768e;
 }
-
-#window {
-    border-radius: 10px;
-}
-
-
 
 #pulseaudio {
-    color: #E0AF68;
-
+    color: #7dcfff;
 }
 
-#pulseaudio.microphone {
-    color: #DC84F3;
-    border-left: 0px;
-    border-right: 0px;
+#pulseaudio.muted {
+    color: #565f89;
+}
+
+#backlight {
+    color: #e0af68;
 }
 
 #battery {
-	color: #9ECE6A;
-	border-left: 0px;
+    color: #9ece6a;
 }
 
-#taskbar button:hover{
-    background: #1A2B26;
+#battery.charging, #battery.plugged {
+    color: #73daca;
 }
 
+#battery.warning:not(.charging) {
+    color: #e0af68;
+}
+
+#battery.critical:not(.charging) {
+    background: #f7768e;
+    color: #15161e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray {
+    background: #1a1b26;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#custom-power {
+    color: #f7768e;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}

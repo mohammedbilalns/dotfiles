@@ -63,3 +63,7 @@ alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bilalnsmuhammed/.local/bin:$PATH"

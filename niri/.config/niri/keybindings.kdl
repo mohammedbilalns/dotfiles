@@ -2,8 +2,8 @@ binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
   Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
   Mod+Space { toggle-window-floating; }
-  Mod+T {spawn "foot";}
-  Mod+Shift+T { spawn-sh "foot zellij" ; }
+  Mod+T {spawn "kitty";}
+  Mod+Shift+T { spawn-sh "kitty zellij" ; }
   Mod+Shift+B { spawn "floorp";}
   Mod+P { spawn "wl-color-picker";}
   Mod+O { toggle-overview; }
@@ -23,13 +23,13 @@ binds {
   //Mod+D {spawn-sh "qs -c noctalia-shell ipc call launcher toggle";}
   Mod+F {spawn "nemo";}
   Mod+Shift+F {spawn-sh "kitty yazi";}
-  Alt+J {spawn-sh "foot nvim sample.js";}
+  Alt+J {spawn-sh "kitty nvim sample.js";}
   Alt+M {spawn-sh "kitty mongosh";}
   Mod+Shift+W {spawn-sh "~/.local/bin/toggle_waybar";}
   //Mod+Shift+W {spawn-sh "qs -c noctalia-shell ipc call bar toggle";}
   Mod+Alt+K {spawn-sh "~/.local/bin/killport 3000";}
   Mod+Shift+R { spawn-sh "~/.local/bin/gammastep-toggle";}
-  Mod+Alt+S {spawn-sh "foot speedtest-rs";}
+  Mod+Alt+S {spawn-sh "kitty speedtest-rs";}
   F3 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
   F2 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
   F1 allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
