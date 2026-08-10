@@ -1,15 +1,5 @@
-# Package Manager 
-alias i="paru -S"
-alias install="paru -S"
-alias r="paru -R"
-alias remove="paru -R"
-alias s="paru -Ss"
-alias search="paru -Ss"
 alias ls='lsd -a --group-directories-first'
 alias ll="lsd -la --group-directories-first"
-alias u="paru -Syu"
-alias update="paru -Syu"
-alias rm_cache="sudo pacman -Scc"
 # Git 
 alias gs="git status"
 alias ga="git add"
@@ -24,10 +14,8 @@ alias hx="helix"
 alias cat="bat"
 alias dwyt='echo -n "Enter video URL: "; read url; yt-dlp -F "$url"; echo -n "Enter format ID to download: "; read fid; yt-dlp -f "$fid" "$url"'
 alias asr="atuin scripts run"
-alias run="~/skillsphere-backend/init-workspace.sh"
-alias pg="source venv/bin/activate && pgadmin4 & zen-browser localhost:5050"
 alias rm_modules='find . -type d -name node_modules -prune -exec rm -rf {} +'
-alias list_content="find . -type f -exec echo '==== {} ====' \; -exec bat --paging=never {} \;"
+alias list_content="find . -type f -exec echo '==== {} ====' \; -exec cat {} \;"
 alias rm_git='find . -mindepth 2 -type d -name ".git" -exec rm -rf {} +'
 
 
@@ -51,6 +39,11 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export EDITOR=nvim
 export VISUAL=nvim
 eval "$(zoxide init zsh)"
-export PATH="$PATH:$(go env GOPATH)/bin"
 
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# pnpm
+export PNPM_HOME="/data/data/com.termux/files/home/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac

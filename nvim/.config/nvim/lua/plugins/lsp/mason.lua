@@ -9,8 +9,8 @@ return {
       "lua_ls",
       "emmet_ls",
       "prismals",
-      "pyright",
-      "eslint"
+      "eslint",
+      "ruff"
     }
   },
   dependencies = {
