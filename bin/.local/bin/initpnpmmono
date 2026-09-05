@@ -1,0 +1,214 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT_DIR="${1:-$(pwd)}"
+
+# --------------------------------------------------
+# Validate root directory
+# --------------------------------------------------
+
+if [ ! -d "$ROOT_DIR" ]; then
+  mkdir -p "$ROOT_DIR"
+fi
+
+ROOT_DIR="$(cd "$ROOT_DIR" && pwd)"
+
+if [ "$(find "$ROOT_DIR" -mindepth 1 -maxdepth 1 -print -quit)" ]; then
+  echo "Error: Root directory is not empty:"
+  echo "  $ROOT_DIR"
+  exit 1
+fi
+
+cd "$ROOT_DIR"
+
+PROJECT_NAME="$(basename "$ROOT_DIR")"
+
+echo "Initializing pnpm monorepo in:"
+echo "  $ROOT_DIR"
+echo
+
+# --------------------------------------------------
+# Root package.json
+# --------------------------------------------------
+
+cat > package.json <<EOF
+{
+  "name": "$PROJECT_NAME",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter './apps/*' dev",
+    "build": "pnpm --recursive build"
+  }
+}
+EOF
+
+# --------------------------------------------------
+# pnpm workspace
+# --------------------------------------------------
+
+cat > pnpm-workspace.yaml <<'EOF'
+packages:
+  - "apps/*"
+  - "packages/*"
+EOF
+
+mkdir -p apps packages
+
+# --------------------------------------------------
+# React + Vite frontend
+# --------------------------------------------------
+
+echo "Creating React frontend..."
+
+pnpm create vite apps/web --template react-ts --no-interactive
+
+# --------------------------------------------------
+# Node + TypeScript backend
+# --------------------------------------------------
+
+echo
+echo "Creating Node backend..."
+
+mkdir -p apps/server/src
+
+cd apps/server
+
+pnpm init
+
+# TypeScript tooling only
+pnpm add -D typescript @types/node
+
+# --------------------------------------------------
+# TypeScript configuration
+# --------------------------------------------------
+
+cat > tsconfig.json <<'EOF'
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "noEmitOnError": true
+  },
+  "include": ["src/**/*.ts"]
+}
+EOF
+
+# --------------------------------------------------
+# Server entry point
+# --------------------------------------------------
+
+cat > src/index.ts <<'EOF'
+const PORT = Number(process.env.PORT) || 3000;
+
+console.log(`Server running on http://localhost:${PORT}`);
+EOF
+
+# --------------------------------------------------
+# Backend package.json
+# --------------------------------------------------
+
+node <<'EOF'
+const fs = require("fs");
+
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+
+pkg.type = "module";
+
+pkg.scripts = {
+  dev: "node --watch --experimental-strip-types src/index.ts",
+  build: "tsc",
+  start: "node dist/index.js"
+};
+
+fs.writeFileSync(
+  "package.json",
+  JSON.stringify(pkg, null, 2) + "\n"
+);
+EOF
+
+# --------------------------------------------------
+# Install workspace dependencies
+# --------------------------------------------------
+
+cd "$ROOT_DIR"
+
+echo
+echo "Installing workspace dependencies..."
+
+pnpm install
+
+# --------------------------------------------------
+# Agent instructions
+# --------------------------------------------------
+
+echo
+echo "Creating agent instructions..."
+
+cat > AGENTS.md <<'EOF'
+# Project Instructions
+
+## Package Manager
+
+This project uses **pnpm** as its package manager.
+
+- Always use `pnpm` for package management.
+- Do not use `npm`, `yarn`, or `bun`.
+- Use `pnpm install` to install dependencies.
+- Use `pnpm add <package>` to add dependencies.
+- Use `pnpm add -D <package>` to add development dependencies.
+- Use `pnpm remove <package>` to remove dependencies.
+- Use `pnpm exec <command>` to run locally installed CLI tools.
+- Do not create or modify `package-lock.json`, `yarn.lock`, or `bun.lock`.
+
+## Monorepo
+
+This project is a **pnpm workspace monorepo**.
+
+- Workspace configuration is defined in `pnpm-workspace.yaml`.
+- Applications are located under `apps/`.
+- Shared packages are located under `packages/`.
+- `apps/web` is the React + Vite frontend.
+- `apps/server` is the Node.js + TypeScript backend.
+- Keep applications and packages within the existing workspace structure.
+- Do not create nested package managers or separate lockfiles inside workspace packages.
+- Use pnpm workspace commands when working across packages.
+- Use `--filter` when a command should target a specific workspace package.
+- Prefer filtering by package name when possible.
+- Avoid running commands across the entire workspace when only one package needs to be affected.
+
+### pnpm Filter Examples
+
+```bash
+# Run a command in the web application
+pnpm --filter web <command>
+
+# Run a command in the server application
+pnpm --filter server <command>
+
+# Add a dependency to the web application
+pnpm --filter web add <package>
+
+# Add a development dependency to the server
+pnpm --filter server add -D <package>
+
+# Build only the web application
+pnpm --filter web build
+
+# Build only the server
+pnpm --filter server build
+
+# Run development for a specific application
+pnpm --filter web dev
+pnpm --filter server dev

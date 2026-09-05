@@ -1,7 +1,6 @@
 alias c="clear"
 alias suod="sudo"
 alias hx="helix"
-alias cat="bat"
 alias asr="atuin scripts run"
 alias run="~/upstride-backend/init-workspace.sh"
 alias hl="rg --passthru"

@@ -36,6 +36,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="/home/bilalnsmuhammed/.local/bin:$PATH"
 export PATH="/home/bilalnsmuhammed/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/bilalnsmuhammed/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
-eval "$(mise activate zsh)"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/bin/java
 export PATH="$JAVA_HOME/bin:$PATH"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
