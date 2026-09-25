@@ -5,13 +5,12 @@ SAVEHIST=1000
 
 
 # Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autosuggestions/
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source ~/.zsh/zsh-autosuggestions/
 # Utils 
 source ~/.config/zsh/utils.zsh
 source ~/.config/zsh/pnpm.zsh
-source ~/.config/zsh/android.zsh
+#source ~/.config/zsh/android.zsh
 # Aliases 
 source ~/.config/zsh/aliases/pkg-mgr.zsh
 source ~/.config/zsh/aliases/git.zsh
@@ -38,5 +37,12 @@ export PATH="/home/bilalnsmuhammed/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/bilalnsmuhammed/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/bin/java
 export PATH="$JAVA_HOME/bin:$PATH"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+
+if [[ -r "$HOME/.local/share/deja/init.zsh" ]]; then
+  source "$HOME/.local/share/deja/init.zsh"
+else
+  eval "$(deja init zsh)"
+fi
+
+# zsh-syntax-highlighting must be sourced at the end of the file
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
