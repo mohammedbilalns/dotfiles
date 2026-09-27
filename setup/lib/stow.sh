@@ -12,7 +12,7 @@ backup_shell_configs_and_bin() {
   mv "$HOME/.bashrc" "$HOME/.bashrc.bak" 2>/dev/null || true
   mv "$HOME/.zshrc" "$HOME/.zshrc.bak" 2>/dev/null || true
   mv "$HOME/.zsh" "$HOME/.zsh.bak" 2>/dev/null || true
-  mv "$HOME/.local/bin" "$HOME/.local/bin.bak" 2>/dev/null || true
+  mv "$HOME/.local/usr/bin" "$HOME/.local/usr/bin.bak" 2>/dev/null || true
 }
 
 backup_config_dir_if_exists() {

@@ -19,6 +19,7 @@ source ~/.config/zsh/aliases/utils.zsh
 # PATHS & ENVIRONMENT VARIABLES
 
 path+=$HOME/.cargo/bin
+export PATH="$HOME/.local/usr/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
