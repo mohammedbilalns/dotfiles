@@ -11,8 +11,8 @@ binds {
   Mod+B {spawn "brave" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
   Mod+J { spawn "joplin-desktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland";}
   Mod+Alt+C {spawn "cursor"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
-  Mod+A {spawn-sh "~/.local/bin/open_chatbots";}
-  Mod+Shift+D {spawn-sh "~/.local/bin/define.sh";}
+  Mod+A {spawn-sh "open_chatbots";}
+  Mod+Shift+D {spawn-sh "~/.local/usr/bin/define.sh";}
   Mod+Shift+C {spawn "zeditor";}
   Mod+Shift+P {spawn "postman"  "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ; }
   Mod+Shift+M {spawn "mongodb-compass" "--password-store='gnome-libsecret'" "--ignore-additional-command-line-flags";}
@@ -25,10 +25,10 @@ binds {
   Mod+Shift+F {spawn-sh "kitty yazi";}
   Alt+J {spawn-sh "kitty nvim sample.js";}
   Alt+M {spawn-sh "kitty mongosh";}
-  Mod+Shift+W {spawn-sh "~/.local/bin/toggle_waybar";}
+  Mod+Shift+W {spawn-sh "~/.local/usr/bin/toggle_waybar";}
   //Mod+Shift+W {spawn-sh "qs -c noctalia-shell ipc call bar toggle";}
-  Mod+Alt+K {spawn-sh "~/.local/bin/killport 3000";}
-  Mod+Shift+R { spawn-sh "~/.local/bin/gammastep-toggle";}
+  Mod+Alt+K {spawn-sh "~/.local/usr/bin/killport 3000";}
+  Mod+Shift+R { spawn-sh "~/.local/usr/bin/gammastep-toggle";}
   Mod+Alt+S {spawn-sh "kitty speedtest-rs";}
   F3 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
   F2 allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

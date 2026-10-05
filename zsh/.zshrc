@@ -4,9 +4,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 
-# Plugins
-#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source ~/.zsh/zsh-autosuggestions/
+
 # Utils 
 source ~/.config/zsh/utils.zsh
 source ~/.config/zsh/pnpm.zsh
@@ -39,11 +37,14 @@ export PHP_INI_SCAN_DIR="/home/bilalnsmuhammed/.config/herd-lite/bin:$PHP_INI_SC
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk/bin/java
 export PATH="$JAVA_HOME/bin:$PATH"
 
-if [[ -r "$HOME/.local/share/deja/init.zsh" ]]; then
-  source "$HOME/.local/share/deja/init.zsh"
-else
-  eval "$(deja init zsh)"
-fi
+# opencode
+#export PATH=/home/bilalnsmuhammed/.opencode/bin:$PATH
 
-# zsh-syntax-highlighting must be sourced at the end of the file
+# Extensions
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# jj autocompletion 
+autoload -U compinit
+compinit
+source <(jj util completion zsh)
