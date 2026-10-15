@@ -1,218 +1,266 @@
-@define-color background      #1a1b26;
-@define-color foreground      #a9b1d6;
-@define-color accent-primary  #7aa2f7;
-@define-color accent-second   #bb9af7;
-@define-color warning         #f7768e;
-@define-color good            #9ece6a;
-@define-color neutral         #414868;
+/* =============================================================================
+ * Modern Floating Pill Waybar Theme for Niri
+ * Colors inspired by Catppuccin Mocha & Tokyo Night
+ * Replicated from waybar/.config/waybar
+ * ============================================================================= */
 
 * {
     border: none;
-    border-radius: 10px;
-    font-family: "Cousine Nerd Font";
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "Cousine Nerd Font", monospace;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 800;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: @foreground;
+    color: #c0caf5;
 }
 
+/* Tooltip styling */
 tooltip {
-    background: @background;
-    opacity: 0.8;
+    background: #1a1b26;
+    border: 1px solid #7aa2f7;
     border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: @neutral;
+    padding: 8px;
 }
 
 tooltip label {
-    color: @foreground;
+    color: #c0caf5;
 }
 
-#workspaces button {
-    padding: 5px;
-    color: @accent-second;
-    margin-right: 5px;
-}
-
-#workspaces button.active {
-    color: @foreground;
-}
-
-#workspaces button.focused {
-    color: @foreground;
-    background: @neutral;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: @background;
-    background: @warning;
-    border-radius: 10px;
-}
-
-#workspaces button:hover {
-    background: @neutral;
-    color: @foreground;
-    border-radius: 10px;
-}
-
+/* Base style for modules (Floating Pills / Islands) */
+#custom-launcher,
 #workspaces,
 #taskbar,
 .niri-taskbar,
-#clock,
+#submap,
+#custom-screenshot,
 #custom-pomodoro,
+#custom-tomat,
+#window,
+#clock,
+#cpu,
+#memory,
+#temperature,
 #network,
 #pulseaudio,
 #backlight,
 #battery,
-#tray {
-    background: @background;
-    padding: 0px 8px;
-    margin-bottom: 3px;
+#tray,
+#custom-power {
+    background: #1a1b26;
+    color: #c0caf5;
+    padding: 2px 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-#network,
-#pulseaudio,
-#backlight,
-#battery {
-    border-radius: 0;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-left: none;
-    border-right: none;
+/* Module Hover Effect */
+#custom-launcher:hover,
+#custom-screenshot:hover,
+#custom-pomodoro:hover,
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#custom-power:hover {
+    background: #24283b;
+    border: 1px solid rgba(122, 162, 247, 0.3);
 }
 
-#cpu,
-#custom-screenshot,
-#workspaces{
-    border-radius: 10px 0px 0px 10px;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-left: 2px solid @neutral;
-    border-right: none;
-}
-#network{
-    border-radius: 0px 0px 0px 0px;
-}
-
-#taskbar,
-.niri-taskbar {
-    border-radius: 0 10px 10px 0;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-right: 2px solid @neutral;
-    border-left: none;
-}
-
-#tray {
-    border-radius: 0 10px 10px 0;
-    margin-right: 10px;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-right: 2px solid @neutral;
-    border-left: none;
-}
-
-#clock {
-    border-radius: 10px;
-    color: @accent-primary;
-    border: 2px solid @neutral;
-}
-
-#workspaces,
-#custom-screenshot {
-    margin-left: 10px;
-}
-
-#custom-lock_screen,
-#clock {
-    margin-right: 10px;
-}
-
-#temperature.critical {
-    color: @warning;
+/* Left Modules */
+#custom-launcher {
+    color: #7aa2f7;
+    font-size: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 12px;
+    margin-left: 6px;
 }
 
 #workspaces {
-    padding-right: 0px;
-    padding-left: 5px;
+    background: #16161e;
+    padding: 2px 4px;
+    margin-left: 6px;
 }
 
-#custom-power_profile {
-    color: @good;
-    border-left: 0px;
-    border-right: 0px;
+#workspaces button {
+    padding: 2px 8px;
+    color: #565f89;
+    border-radius: 8px;
+    margin: 2px;
+    transition: all 0.2s ease-in-out;
 }
 
-#window {
-    border-radius: 10px;
+#workspaces button:hover {
+    background: #24283b;
+    color: #c0caf5;
 }
 
-#pulseaudio {
-    color: @accent-second;
+#workspaces button.active {
+    background: #3b4261;
+    color: #c0caf5;
+    font-weight: 800;
+    border-radius: 8px;
 }
 
-#pulseaudio.microphone {
-    color: @good;
-    border-left: 0px;
-    border-right: 0px;
+#workspaces button.focused {
+    background: #7aa2f7;
+    color: #15161e;
+    font-weight: 900;
+    border-radius: 8px;
 }
 
-#battery {
-    color: @good;
-    border-left: 0px;
+#workspaces button.urgent {
+    background: #f7768e;
+    color: #15161e;
+    border-radius: 8px;
+}
+
+/* Niri Taskbar */
+#taskbar,
+.niri-taskbar {
+    background: #16161e;
+    padding: 2px 4px;
+}
+
+#taskbar button,
+.niri-taskbar button {
+    padding: 2px 7px;
+    color: #565f89;
+    border-radius: 8px;
+    margin: 2px;
+    transition: all 0.2s ease-in-out;
+}
+
+#taskbar button image,
+.niri-taskbar button image,
+#taskbar image,
+.niri-taskbar image {
+    min-width: 17px;
+    min-height: 17px;
+    -gtk-icon-transform: scale(1.12);
 }
 
 #taskbar button:hover,
 .niri-taskbar button:hover {
-    background: #383E4A;
+    background: #24283b;
+    color: #c0caf5;
 }
 
-#network {
-    color: @accent-primary;
+#taskbar button.active,
+.niri-taskbar button.active,
+#taskbar button.focused,
+.niri-taskbar button.focused {
+    background: #24283b;
+    color: #7aa2f7;
+    border-radius: 8px;
 }
 
-#backlight {
-    color: @accent-second;
+#taskbar button.urgent,
+.niri-taskbar button.urgent {
+    background: #f7768e;
+    color: #15161e;
+    border-radius: 8px;
+}
+
+#submap {
+    background: #bb9af7;
+    color: #15161e;
+}
+
+#custom-screenshot {
+    color: #7dcfff;
 }
 
 #custom-pomodoro {
-    color: @warning;
-    margin-right: 0px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top: 2px solid @neutral;
-    border-bottom: 2px solid @neutral;
-    border-left: 2px solid @neutral;
-    border-right: none;
+    color: #f7768e;
 }
 
-#temperature {
-    color: @good;
+/* Center Modules */
+#window {
+    background: #1a1b26;
+    color: #7aa2f7;
+    font-weight: 800;
+    padding: 2px 14px;
+    border-radius: 12px;
+}
+
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#clock {
+    color: #bb9af7;
+    background: #1a1b26;
+    font-weight: 800;
+    margin-right: 6px;
+}
+
+/* Right Modules */
+#cpu {
+    color: #f7768e;
 }
 
 #memory {
-    color: @accent-primary;
+    color: #ff9e64;
 }
 
+#temperature {
+    color: #e0af68;
+}
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#temperature.critical {
+    background: #f7768e;
+    color: #15161e;
+}
+
+#network {
+    color: #9ece6a;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#pulseaudio {
+    color: #7dcfff;
+}
+
+#pulseaudio.muted {
+    color: #565f89;
+}
+
+#backlight {
+    color: #e0af68;
+}
+
+#battery {
+    color: #9ece6a;
+}
+
+#battery.charging, #battery.plugged {
+    color: #73daca;
+}
+
+#battery.warning:not(.charging) {
+    color: #e0af68;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background: #f7768e;
+    color: #15161e;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -220,4 +268,23 @@ tooltip label {
     animation-direction: alternate;
 }
 
+#tray {
+    background: #1a1b26;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
+#custom-power {
+    color: #f7768e;
+    font-size: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 6px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}

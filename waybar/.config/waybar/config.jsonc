@@ -1,11 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 40,
-    "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 6,
+    "height": 20,
+    "spacing": 0,
 
     "modules-left": [
         "custom/launcher",
