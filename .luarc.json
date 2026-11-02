@@ -4,6 +4,8 @@
         "vim"
     ],
     "diagnostics.disable": [
-        "undefined-field"
+        "undefined-field",
+        "missing-fields",
+        "param-type-mismatch"
     ]
 }

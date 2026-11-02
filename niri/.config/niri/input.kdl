@@ -1,11 +1,15 @@
 input {
 	keyboard {
-		xkb {}
-	}
+		xkb {
+        }
+    }
 	touchpad {
 		tap
 		natural-scroll
-	}
-	mouse {}
+    }
+	mouse {
+    }
 	focus-follows-mouse max-scroll-amount="0%"
+
+    trackpoint
 }

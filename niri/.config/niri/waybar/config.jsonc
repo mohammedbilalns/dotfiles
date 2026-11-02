@@ -28,7 +28,7 @@
 
     // Niri Taskbar (CFFI module)
     "cffi/niri-taskbar": {
-        "module_path": "/usr/lib/waybar/libniri_taskbar.so",
+        "module_path": "/home/bilalnsmuhammed/.local/lib/waybar/libniri_taskbar.so",
         "apps": {
             "signal": [
                 {

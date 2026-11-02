@@ -6,12 +6,12 @@ include "animations.kdl"
 
 output "eDP-1" {
   mode "1920x1080@60"
-  scale 1.1
-  transform  "normal"
+  scale 1.08
+  transform "normal"
   // laptop screen position as left 
   //position x=1280 y=0
 }
-output "HDMI-A-1"{
+output "HDMI-A-1" {
   scale 1
 
   // monitior position as left 
@@ -33,29 +33,31 @@ layout {
     proportion 0.33333
     proportion 0.5
     proportion 0.66667
-  }
+    }
   default-column-width { proportion 0.5; }
   focus-ring {
     width 2
     active-color "#7aa2f7"
     inactive-color "#414868"
-  }
+    }
   border {
+        off
+
     width 1
     active-color "#7aa2f7"
     inactive-color "#414868"
     urgent-color "#9b0000"
-  }
-  shadow{
+    }
+  shadow {
     on
-  }
+    }
   tab-indicator {
     width 7 
     gap 0 
     length total-proportion=1.0
     position "left"
     place-within-column
-  }
+    }
 }
 
 overview {
@@ -63,7 +65,7 @@ overview {
   backdrop-color "#26233a"
   workspace-shadow {
     off
-  }
+    }
 }
 
 recent-windows {
@@ -73,7 +75,7 @@ recent-windows {
     urgent-color "#9b0000"
     padding 10
     corner-radius 10
-  }
+    }
 }
 
 layer-rule {
@@ -88,11 +90,11 @@ cursor {
 }
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-hotkey-overlay{
+hotkey-overlay {
   skip-at-startup
 }
 
-environment{
+environment {
   QT_QPA_PLATFORMTHEME "qt6ct"
   QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
   QT_AUTO_SCREEN_SCALE_FACTOR "1"

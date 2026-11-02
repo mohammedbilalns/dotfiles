@@ -8,7 +8,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
-
 # Utils 
 source ~/.config/zsh/pnpm.zsh
 source ~/.config/zsh/android.zsh
@@ -30,7 +29,6 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 export PATH="/home/bilalnsmuhammed/.local/bin:$PATH"
@@ -45,6 +43,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # jj autocompletion 
 #fpath=(~/.zsh/completions $fpath) 
-autoload -U compinit
-compinit
-source <(jj util completion zsh)
+# autoload -U compinit
+# compinit
+# source <(jj util completion zsh)

@@ -1,6 +1,6 @@
 
 // Open Maximized 
-window-rule{
+window-rule {
   match app-id="code"
   match app-id="kdenlive"
   open-maximized true 
@@ -20,7 +20,7 @@ window-rule {
 }
 
 // Open on Code 
-window-rule{
+window-rule {
   match app-id="GitHub Desktop"
   open-on-workspace "Code"
 }
@@ -41,17 +41,20 @@ window-rule {
 }
 
 window-rule {
-  geometry-corner-radius 3
-  clip-to-geometry true
+    geometry-corner-radius 3
+    clip-to-geometry true
+    background-effect {
+        blur true
+    }
 }
 
 // window rules for opacity
-window-rule{
+window-rule {
   match app-id="^foot$"
   match app-id="^helium$"
   background-effect {
     blur true 
-  }
+    }
 }
 
 
@@ -60,10 +63,10 @@ window-rule {
   match app-id="Alacritty"
 
   match app-id="nemo"
-  background-effect{
+  background-effect {
     blur true
     xray true 
-  }
+    }
 }
 
 window-rule {
@@ -76,8 +79,8 @@ window-rule {
 layer-rule {
   match namespace="^anyrun$"
   match namespace="^waybar$"
-  background-effect{
+  background-effect {
     blur true
-  }
+    }
   opacity 0.95
 }
