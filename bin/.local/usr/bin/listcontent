@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-EXCLUDES='node_modules|dist|.git|.next|.agents|.netlify|.tanstack|__pycache__|.pytest_cache|.mypy_cache|.ruff_cache|.venv|venv|.tox|.hypothesis|.nox|.pyre|__pypackages__|.cache|target|pkg|bin|vendor|.cargo|.coverage|htmlcov|coverage'
+EXCLUDES='node_modules|dist|.git|.next|.agents|.netlify|.tanstack|__pycache__|.pytest_cache|.mypy_cache|.ruff_cache|.venv|venv|.tox|.hypothesis|.nox|.pyre|__pypackages__|.cache|target|pkg|bin|vendor|.cargo|.coverage|htmlcov|coverage|.wrangler|.turbo'
 
 # Build additional exclusions from command-line arguments.
 # Example:
